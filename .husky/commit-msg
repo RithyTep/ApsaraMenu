@@ -1,1 +1,14 @@
-npx --no --commitlint --edit ${1}
+#!/usr/bin/env sh
+
+# Load common paths where bun/node might be installed
+export PATH="$HOME/.bun/bin:$HOME/.nvm/versions/node/$(ls -1 $HOME/.nvm/versions/node 2>/dev/null | tail -1)/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+
+# Run commitlint
+if command -v npx >/dev/null 2>&1; then
+  npx --no -- commitlint --edit ${1}
+elif command -v bun >/dev/null 2>&1; then
+  bun x commitlint --edit ${1}
+else
+  echo "Warning: Neither npx nor bun found. Skipping commitlint."
+  exit 0
+fi

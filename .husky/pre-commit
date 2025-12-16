@@ -1,1 +1,15 @@
-bun lint-staged
+#!/usr/bin/env sh
+
+# Load common paths where bun/node might be installed
+export PATH="$HOME/.bun/bin:$HOME/.nvm/versions/node/$(ls -1 $HOME/.nvm/versions/node 2>/dev/null | tail -1)/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+
+# Try bun first, fall back to npx
+if command -v bun >/dev/null 2>&1; then
+  bun lint-staged
+elif command -v npx >/dev/null 2>&1; then
+  npx lint-staged
+else
+  echo "Warning: Neither bun nor npx found. Skipping lint-staged."
+  echo "Install bun: curl -fsSL https://bun.sh/install | bash"
+  exit 0
+fi
