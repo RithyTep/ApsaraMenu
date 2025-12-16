@@ -1,11 +1,9 @@
-## Biztro
+## ApsaraMenu
 
 > [!NOTE]
 > This is a WORK IN PROGRESS.
 
-[![DeepSource](https://deepsource.io/gh/dkast/biztro.svg/?label=active+issues&show_trend=true&token=ka1uwQTdoJTIVeRZl6gI7ERb)](https://deepsource.io/gh/dkast/biztro/?ref=repository-badge)
-
-Biztro is a mobile-first, server-first Next.js application for creating, editing and publishing digital menus.
+ApsaraMenu is a mobile-first, server-first Next.js application for creating, editing and publishing digital menus.
 It uses a modern TypeScript + React stack with Prisma for persistence and Tailwind for styling.
 
 ## Core stack

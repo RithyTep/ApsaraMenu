@@ -1,4 +1,4 @@
-# Copilot / AI Agent Instructions for Biztro
+# Copilot / AI Agent Instructions for ApsaraMenu
 
 These are concise, actionable rules and repo-specific conventions for AI coding agents working on this codebase.
 
