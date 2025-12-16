@@ -25,7 +25,7 @@ import { inviteMember } from "@/server/actions/user/mutations"
 
 const emailSchema = z.object({
   email: z.email({
-    error: "Por favor, introduce un correo electrónico válido"
+    error: "Please enter a valid email address"
   })
 })
 
@@ -39,13 +39,13 @@ export default function MemberInvite({ isPro }: { isPro: boolean }) {
         toast.error(data.failure.reason)
         return
       }
-      toast.success("Invitación enviada")
+      toast.success("Invitation sent")
       setOpen(false)
       reset()
     },
     onError: error => {
       console.error(error)
-      toast.error("Falló el envío de la invitación")
+      toast.error("Failed to send invitation")
     }
   })
 
@@ -69,14 +69,14 @@ export default function MemberInvite({ isPro }: { isPro: boolean }) {
           <DialogTrigger asChild>
             <Button className="gap-2">
               <UserPlus className="size-4" />
-              Invitar miembro
+              Invite member
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Invitar miembro</DialogTitle>
+              <DialogTitle>Invite member</DialogTitle>
               <DialogDescription>
-                Introduce el correo electrónico del miembro que deseas invitar.
+                Enter the email address of the member you want to invite.
               </DialogDescription>
             </DialogHeader>
             <Form {...form}>
@@ -93,7 +93,7 @@ export default function MemberInvite({ isPro }: { isPro: boolean }) {
                       <Input
                         {...field}
                         type="email"
-                        placeholder="correo@ejemplo.com"
+                        placeholder="email@example.com"
                         className="mb-4"
                       />
                       {fieldState.invalid && (
@@ -107,10 +107,10 @@ export default function MemberInvite({ isPro }: { isPro: boolean }) {
                     {status === "executing" ? (
                       <>
                         <Loader className="mr-2 size-4 animate-spin" />
-                        {"Enviando..."}
+                        {"Sending..."}
                       </>
                     ) : (
-                      "Enviar invitación"
+                      "Send invitation"
                     )}
                   </Button>
                 </div>
@@ -123,14 +123,14 @@ export default function MemberInvite({ isPro }: { isPro: boolean }) {
           <DialogTrigger asChild>
             <Button className="gap-2">
               <UserPlus className="size-4" />
-              Invitar miembro
+              Invite member
             </Button>
           </DialogTrigger>
           <UpgradeDialog
             open={upgradeOpen}
             onClose={() => setUpgradeOpen(false)}
-            title="Obtén más con el plan Pro"
-            description="Actualiza a Pro para colaborar con tu equipo e invitar miembros sin límites."
+            title="Get more with the Pro plan"
+            description="Upgrade to Pro to collaborate with your team and invite unlimited members."
           />
         </Dialog>
       )}

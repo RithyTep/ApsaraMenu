@@ -20,14 +20,12 @@ export default function CTABanner() {
             />
           </div>
           <p className="mt-4 mb-1 text-lg text-orange-200">
-            ¿Listo para mejorar tu servicio con un menú digital?
+            Ready to improve your service with a digital menu?
           </p>
           <h3 className="mb-4 text-center text-3xl text-white">
-            Haz tu menú online con Biztro
+            Make your online menu with ApsaraMenu
           </h3>
-          <span className="mb-4 text-orange-200">
-            Únete a nuestra lista de espera
-          </span>
+          <span className="mb-4 text-orange-200">Join our waitlist</span>
           <Waitlist />
         </div>
       </div>

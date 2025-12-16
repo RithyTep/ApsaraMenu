@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Biztro",
-    short_name: "Biztro",
-    description: "Tu solución moderna para la gestión de restaurantes",
+    name: "ApsaraMenu",
+    short_name: "ApsaraMenu",
+    description: "Your modern solution for restaurant management",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

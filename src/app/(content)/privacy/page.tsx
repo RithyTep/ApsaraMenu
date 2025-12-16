@@ -2,109 +2,102 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Política de privacidad",
+  title: "Privacy Policy",
   description:
-    "Política de privacidad de Cargo. Aprende cómo recopilamos, usamos y divulgamos información personal a través de nuestra plataforma en línea."
+    "Privacy Policy for ApsaraMenu. Learn how we collect, use, and disclose personal information through our online platform."
 }
 
 export default function PrivacyPage() {
-  const application = "Biztro"
+  const application = "ApsaraMenu"
   return (
-    <section className="prose prose-gray mt-10 dark:prose-invert">
-      <h1>Política de privacidad</h1>
+    <section className="prose prose-gray dark:prose-invert mt-10">
+      <h1>Privacy Policy</h1>
       <h2 className="font-medium text-gray-500">
-        A partir del 1 de junio de 2024
+        Effective as of June 1, 2024
       </h2>
       <ol>
         <li>
           <p>
-            <strong>Introducción.</strong> Esta Política de Privacidad (la{" "}
-            <strong>&quot;Política&quot;</strong> ) explica cómo {application}{" "}
-            Software (&quot;{application}&quot;) recopila, utiliza y divulga
-            información personal a través de su plataforma en línea (la
-            &quot;Plataforma&quot;). Al usar o acceder a la Plataforma de
-            cualquier manera, usted reconoce que acepta las prácticas y
-            políticas descritas en esta Política y, por la presente, acepta que
-            recopilemos, usemos y compartamos su información personal de las
-            siguientes maneras. Cualquier término en mayúscula que no esté
-            definido en esta Política se define en nuestros{" "}
-            <Link href="/terms">Términos de servicio</Link> .
+            <strong>Introduction.</strong> This Privacy Policy (the{" "}
+            <strong>&quot;Policy&quot;</strong>) explains how {application}{" "}
+            Software (&quot;{application}&quot;) collects, uses, and discloses
+            personal information through its online platform (the
+            &quot;Platform&quot;). By using or accessing the Platform in any
+            way, you acknowledge that you accept the practices and policies
+            described in this Policy and hereby consent that we may collect,
+            use, and share your personal information in the following ways. Any
+            capitalized terms not defined in this Policy are defined in our{" "}
+            <Link href="/terms">Terms of Service</Link>.
           </p>
         </li>
         <li>
           <p>
-            <strong>Información recopilada y cómo la utilizamos.</strong> Como
-            se explica más adelante en esta sección, tendrá la oportunidad de
-            proporcionarnos cierta información personal. Además, podemos
-            recopilar cierta información automáticamente a través de su uso de
-            la Plataforma. Utilizaremos esta información para brindarle a usted
-            y a sus Organizaciones la funcionalidad de nuestra Plataforma, para
-            mejorarla y para brindarle información sobre nuestra Plataforma. El
-            resto de esta sección proporciona una explicación más detallada de
-            la información personal que recopilamos y cómo utilizamos esa
-            información.
+            <strong>Information Collected and How We Use It.</strong> As
+            explained later in this section, you will have the opportunity to
+            provide us with certain personal information. Additionally, we may
+            collect certain information automatically through your use of the
+            Platform. We will use this information to provide you and your
+            Organizations with the functionality of our Platform, to improve it,
+            and to provide you with information about our Platform. The rest of
+            this section provides a more detailed explanation of the personal
+            information we collect and how we use that information.
           </p>
           <ol>
             <li>
               <p>
-                <strong>Información divulgada voluntariamente.</strong>
+                <strong>Voluntarily Disclosed Information.</strong>
               </p>
               <ol>
                 <li>
-                  <strong>Creación de cuenta.</strong> Para crear su cuenta en
-                  la Plataforma, deberá proporcionar información a través de un
-                  Autenticador de terceros. Esta información incluirá, como
-                  mínimo, su nombre, dirección de correo electrónico y podrá
-                  proporcionar una fotografía si así lo desea. Usamos esta
-                  información para poder brindarle acceso a la Plataforma,
-                  ejecutar nuestro contrato con usted y comunicarnos con usted
-                  sobre su cuenta y las cuentas de las Organizaciones a las que
-                  está afiliado en la Plataforma. Además, podremos utilizar su
-                  dirección de correo electrónico para enviarle correos
-                  electrónicos promocionales sobre la Plataforma y los servicios
-                  de {application}. Por la presente usted acepta la recepción de
-                  estos correos electrónicos promocionales.
+                  <strong>Account Creation.</strong> To create your account on
+                  the Platform, you will need to provide information through a
+                  Third-Party Authenticator. This information will include, at a
+                  minimum, your name and email address, and you may provide a
+                  photograph if you wish. We use this information to provide you
+                  with access to the Platform, execute our contract with you,
+                  and communicate with you about your account and the accounts
+                  of the Organizations to which you are affiliated on the
+                  Platform. Additionally, we may use your email address to send
+                  you promotional emails about the Platform and {application}{" "}
+                  services. You hereby consent to the receipt of these
+                  promotional emails.
                 </li>
                 <li>
-                  <strong>Publicaciones y comentarios.</strong> Tendrá la opción
-                  de publicar contenido y texto en la Plataforma, y ​​de
-                  comentar el contenido y el texto que otros usuarios dentro de
-                  las Organizaciones publiquen en la Plataforma (colectivamente,
-                  &quot;Contenido de Usuario&quot;). Si usted o las
-                  Organizaciones eligen utilizar Aplicaciones de terceros en
-                  relación con la Plataforma, podrá publicar Contenido de
-                  usuario en la Plataforma desde esas Aplicaciones de terceros.
+                  <strong>Posts and Comments.</strong> You will have the option
+                  to post content and text on the Platform and to comment on
+                  content and text that other users within the Organizations
+                  post on the Platform (collectively, &quot;User Content&quot;).
+                  If you or the Organizations choose to use Third-Party
+                  Applications in connection with the Platform, you may post
+                  User Content to the Platform from those Third-Party
+                  Applications.
                 </li>
               </ol>
             </li>
             <li>
               <p>
-                <strong>Información recopilada automáticamente.</strong>
+                <strong>Automatically Collected Information.</strong>
               </p>
               <ol>
                 <li>
-                  <strong>Información del navegador y del dispositivo.</strong>{" "}
-                  Cada vez que interactúa con la Plataforma, recibimos y
-                  registramos automáticamente información en los registros de
-                  nuestro servidor desde su navegador o dispositivo, que puede
-                  incluir su dirección IP, datos de geolocalización,
-                  identificación del dispositivo, información de
-                  &quot;cookies&quot;, el tipo de dispositivo que está
-                  utilizando para acceder a la Plataforma, la cantidad de tiempo
-                  que pasa en la Plataforma y la página o función que solicitó.
-                  Utilizamos los datos que recopilamos automáticamente sobre
-                  usted para personalizar el contenido que creemos que podría
-                  gustarle, según sus patrones de uso. También podemos usarlos
-                  para mejorar la Plataforma; por ejemplo, estos datos pueden
-                  decirnos con qué frecuencia los usuarios usan una
-                  característica particular de la Plataforma, y ​​podemos usar
-                  ese conocimiento para hacer que la Plataforma sea interesante
-                  para la mayor cantidad de usuarios posible.
+                  <strong>Browser and Device Information.</strong> Every time
+                  you interact with the Platform, we automatically receive and
+                  record information in our server logs from your browser or
+                  device, which may include your IP address, geolocation data,
+                  device identification, &quot;cookie&quot; information, the
+                  type of device you are using to access the Platform, the
+                  amount of time you spend on the Platform, and the page or
+                  feature you requested. We use the data we automatically
+                  collect about you to personalize the content we think you
+                  might like based on your usage patterns. We may also use it to
+                  improve the Platform; for example, this data can tell us how
+                  often users use a particular feature of the Platform, and we
+                  can use that knowledge to make the Platform interesting to as
+                  many users as possible.
                 </li>
                 <li>
-                  <strong>Correos electrónicos.</strong> Es posible que
-                  recibamos una confirmación cuando abra un correo electrónico
-                  nuestro.
+                  <strong>Emails.</strong> We may receive confirmation when you
+                  open an email from us.
                 </li>
               </ol>
             </li>
@@ -112,132 +105,115 @@ export default function PrivacyPage() {
         </li>
         <li>
           <p>
-            <strong>Revelación de información.</strong> Podemos divulgar su
-            información personal a las categorías de terceros identificadas en
-            esta sección.
+            <strong>Disclosure of Information.</strong> We may disclose your
+            personal information to the categories of third parties identified
+            in this section.
           </p>
           <ol>
             <li>
-              <strong>Personal y Terceros Proveedores de Servicios.</strong>{" "}
-              Empleamos personal y contratamos a otras empresas y personas para
-              que realicen tareas en nuestro nombre y necesitamos compartir su
-              información personal con ellos para proporcionarle productos o
-              servicios. Por ejemplo, utilizamos los servicios web de Cloudflare
-              para almacenar vídeos e imágenes que los usuarios publican en la
-              Plataforma.
+              <strong>Personnel and Third-Party Service Providers.</strong> We
+              employ personnel and engage other companies and individuals to
+              perform tasks on our behalf and need to share your personal
+              information with them to provide you with products or services.
+              For example, we use Cloudflare web services to store videos and
+              images that users post on the Platform.
             </li>
             <li>
-              <strong>Acceso a la organización.</strong> Tenga en cuenta que si
-              envía información personal o Contenido de usuario a una parte de
-              la Plataforma a la que pueden acceder otros usuarios dentro de una
-              Organización, otros usuarios afiliados a la Organización podrán
-              ver esa información personal y Contenido de usuario. En
-              consecuencia, incluya únicamente información personal en dichos
-              envíos que se sienta cómodo compartiendo con otros usuarios
-              afiliados a la Organización.
+              <strong>Organization Access.</strong> Please note that if you
+              submit personal information or User Content to a part of the
+              Platform that can be accessed by other users within an
+              Organization, other users affiliated with the Organization may
+              view that personal information and User Content. Accordingly, only
+              include personal information in such submissions that you feel
+              comfortable sharing with other users affiliated with the
+              Organization.
             </li>
             <li>
-              <strong>Aplicaciones de terceros.</strong> Si usted o una
-              Organización utilizan Aplicaciones de terceros dentro de la
-              Plataforma, {application} permitirá que los Proveedores externos
-              accedan o utilicen su información personal y Contenido de usuario
-              según sea necesario para la interoperabilidad de las Aplicaciones
-              de terceros y la Plataforma. El uso de su información personal y
-              Contenido de usuario por parte de cualquier Proveedor externo está
-              sujeto al acuerdo aplicable entre (i) la Organización aplicable y
-              dicho Proveedor externo, o (ii) usted y el Proveedor externo.
-              {application} no es responsable del acceso o uso de su información
-              personal o Contenido de usuario por parte de terceros proveedores.
-              Usted y las Organizaciones son los únicos responsables de la
-              decisión de permitir que cualquier proveedor externo utilice su
-              información personal o Contenido de usuario.
+              <strong>Third-Party Applications.</strong> If you or an
+              Organization use Third-Party Applications within the Platform,{" "}
+              {application} will allow Third-Party Providers to access or use
+              your personal information and User Content as necessary for the
+              interoperability of the Third-Party Applications and the Platform.
+              The use of your personal information and User Content by any
+              Third-Party Provider is subject to the applicable agreement
+              between (i) the applicable Organization and such Third-Party
+              Provider, or (ii) you and the Third-Party Provider. {application}{" "}
+              is not responsible for the access or use of your personal
+              information or User Content by Third-Party Providers. You and the
+              Organizations are solely responsible for the decision to allow any
+              Third-Party Provider to use your personal information or User
+              Content.
             </li>
             <li>
-              <strong>Transferencias de Negocios.</strong> Si nosotros (o
-              nuestros activos) somos adquiridos, o si cerramos el negocio,
-              entramos en quiebra o pasamos por algún otro cambio de control, la
-              información personal podría ser uno de los activos transferidos o
-              adquiridos por un tercero.
+              <strong>Business Transfers.</strong> If we (or our assets) are
+              acquired, or if we close the business, enter bankruptcy, or go
+              through any other change of control, personal information could be
+              one of the assets transferred or acquired by a third party.
             </li>
             <li>
-              <strong>Cómplice legal.</strong> Nos reservamos el derecho de
-              acceder, leer, preservar y divulgar cualquier información que
-              consideremos necesaria para cumplir con solicitudes
-              gubernamentales, leyes u órdenes judiciales, o hacer cumplir o
-              aplicar nuestros Términos de servicio y otros acuerdos.
+              <strong>Legal Compliance.</strong> We reserve the right to access,
+              read, preserve, and disclose any information that we believe is
+              necessary to comply with governmental requests, laws, or court
+              orders, or to enforce or apply our Terms of Service and other
+              agreements.
             </li>
           </ol>
         </li>
         <li>
           <p>
-            <strong>Seguridad.</strong> Utilizamos medidas de seguridad físicas,
-            administrativas y técnicas comercialmente razonables para preservar
-            la integridad y seguridad de su información personal. Además,
-            confiamos en las salvaguardas técnicas proporcionadas por los
-            proveedores de servicios externos que utilizamos para alojar,
-            almacenar y procesar su información personal. Sin embargo, no
-            podemos asegurar ni garantizar que no se pueda acceder a su
-            información personal en la Plataforma, divulgarla, alterarla o
-            destruirla por incumplimiento de cualquiera de nuestras
-            salvaguardias físicas, técnicas o administrativas. No somos
-            responsables ante nuestros usuarios ni ante terceros debido a dicha
-            pérdida, mal uso o alteración.
+            <strong>Security.</strong> We use commercially reasonable physical,
+            administrative, and technical security measures to preserve the
+            integrity and security of your personal information. Additionally,
+            we rely on technical safeguards provided by third-party service
+            providers that we use to host, store, and process your personal
+            information. However, we cannot ensure or guarantee that your
+            personal information on the Platform cannot be accessed, disclosed,
+            altered, or destroyed through a breach of any of our physical,
+            technical, or administrative safeguards. We are not liable to our
+            users or to third parties due to such loss, misuse, or alteration.
           </p>
         </li>
         <li>
           <p>
-            <strong>Tus derechos.</strong> Debido a que hemos recopilado su
-            información personal como resultado de los Acuerdos de Organización,
-            somos un &quot;procesador&quot; de su información personal y las
-            Organizaciones controlan nuestro uso de su información personal y
-            determinan cómo y con qué propósito procesamos su información
-            personal. Si tiene alguna pregunta o inquietud sobre cómo se maneja
-            su información personal o desea ejercer los derechos que pueda tener
-            como interesado (incluida la modificación y eliminación de su
-            información personal), debe comunicarse con las Organizaciones
-            correspondientes. Brindaremos asistencia a las Organizaciones para
-            abordar cualquier inquietud que pueda tener, de acuerdo con los
-            términos de los Acuerdos de la Organización y la ley aplicable.
+            <strong>Your Rights.</strong> Because we have collected your
+            personal information as a result of the Organization Agreements, we
+            are a &quot;processor&quot; of your personal information and the
+            Organizations control our use of your personal information and
+            determine how and for what purpose we process your personal
+            information. If you have any questions or concerns about how your
+            personal information is handled or wish to exercise any rights you
+            may have as a data subject (including modification and deletion of
+            your personal information), you should contact the corresponding
+            Organizations. We will provide assistance to the Organizations to
+            address any concerns you may have, in accordance with the terms of
+            the Organization Agreements and applicable law.
           </p>
           <p>
-            Sujeto a su derecho a solicitar la eliminación de su información
-            personal, conservaremos su información personal durante el tiempo
-            que sea necesario para su uso de la Plataforma, la recepción
-            aprobada de nuestras comunicaciones de marketing, nuestro
-            cumplimiento de las obligaciones legales y para proteger la nuestra
-            o la de otros. intereses.
+            Subject to your right to request deletion of your personal
+            information, we will retain your personal information for as long as
+            is necessary for your use of the Platform, the approved receipt of
+            our marketing communications, our compliance with legal obligations,
+            and to protect our or others&apos; interests.
           </p>
-          {/* <p>
-            Si tiene alguna pregunta sobre sus derechos, contáctenos en{" "}
-            <a href="mailto:support@{application}.co">support@{application}.co</a> .
-            <a href="mailto:support@{application}.co"></a>
-          </p> */}
         </li>
         <li>
           <p>
-            <strong>Cómo respondemos a las señales de No rastrear.</strong> No
-            lo rastreamos ni recopilamos su información personal a través de
-            sitios web o servicios en línea de terceros. Por lo tanto, no
-            recibimos señales de No seguimiento ni otras señales similares. En
-            la medida en que recibamos dichas señales, no las cumpliremos ya que
-            no es un aspecto de la funcionalidad de la Plataforma.
+            <strong>How We Respond to Do Not Track Signals.</strong> We do not
+            track or collect your personal information across third-party
+            websites or online services. Therefore, we do not receive Do Not
+            Track signals or other similar signals. To the extent we receive
+            such signals, we will not comply with them as it is not an aspect of
+            the Platform&apos;s functionality.
           </p>
         </li>
         <li>
-          <strong>Cambios en la política.</strong> Intentamos constantemente
-          mejorar la Plataforma, por lo que es posible que también debamos
-          cambiar esta Política de vez en cuando. La fecha de la última
-          modificación también se publicará al inicio de esta Política. Es su
-          responsabilidad comprobar periódicamente si hay actualizaciones. Al
-          continuar accediendo o utilizando la Plataforma, usted indica que
-          acepta estar sujeto a la Política modificada.
+          <strong>Changes to Policy.</strong> We constantly try to improve the
+          Platform, so we may also need to change this Policy from time to time.
+          The date of the last modification will also be posted at the beginning
+          of this Policy. It is your responsibility to periodically check for
+          updates. By continuing to access or use the Platform, you indicate
+          that you agree to be bound by the modified Policy.
         </li>
-        {/* <li>
-          <strong>Contáctenos.</strong> Si tiene alguna pregunta o inquietud con
-          respecto a esta Política, envíenos un mensaje detallado a{" "}
-          <a href="mailto:support@{application}.co">support@{application}.co</a> e intentaremos
-          resolver sus inquietudes.
-        </li> */}
       </ol>
     </section>
   )

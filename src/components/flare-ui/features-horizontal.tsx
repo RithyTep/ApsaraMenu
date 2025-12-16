@@ -108,7 +108,7 @@ export default function Features({
     return () => clearTimeout(timer)
   }, [isInView])
 
-  const scrollToIndex = (index: number) => {
+  const scrollToIndex = React.useCallback((index: number) => {
     if (carouselRef.current) {
       const card = carouselRef.current.querySelectorAll(".card")[index]
       if (card) {
@@ -125,7 +125,7 @@ export default function Features({
         })
       }
     }
-  }
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -135,7 +135,7 @@ export default function Features({
     }, collapseDelay)
 
     return () => clearInterval(timer)
-  }, [currentIndex])
+  }, [currentIndex, collapseDelay, data.length])
 
   useEffect(() => {
     const handleAutoScroll = () => {
@@ -147,7 +147,7 @@ export default function Features({
     const autoScrollTimer = setInterval(handleAutoScroll, collapseDelay)
 
     return () => clearInterval(autoScrollTimer)
-  }, [currentIndex])
+  }, [currentIndex, collapseDelay, data.length, scrollToIndex])
 
   useEffect(() => {
     const carousel = carouselRef.current
@@ -165,7 +165,7 @@ export default function Features({
       carousel.addEventListener("scroll", handleScroll)
       return () => carousel.removeEventListener("scroll", handleScroll)
     }
-  }, [])
+  }, [data.length])
 
   return (
     <section ref={ref} id="features">

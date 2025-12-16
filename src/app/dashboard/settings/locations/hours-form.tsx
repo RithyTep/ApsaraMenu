@@ -81,14 +81,14 @@ export default function HoursForm({
   const { execute, status, reset } = useAction(updateHours, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Horario actualizado")
+        toast.success("Schedule updated")
       } else if (data?.failure.reason) {
         toast.error(data.failure.reason)
       }
       reset()
     },
     onError: () => {
-      toast.error("No se pudo actualizar el horario")
+      toast.error("Failed to update schedule")
       reset()
     }
   })
@@ -181,13 +181,13 @@ export default function HoursForm({
                       htmlFor={`items.${index}.allDay`}
                       className="cursor-pointer text-sm font-medium"
                     >
-                      {field.day === "MONDAY" && "Lunes"}
-                      {field.day === "TUESDAY" && "Martes"}
-                      {field.day === "WEDNESDAY" && "Miércoles"}
-                      {field.day === "THURSDAY" && "Jueves"}
-                      {field.day === "FRIDAY" && "Viernes"}
-                      {field.day === "SATURDAY" && "Sábado"}
-                      {field.day === "SUNDAY" && "Domingo"}
+                      {field.day === "MONDAY" && "Monday"}
+                      {field.day === "TUESDAY" && "Tuesday"}
+                      {field.day === "WEDNESDAY" && "Wednesday"}
+                      {field.day === "THURSDAY" && "Thursday"}
+                      {field.day === "FRIDAY" && "Friday"}
+                      {field.day === "SATURDAY" && "Saturday"}
+                      {field.day === "SUNDAY" && "Sunday"}
                     </FieldLabel>
                     <span>
                       <Switch
@@ -208,7 +208,7 @@ export default function HoursForm({
               control={form.control}
               render={({ field: ctlField, fieldState }) => (
                 <Field className="flex flex-row items-center gap-2 space-y-0">
-                  <FieldLabel className="hidden sm:inline">Desde</FieldLabel>
+                  <FieldLabel className="hidden sm:inline">From</FieldLabel>
                   {/* disable time inputs when the corresponding allDay switch is on */}
                   <TimeField
                     /* disable time inputs when the corresponding allDay switch is unchecked */
@@ -231,7 +231,7 @@ export default function HoursForm({
               control={form.control}
               render={({ field: ctlField, fieldState }) => (
                 <Field className="flex flex-row items-center gap-2 space-y-0">
-                  <FieldLabel className="hidden sm:inline">Hasta</FieldLabel>
+                  <FieldLabel className="hidden sm:inline">To</FieldLabel>
                   <TimeField
                     isDisabled={!form.watch(`items.${index}.allDay`)}
                     value={
@@ -254,10 +254,10 @@ export default function HoursForm({
         {status === "executing" ? (
           <>
             <Loader className="mr-2 size-4 animate-spin" />
-            {"Guardando..."}
+            {"Saving..."}
           </>
         ) : (
-          "Actualizar Horario"
+          "Update Schedule"
         )}
       </Button>
     </form>

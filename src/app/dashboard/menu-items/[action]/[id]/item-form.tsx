@@ -144,7 +144,7 @@ export default function ItemForm({
 
   const saveRef = React.useRef<HTMLButtonElement>(null)
 
-  const title = `${action === "new" ? "Crear" : "Editar"} Producto`
+  const title = `${action === "new" ? "Create" : "Edit"} Item`
 
   const { execute: executeCategory, reset: resetCategory } = useAction(
     createCategory,
@@ -159,7 +159,7 @@ export default function ItemForm({
         resetCategory()
       },
       onError: () => {
-        toast.error("No se pudo agregar la categoría")
+        toast.error("Could not add category")
         resetCategory()
       }
     }
@@ -176,7 +176,7 @@ export default function ItemForm({
 
   const handleOpenVariant = () => {
     if (form.formState.isDirty) {
-      toast("Guarda los cambios antes de agregar una variante")
+      toast("Save changes before adding a variant")
       return
     }
     setOpenVariant(true)
@@ -185,7 +185,7 @@ export default function ItemForm({
   const { execute, status, reset } = useAction(updateItem, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Producto actualizado")
+        toast.success("Item updated")
         // Reset the form using the current values so RHF updates defaultValues
         // and clears the dirty state.
         form.reset(form.getValues())
@@ -198,7 +198,7 @@ export default function ItemForm({
       reset()
     },
     onError: () => {
-      toast.error("No se pudo actualizar el producto")
+      toast.error("Could not update item")
     }
   })
 
@@ -222,9 +222,9 @@ export default function ItemForm({
     return (
       <Alert variant="warning">
         <TriangleAlert className="size-4" />
-        <AlertTitle>Producto no encontrado</AlertTitle>
+        <AlertTitle>Item not found</AlertTitle>
         <AlertDescription>
-          El producto que buscas no existe o fue eliminado
+          The item you are looking for does not exist or has been deleted
         </AlertDescription>
       </Alert>
     )
@@ -245,16 +245,16 @@ export default function ItemForm({
               onClick={() => router.back()}
               ref={saveRef}
             >
-              Cerrar
+              Close
             </Button>
             <Button disabled={status === "executing"} size="sm" type="submit">
               {status === "executing" ? (
                 <>
                   <Loader className="mr-2 size-4 animate-spin" />
-                  {"Guardando"}
+                  {"Saving"}
                 </>
               ) : (
-                "Guardar"
+                "Save"
               )}
             </Button>
           </div>
@@ -263,18 +263,18 @@ export default function ItemForm({
           <FieldGroup>
             <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3">
               <FieldSet className="lg:col-span-2">
-                <FieldLegend>Detalles del Producto</FieldLegend>
+                <FieldLegend>Item Details</FieldLegend>
                 <FieldGroup>
                   <Controller
                     name="name"
                     control={form.control}
                     render={({ field, fieldState }) => (
                       <Field>
-                        <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
+                        <FieldLabel htmlFor={field.name}>Name</FieldLabel>
                         <Input
                           {...field}
                           id={field.name}
-                          placeholder="Nombre del producto"
+                          placeholder="Item name"
                         />
                         {fieldState.invalid && (
                           <FieldError errors={[fieldState.error]} />
@@ -288,12 +288,12 @@ export default function ItemForm({
                     render={({ field, fieldState }) => (
                       <Field>
                         <FieldLabel htmlFor={field.name}>
-                          Descripción
+                          Description
                         </FieldLabel>
                         <Textarea
                           {...field}
                           id={field.name}
-                          placeholder="Agrega una descripción. Describe detalles como ingredientes, sabor, etc."
+                          placeholder="Add a description. Describe details like ingredients, flavor, etc."
                         />
                         {fieldState.invalid && (
                           <FieldError errors={[fieldState.error]} />
@@ -304,7 +304,7 @@ export default function ItemForm({
                 </FieldGroup>
               </FieldSet>
               <FieldSet>
-                <FieldLegend>Imágen del Producto</FieldLegend>
+                <FieldLegend>Item Image</FieldLegend>
                 <div className="h-full">
                   {item?.image ? (
                     <ImageField
@@ -338,31 +338,28 @@ export default function ItemForm({
                   control={form.control}
                   render={({ field }) => (
                     <Field className="border-border rounded-lg border p-4">
-                      <FieldLabel htmlFor={field.name}>
-                        Estatus del Producto
-                      </FieldLabel>
+                      <FieldLabel htmlFor={field.name}>Item Status</FieldLabel>
                       <Select
                         onValueChange={field.onChange}
                         value={field.value}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Seleccionar estado" />
+                          <SelectValue placeholder="Select status" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value={MenuItemStatus.ACTIVE}>
-                            Activo
+                            Active
                           </SelectItem>
                           <SelectItem value={MenuItemStatus.DRAFT}>
-                            Borrador
+                            Draft
                           </SelectItem>
                           <SelectItem value={MenuItemStatus.ARCHIVED}>
-                            Archivado
+                            Archived
                           </SelectItem>
                         </SelectContent>
                       </Select>
                       <FieldDescription>
-                        Cambia el estado del producto para mostrarlo u ocultarlo
-                        en el menú
+                        Change the item status to show or hide it on the menu
                       </FieldDescription>
                     </Field>
                   )}
@@ -372,13 +369,13 @@ export default function ItemForm({
                   control={form.control}
                   render={({ field }) => (
                     <Field className="border-border rounded-lg border p-4">
-                      <FieldLabel htmlFor={field.name}>Moneda</FieldLabel>
+                      <FieldLabel htmlFor={field.name}>Currency</FieldLabel>
                       <Select
                         onValueChange={field.onChange}
                         value={field.value}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Seleccionar moneda" />
+                          <SelectValue placeholder="Select currency" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value={"MXN"}>MXN</SelectItem>
@@ -386,7 +383,7 @@ export default function ItemForm({
                         </SelectContent>
                       </Select>
                       <FieldDescription>
-                        Selecciona la moneda del producto
+                        Select the item currency
                       </FieldDescription>
                     </Field>
                   )}
@@ -400,9 +397,9 @@ export default function ItemForm({
                       orientation="horizontal"
                     >
                       <FieldContent>
-                        <FieldLabel>Recomendado</FieldLabel>
+                        <FieldLabel>Featured</FieldLabel>
                         <FieldDescription>
-                          Mostrar producto en la sección de recomendados
+                          Show item in the featured section
                         </FieldDescription>
                       </FieldContent>
 
@@ -417,10 +414,9 @@ export default function ItemForm({
             </FieldSet>
             <FieldSeparator />
             <FieldSet>
-              <FieldLegend>Variantes</FieldLegend>
+              <FieldLegend>Variants</FieldLegend>
               <FieldDescription>
-                Agrega variantes para mostrar diferentes opciones de un mismo
-                producto
+                Add variants to display different options for the same item
               </FieldDescription>
               <FieldGroup className="md:max-w-md lg:max-w-lg">
                 <VariantForm fieldArray={fields} parentForm={form} />
@@ -431,16 +427,16 @@ export default function ItemForm({
                   className="w-full gap-1"
                 >
                   <PlusCircle className="size-3.5" />
-                  Crear variante
+                  Create variant
                 </Button>
               </FieldGroup>
             </FieldSet>
             <FieldSeparator />
             <FieldSet>
-              <FieldLegend>Categoría</FieldLegend>
+              <FieldLegend>Category</FieldLegend>
               <FieldDescription>
-                Asigna una categoría para agrupar productos similares y
-                mostrarlos juntos en el menú.
+                Assign a category to group similar items and display them
+                together on the menu.
               </FieldDescription>
               <Controller
                 name="categoryId"
@@ -455,7 +451,7 @@ export default function ItemForm({
                             value: c.id
                           })
                         )}
-                        type="Categoría"
+                        type="Category"
                         value={field.value}
                         onValueChange={(val: string) => {
                           form.setValue("categoryId", val)
@@ -466,7 +462,7 @@ export default function ItemForm({
                           <ComboboxInput
                             value={searchCategory}
                             onValueChange={setSearchCategory}
-                            placeholder="Buscar categoría..."
+                            placeholder="Search category..."
                           />
                           <ComboboxList>
                             <ComboboxEmpty>
@@ -517,10 +513,9 @@ export default function ItemForm({
             </FieldSet>
             <FieldSeparator />
             <FieldSet>
-              <FieldLegend>Alérgenos e Indicadores</FieldLegend>
+              <FieldLegend>Allergens and Indicators</FieldLegend>
               <FieldDescription>
-                Selecciona los alérgenos o indicadores especiales para este
-                producto
+                Select allergens or special indicators for this item
               </FieldDescription>
               <Controller
                 name="allergens"
@@ -537,7 +532,7 @@ export default function ItemForm({
                         value={field.value}
                         setValue={(v: string) => form.setValue("allergens", v)}
                       >
-                        <TagsTrigger placeholder="Buscar o añadir alérgenos">
+                        <TagsTrigger placeholder="Search or add allergens">
                           {values.map(val => (
                             <TagsValue
                               variant="indigo"
@@ -553,7 +548,7 @@ export default function ItemForm({
                           ))}
                         </TagsTrigger>
                         <TagsContent>
-                          <TagsInput placeholder="Buscar o añadir alérgenos" />
+                          <TagsInput placeholder="Search or add allergens" />
                           <TagsList>
                             <TagsEmpty className="p-2" />
                             <TagsGroup>

@@ -27,10 +27,10 @@ export async function ProPlanView() {
     return (
       <Alert variant="success">
         <HeartHandshake className="size-5" />
-        <AlertTitle>Organización patrocinada</AlertTitle>
+        <AlertTitle>Sponsored Organization</AlertTitle>
         <AlertDescription>
-          Tu organización está en un plan PRO patrocinado. Disfruta de todas las
-          funciones de Biztro Pro sin costo alguno.
+          Your organization is on a sponsored PRO plan. Enjoy all the features
+          of ApsaraMenu Pro at no cost.
         </AlertDescription>
       </Alert>
     )
@@ -50,30 +50,28 @@ export async function ProPlanView() {
             {(() => {
               switch (subscription.status) {
                 case "trialing":
-                  return <Badge variant="violet">Prueba</Badge>
+                  return <Badge variant="violet">Trial</Badge>
                 case "active":
-                  return <Badge variant="green">Activo</Badge>
+                  return <Badge variant="green">Active</Badge>
                 case "canceled":
-                  return <Badge variant="destructive">Cancelado</Badge>
+                  return <Badge variant="destructive">Canceled</Badge>
                 case "incomplete":
-                  return <Badge variant="yellow">Incompleto</Badge>
+                  return <Badge variant="yellow">Incomplete</Badge>
                 case "incomplete_expired":
-                  return (
-                    <Badge variant="destructive">Incompleto Expirado</Badge>
-                  )
+                  return <Badge variant="destructive">Incomplete Expired</Badge>
                 case "past_due":
-                  return <Badge variant="yellow">Vencido</Badge>
+                  return <Badge variant="yellow">Past Due</Badge>
                 case "unpaid":
-                  return <Badge variant="destructive">No Pagado</Badge>
+                  return <Badge variant="destructive">Unpaid</Badge>
                 case "paused":
-                  return <Badge variant="secondary">Pausado</Badge>
+                  return <Badge variant="secondary">Paused</Badge>
                 default:
-                  return <Badge variant="secondary">Desconocido</Badge>
+                  return <Badge variant="secondary">Unknown</Badge>
               }
             })()}
             {subscription.status === "trialing" && (
               <span className="text-sm text-gray-500">
-                - Termina el{" "}
+                - Ends on{" "}
                 {subscription?.trialEnd
                   ? new Date(subscription.trialEnd).toLocaleDateString(
                       "es-MX",
@@ -92,7 +90,7 @@ export async function ProPlanView() {
           {/* <Separator /> */}
           <div className="mt-2 flex flex-row justify-between gap-4">
             <div>
-              <div className="text-sm text-gray-500">Precio</div>
+              <div className="text-sm text-gray-500">Price</div>
               <div className="text-base font-medium">
                 {(() => {
                   const tier = Tiers.find(
@@ -111,7 +109,7 @@ export async function ProPlanView() {
               </div>
             </div>
             <div>
-              <div className="text-sm text-gray-500">Periodo activo</div>
+              <div className="text-sm text-gray-500">Active Period</div>
               <div className="text-base font-medium">
                 {subscription?.periodStart
                   ? new Date(subscription.periodStart).toLocaleDateString(
@@ -127,7 +125,7 @@ export async function ProPlanView() {
             </div>
             {subscription?.cancelAtPeriodEnd ? (
               <div>
-                <div className="text-sm text-gray-500">Cancela el</div>
+                <div className="text-sm text-gray-500">Cancels on</div>
                 <div className="text-base font-medium">
                   {subscription?.periodEnd
                     ? new Date(subscription.periodEnd).toLocaleDateString(
@@ -143,7 +141,7 @@ export async function ProPlanView() {
               </div>
             ) : (
               <div>
-                <div className="text-sm text-gray-500">Próxima renovación</div>
+                <div className="text-sm text-gray-500">Next Renewal</div>
                 <div className="text-base font-medium">
                   {subscription?.periodEnd
                     ? new Date(subscription.periodEnd).toLocaleDateString(
@@ -162,9 +160,9 @@ export async function ProPlanView() {
           {subscription?.cancelAtPeriodEnd && (
             <Alert variant="warning" className="mt-4">
               <AlertCircle className="size-4" />
-              <AlertTitle>Suscripción programada para finalizar</AlertTitle>
+              <AlertTitle>Subscription Scheduled to End</AlertTitle>
               <AlertDescription>
-                Tu suscripción está configurada para terminar el{" "}
+                Your subscription is set to end on{" "}
                 {subscription?.periodEnd
                   ? new Date(subscription.periodEnd).toLocaleDateString(
                       "es-MX",
@@ -175,8 +173,8 @@ export async function ProPlanView() {
                       }
                     )
                   : "N/A"}
-                . Tendrás acceso hasta esa fecha. Si deseas reactivar tu
-                suscripción, ve al portal de pagos.
+                . You will have access until that date. If you wish to
+                reactivate your subscription, go to the payment portal.
               </AlertDescription>
             </Alert>
           )}
@@ -184,18 +182,18 @@ export async function ProPlanView() {
         <Separator />
         <CardFooter className="items-center justify-between py-4">
           <p className="text-sm text-gray-500">
-            Maneja tu suscripción en Stripe
+            Manage your subscription in Stripe
           </p>
           <CustomerPortalButton referenceId={org.id} />
         </CardFooter>
       </Card>
       <div className="w-full px-4 py-2 text-sm text-gray-400 dark:text-gray-600">
-        ¿Tienes algún problema con tu suscripción? Envía un correo a{" "}
+        Having any issues with your subscription? Send an email to{" "}
         <a
-          href="mailto:contacto@biztro.co"
+          href="mailto:teprithy2020@gmail.com"
           className="text-indigo-500 hover:underline"
         >
-          contacto@biztro.co
+          teprithy2020@gmail.com
         </a>
       </div>
     </div>

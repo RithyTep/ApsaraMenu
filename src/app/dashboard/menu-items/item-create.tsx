@@ -34,7 +34,7 @@ export default function ItemCreate() {
     },
     onError: error => {
       console.error(error)
-      toast.error("No se pudo crear el producto")
+      toast.error("Could not create item")
       reset()
     }
   })
@@ -46,7 +46,7 @@ export default function ItemCreate() {
         disabled={status === "executing" || isPending}
         onClick={() =>
           execute({
-            name: "Nuevo producto",
+            name: "New item",
             status: MenuItemStatus.DRAFT,
             description: "",
             variants: [
@@ -63,13 +63,13 @@ export default function ItemCreate() {
         ) : (
           <PlusCircle className="size-4" />
         )}
-        Nuevo producto
+        New item
       </Button>
 
       <UpgradeDialog
-        title="Obtén más con el plan Pro"
-        description={`Has alcanzado el límite de ${appConfig.itemLimit} productos en tu plan gratuito. 
-      Considera actualizar a Pro para seguir creando sin restricciones.`}
+        title="Get more with the Pro plan"
+        description={`You have reached the limit of ${appConfig.itemLimit} items on your free plan.
+      Consider upgrading to Pro to continue creating without restrictions.`}
         open={showUpgrade}
         onClose={() => setShowUpgrade(false)}
       />

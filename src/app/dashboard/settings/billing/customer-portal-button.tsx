@@ -17,7 +17,7 @@ export function CustomerPortalButton({ referenceId }: { referenceId: string }) {
     setisSubmitting(true)
     const redirectUrl = await createStripePortal(referenceId)
     if (!redirectUrl) {
-      toast.error("No se pudo redirigir al portal de clientes")
+      toast.error("Could not redirect to customer portal")
       setisSubmitting(false)
     } else {
       setisSubmitting(false)
@@ -36,7 +36,7 @@ export function CustomerPortalButton({ referenceId }: { referenceId: string }) {
       {isSubmitting || isPending ? (
         <Loader className="size-4 animate-spin" />
       ) : (
-        "Ir a Portal Clientes"
+        "Go to Customer Portal"
       )}
     </Button>
   )

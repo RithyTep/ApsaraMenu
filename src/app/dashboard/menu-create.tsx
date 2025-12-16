@@ -33,7 +33,7 @@ export default function MenuCreate() {
     },
     onError: error => {
       console.error(error)
-      toast.error("No se pudo crear el menú")
+      toast.error("Could not create menu")
       reset()
     }
   })
@@ -47,7 +47,7 @@ export default function MenuCreate() {
         disabled={status === "executing"}
         onClick={() =>
           execute({
-            name: "Nuevo menú",
+            name: "New menu",
             description: "",
             status: "DRAFT"
           })
@@ -58,14 +58,14 @@ export default function MenuCreate() {
         ) : (
           <CirclePlus className="size-10" />
         )}
-        Crear menú
+        Create menu
       </motion.button>
 
       <UpgradeDialog
         open={showUpgrade}
         onClose={() => setShowUpgrade(false)}
-        title="Impulsa tu negocio con el plan Pro"
-        description="Actualiza tu plan a Pro para crear más menús y acceder a todas las funciones premium."
+        title="Boost your business with the Pro plan"
+        description="Upgrade your plan to Pro to create more menus and access all premium features."
       />
     </>
   )

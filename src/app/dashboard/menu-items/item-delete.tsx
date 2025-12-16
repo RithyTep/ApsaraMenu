@@ -29,7 +29,7 @@ export default function ItemDelete({
 }) {
   const { execute, reset } = useAction(deleteItem, {
     onExecute: () => {
-      toast("Eliminando Producto...", { icon: "🗑️" })
+      toast("Deleting item...", { icon: "🗑️" })
     },
     onSuccess: ({ data }) => {
       if (data?.failure?.reason) {
@@ -42,7 +42,7 @@ export default function ItemDelete({
     },
     onError: () => {
       toast.dismiss()
-      toast.error("Algo salió mal")
+      toast.error("Something went wrong")
       reset()
     }
   })
@@ -55,15 +55,15 @@ export default function ItemDelete({
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Eliminar Producto</AlertDialogTitle>
+          <AlertDialogTitle>Delete Item</AlertDialogTitle>
           <AlertDialogDescription>
-            ¿Estás seguro de eliminar este producto? Esta acción no se puede
-            deshacer
+            Are you sure you want to delete this item? This action cannot be
+            undone
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel onClick={event => event.stopPropagation()}>
-            Cancelar
+            Cancel
           </AlertDialogCancel>
           <AlertDialogAction
             className={cn(buttonVariants({ variant: "destructive" }))}
@@ -72,7 +72,7 @@ export default function ItemDelete({
               onDeleteItem()
             }}
           >
-            Eliminar
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

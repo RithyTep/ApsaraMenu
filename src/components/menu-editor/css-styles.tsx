@@ -5,7 +5,7 @@ import { useAtom } from "jotai"
 
 import { fontThemeAtom } from "@/lib/atoms"
 
-const COPIED_ATTR = "data-biztro-cloned"
+const COPIED_ATTR = "data-apsaramenu-cloned"
 
 function cloneAndMark(node: Element, target: Document) {
   const clone = node.cloneNode(true) as HTMLElement

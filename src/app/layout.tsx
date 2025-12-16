@@ -13,16 +13,16 @@ import Providers from "@/app/providers"
 export const metadata: Metadata = {
   metadataBase: new URL("https://biztro.co"),
   title: {
-    template: "%s | Biztro",
-    default: "Biztro"
+    template: "%s | ApsaraMenu",
+    default: "ApsaraMenu"
   },
   icons: {
     icon: "/favicon.ico"
   },
   appleWebApp: {
-    title: "Biztro"
+    title: "ApsaraMenu"
   },
-  description: "Crea tu menú digital en minutos"
+  description: "Create your digital menu in minutes"
 }
 
 export const viewport: Viewport = {
@@ -55,7 +55,7 @@ export default function RootLayout({
     <html
       className={`${inter.variable} ${sora.variable} scroll-smooth antialiased`}
       suppressHydrationWarning
-      lang="es-MX"
+      lang="en"
     >
       {/* <AxiomWebVitals /> */}
       <body className="bg-white text-gray-950 dark:bg-gray-950 dark:text-white">

@@ -72,7 +72,13 @@ export default function FloatingBar() {
     } else {
       clearUnsavedChanges()
     }
-  }, [setUnsavedChanges, clearUnsavedChanges, canUndo, historyPointer])
+  }, [
+    setUnsavedChanges,
+    clearUnsavedChanges,
+    canUndo,
+    historyPointer,
+    actions.history
+  ])
 
   const [frameSize, setFrameSize] = useAtom(frameSizeAtom)
 

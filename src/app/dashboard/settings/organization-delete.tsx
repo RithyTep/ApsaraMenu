@@ -27,21 +27,19 @@ function OrganizationDelete({ organizationId }: { organizationId: string }) {
 
   const { execute, reset } = useAction(deleteOrganization, {
     onExecute: () => {
-      toast("Eliminando organización...", { icon: "🗑️", duration: 2000 })
+      toast("Deleting organization...", { icon: "🗑️", duration: 2000 })
     },
     onSuccess: ({ data }) => {
       toast.dismiss()
       if (data?.failure) {
-        toast.error(
-          data.failure.reason ?? "No se pudo eliminar la organización"
-        )
+        toast.error(data.failure.reason ?? "Could not delete organization")
       } else {
         router.push("/dashboard")
         reset()
       }
     },
     onError: () => {
-      toast.error("No se pudo eliminar la organización")
+      toast.error("Could not delete organization")
       reset()
     }
   })
@@ -59,45 +57,44 @@ function OrganizationDelete({ organizationId }: { organizationId: string }) {
         <Card className="border-red-500">
           <CardHeader>
             <CardTitle className="text-base text-red-500">
-              Eliminar Organización
+              Delete Organization
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col items-start justify-center gap-x-8 gap-y-4 sm:flex-row sm:items-center">
             <p className="text-gray-500">
-              Eliminar la organización, catalogos y menus asociados a la misma.{" "}
+              Delete the organization, catalogs and menus associated with it.{" "}
               <span className="text-red-500 dark:text-red-400">
-                Esta operación es irreversible.
+                This operation is irreversible.
               </span>
             </p>
             <AlertDialogTrigger asChild>
-              <Button variant="destructive">Eliminar Organización</Button>
+              <Button variant="destructive">Delete Organization</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Eliminar Organización</AlertDialogTitle>
+                <AlertDialogTitle>Delete Organization</AlertDialogTitle>
                 <AlertDialogDescription>
-                  ¿Estás seguro que deseas eliminar la organización? Esta acción
-                  es irreversible. Todos los datos asociados a la organización
-                  serán eliminados y no podrán ser recuperados. Asegurese de
-                  haber descargado todos los datos que desea conservar antes de
-                  continuar.{" "}
+                  Are you sure you want to delete the organization? This action
+                  is irreversible. All data associated with the organization
+                  will be deleted and cannot be recovered. Make sure you have
+                  downloaded all the data you want to keep before continuing.{" "}
                   <Link
                     href="settings/billing"
                     className="text-blue-600 underline underline-offset-2 hover:text-blue-800"
                   >
-                    Cancele su suscripción antes de eliminar la organización.
+                    Cancel your subscription before deleting the organization.
                   </Link>
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction
                   className={cn(buttonVariants({ variant: "destructive" }))}
                   onClick={() => {
                     handleDelete()
                   }}
                 >
-                  Eliminar
+                  Delete
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

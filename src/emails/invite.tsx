@@ -32,7 +32,7 @@ export const InviteUserEmail = ({
   inviteLink,
   baseUrl
 }: InviteUserEmailProps) => {
-  const previewText = `Unete a ${invitedByUsername} en Biztro`
+  const previewText = `Join ${invitedByUsername} on ApsaraMenu`
 
   return (
     <Html>
@@ -46,15 +46,15 @@ export const InviteUserEmail = ({
                 src={`${baseUrl}/logo.png`}
                 width="40"
                 height="37"
-                alt="Biztro"
+                alt="ApsaraMenu"
                 className="mx-auto my-0"
               />
             </Section>
             <Heading className="mx-0 my-[30px] p-0 text-center text-[24px] font-normal text-black">
-              Unete a <strong>{teamName}</strong> en <strong>Biztro</strong>
+              Join <strong>{teamName}</strong> on <strong>ApsaraMenu</strong>
             </Heading>
             <Text className="text-[14px] leading-[24px] text-black">
-              Hola {username},
+              Hello {username},
             </Text>
             <Text className="text-[14px] leading-[24px] text-black">
               <strong>{invitedByUsername}</strong> (
@@ -64,28 +64,28 @@ export const InviteUserEmail = ({
               >
                 {invitedByEmail}
               </Link>
-              ) te ha invitado al equipo de <strong>{teamName}</strong> en{" "}
-              <strong>Biztro</strong>.
+              ) has invited you to join the <strong>{teamName}</strong> team on{" "}
+              <strong>ApsaraMenu</strong>.
             </Text>
             <Section className="mt-[32px] mb-[32px] text-center">
               <Button
                 className="rounded-sm bg-[#171717] px-5 py-3 text-center text-[12px] font-semibold text-white no-underline"
                 href={inviteLink}
               >
-                Unirse al equipo
+                Join team
               </Button>
             </Section>
             <Text className="text-[14px] leading-[24px] text-black">
-              o copia y pega esta URL en tu navegador:{" "}
+              or copy and paste this URL into your browser:{" "}
               <Link href={inviteLink} className="text-orange-600 no-underline">
                 {inviteLink}
               </Link>
             </Text>
             <Hr className="mx-0 my-[26px] w-full border border-solid border-[#eaeaea]" />
             <Text className="text-[12px] leading-[24px] text-[#666666]">
-              Esta invitacion esta destinada para{" "}
-              <span className="text-black">{username}</span>. Si no estabas
-              esperando una invitacion, puedes ignorar este email.
+              This invitation was intended for{" "}
+              <span className="text-black">{username}</span>. If you were not
+              expecting an invitation, you can ignore this email.
             </Text>
           </Container>
         </Body>

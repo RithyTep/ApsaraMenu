@@ -48,7 +48,7 @@ export async function generateMetadata(
     }
   } else {
     return {
-      title: "No encontrado"
+      title: "Not found"
     }
   }
 }
@@ -153,9 +153,9 @@ export default async function SitePage(props: {
           }}
         >
           <div className="z-20 rounded-full px-3 py-1 backdrop-blur-md">
-            Últ. actualiazión:{" "}
+            Last updated:{" "}
             {siteMenu.publishedAt
-              ? new Intl.DateTimeFormat("es-MX", {
+              ? new Intl.DateTimeFormat("en-US", {
                   year: "numeric",
                   month: "short",
                   day: "numeric"
@@ -174,7 +174,7 @@ export default async function SitePage(props: {
               />
               <span className="text-xs text-gray-100">
                 <em className="hidden not-italic sm:inline">Powered by </em>
-                Biztro
+                ApsaraMenu
               </span>
             </div>
           </Link>

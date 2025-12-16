@@ -9,21 +9,21 @@ import { cn } from "@/lib/utils"
 
 const marketingTiers = [
   {
-    name: "Gratis",
+    name: "Free",
     id: "tier-free",
     href: "#cta-banner",
     priceMonthly: "$0",
     priceYearly: "$0",
     description:
-      "El plan gratuito te permite comenzar a publicar tu menú en línea sin costo.",
+      "The free plan allows you to start publishing your menu online at no cost.",
     features: [
-      "10 productos",
-      "Un menú por negocio",
-      "Temas personalizados",
-      "Descargar código QR"
+      "10 products",
+      "One menu per business",
+      "Custom themes",
+      "Download QR code"
     ],
     featured: false,
-    cta: "Inicia ahora"
+    cta: "Start now"
   },
   {
     name: "Pro",
@@ -31,18 +31,18 @@ const marketingTiers = [
     href: "#cta-banner",
     priceMonthly: "$149",
     priceYearly: "$1,490",
-    description: "Desbloquea todas las características de Biztro.",
+    description: "Unlock all features of ApsaraMenu.",
     features: [
-      "Productos ilimitados",
-      "Menús ilimitados",
-      "Temas personalizados",
-      "Código QR personalizado",
-      "Analítica de visitas (próximamente)",
-      "Promociones y ofertas (próximamente)",
-      "Soporte por correo electrónico"
+      "Unlimited products",
+      "Unlimited menus",
+      "Custom themes",
+      "Custom QR code",
+      "Visit analytics (coming soon)",
+      "Promotions and offers (coming soon)",
+      "Email support"
     ],
     featured: true,
-    cta: "Prueba gratis por 30 días"
+    cta: "Try free for 30 days"
   }
 ]
 
@@ -70,10 +70,7 @@ export default function Pricing() {
         />
       </div>
       <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
-        <TitleSection
-          eyebrow="Precios"
-          title="Escoge el plan correcto para tí"
-        />
+        <TitleSection eyebrow="Pricing" title="Choose the right plan for you" />
       </div>
       <div className="mx-auto mt-8 flex items-center justify-center">
         <Tabs
@@ -89,13 +86,13 @@ export default function Pricing() {
               value="monthly"
               className="rounded-full data-[state=active]:bg-indigo-600 data-[state=active]:text-white"
             >
-              Mensual
+              Monthly
             </TabsTrigger>
             <TabsTrigger
               value="yearly"
               className="rounded-full data-[state=active]:bg-indigo-600 data-[state=active]:text-white"
             >
-              Anual{" "}
+              Annual{" "}
               <span className="ml-1 text-indigo-500 in-focus:text-white">
                 (−20%)
               </span>
@@ -104,8 +101,8 @@ export default function Pricing() {
         </Tabs>
       </div>
       <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-pretty text-gray-500">
-        Inicia con el plan gratuito, o desbloquea productos ilimitados y
-        características con el plan Pro.
+        Start with the free plan, or unlock unlimited products and features with
+        the Pro plan.
       </p>
       <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
         {marketingTiers.map((tier, tierIdx) => (

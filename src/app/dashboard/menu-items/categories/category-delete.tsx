@@ -28,7 +28,7 @@ export default function ItemDelete({
 }) {
   const { execute, reset } = useAction(deleteCategory, {
     onExecute: () => {
-      toast("Eliminando categoría...", { icon: "🗑️" })
+      toast("Deleting category...", { icon: "🗑️" })
     },
     onSuccess: async ({ data }) => {
       // see https://github.com/TheEdoRan/next-safe-action/issues/376
@@ -41,7 +41,7 @@ export default function ItemDelete({
     },
     onError: () => {
       toast.dismiss()
-      toast.error("Algo salió mal")
+      toast.error("Something went wrong")
       reset()
     }
   })
@@ -55,19 +55,19 @@ export default function ItemDelete({
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Eliminar Categoría</AlertDialogTitle>
+          <AlertDialogTitle>Delete Category</AlertDialogTitle>
           <AlertDialogDescription>
-            ¿Estás seguro de eliminar esta categoría? Esta acción no se puede
-            deshacer
+            Are you sure you want to delete this category? This action cannot be
+            undone
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             className={cn(buttonVariants({ variant: "destructive" }))}
             onClick={() => onDeleteCategory()}
           >
-            Eliminar
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

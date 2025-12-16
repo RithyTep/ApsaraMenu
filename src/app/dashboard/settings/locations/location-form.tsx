@@ -10,7 +10,6 @@ import { useAction } from "next-safe-action/hooks"
 import Image from "next/image"
 import { type z } from "zod/v4"
 
-import PageSubtitle from "@/components/dashboard/page-subtitle"
 import { Button } from "@/components/ui/button"
 import {
   Field,
@@ -75,7 +74,7 @@ export default function LocationForm({
   } = useAction(createLocation, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Sucursal actualizada")
+        toast.success("Location updated")
         // Reload the form with the latest data
         const result = data?.success
         form.reset({
@@ -104,7 +103,7 @@ export default function LocationForm({
       resetCreate()
     },
     onError: () => {
-      toast.error("No se pudo actualizar la sucursal")
+      toast.error("Failed to update location")
     }
   })
 
@@ -115,14 +114,14 @@ export default function LocationForm({
   } = useAction(updateLocation, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Sucursal actualizada")
+        toast.success("Location updated")
       } else if (data?.failure.reason) {
         toast.error(data.failure.reason)
       }
       resetUpdate()
     },
     onError: () => {
-      toast.error("No se pudo actualizar la sucursal")
+      toast.error("Failed to update location")
     }
   })
 
@@ -166,13 +165,10 @@ export default function LocationForm({
             control={form.control}
             render={({ field, fieldState }) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>
-                  Nombre de la sucursal
-                </FieldLabel>
-                <Input {...field} id={field.name} placeholder="Nombre" />
+                <FieldLabel htmlFor={field.name}>Location name</FieldLabel>
+                <Input {...field} id={field.name} placeholder="Name" />
                 <FieldDescription>
-                  Nombre de referencia para la sucursal, no será visible para
-                  los clientes
+                  Reference name for the location, not visible to customers
                 </FieldDescription>
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
@@ -185,11 +181,11 @@ export default function LocationForm({
             control={form.control}
             render={({ field, fieldState }) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Descripción</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Description</FieldLabel>
                 <Input
                   {...field}
                   id={field.name}
-                  placeholder="Descripción (opcional)"
+                  placeholder="Description (optional)"
                 />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
@@ -202,8 +198,8 @@ export default function LocationForm({
             control={form.control}
             render={({ field, fieldState }) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Dirección</FieldLabel>
-                <Input {...field} id={field.name} placeholder="Dirección" />
+                <FieldLabel htmlFor={field.name}>Address</FieldLabel>
+                <Input {...field} id={field.name} placeholder="Address" />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
@@ -215,16 +211,16 @@ export default function LocationForm({
             control={form.control}
             render={({ field, fieldState }) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Teléfono</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Phone</FieldLabel>
                 <Input
                   type="tel"
                   {...field}
                   id={field.name}
                   className="sm:w-1/2"
-                  placeholder="Teléfono (opcional)"
+                  placeholder="Phone (optional)"
                 />
                 <FieldDescription>
-                  Número de teléfono de la sucursal sin espacios ni guiones
+                  Location phone number without spaces or dashes
                 </FieldDescription>
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
@@ -235,9 +231,9 @@ export default function LocationForm({
         </FieldGroup>
       </FieldSet>
       <FieldSet disabled={!enabled} className="mt-10">
-        <FieldLegend>Redes sociales y contacto</FieldLegend>
+        <FieldLegend>Social media and contact</FieldLegend>
         <FieldDescription>
-          Agrega las redes sociales y métodos de contacto de esta sucursal
+          Add social media and contact methods for this location
         </FieldDescription>
         <FieldGroup>
           <Controller
@@ -353,11 +349,7 @@ export default function LocationForm({
                   />
                   WhatsApp
                 </FieldLabel>
-                <Input
-                  {...field}
-                  id={field.name}
-                  placeholder="Número de teléfono"
-                />
+                <Input {...field} id={field.name} placeholder="Phone number" />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
@@ -367,9 +359,9 @@ export default function LocationForm({
         </FieldGroup>
       </FieldSet>
       <FieldSet disabled={!enabled} className="mt-10">
-        <FieldLegend>Servicios</FieldLegend>
+        <FieldLegend>Services</FieldLegend>
         <FieldDescription>
-          Configura los servicios que ofrece esta sucursal
+          Configure the services offered at this location
         </FieldDescription>
         <FieldGroup>
           <Controller
@@ -379,10 +371,8 @@ export default function LocationForm({
               <FieldLabel htmlFor={field.name}>
                 <Field orientation="horizontal">
                   <FieldContent>
-                    <FieldTitle>Comer aquí</FieldTitle>
-                    <FieldDescription>
-                      Habilitar consumo en local
-                    </FieldDescription>
+                    <FieldTitle>Dine in</FieldTitle>
+                    <FieldDescription>Enable on-site dining</FieldDescription>
                   </FieldContent>
                   <Switch
                     checked={field.value}
@@ -399,8 +389,8 @@ export default function LocationForm({
               <FieldLabel htmlFor={field.name}>
                 <Field orientation="horizontal">
                   <FieldContent>
-                    <FieldTitle>Para llevar</FieldTitle>
-                    <FieldDescription>Habilitar para llevar</FieldDescription>
+                    <FieldTitle>Takeout</FieldTitle>
+                    <FieldDescription>Enable takeout orders</FieldDescription>
                   </FieldContent>
                   <Switch
                     checked={field.value}
@@ -417,10 +407,8 @@ export default function LocationForm({
               <FieldLabel htmlFor={field.name}>
                 <Field orientation="horizontal">
                   <FieldContent>
-                    <FieldTitle>A domicilio</FieldTitle>
-                    <FieldDescription>
-                      Habilitar entrega a domicilio
-                    </FieldDescription>
+                    <FieldTitle>Delivery</FieldTitle>
+                    <FieldDescription>Enable home delivery</FieldDescription>
                   </FieldContent>
                   <Switch
                     checked={field.value}
@@ -436,9 +424,7 @@ export default function LocationForm({
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>
-                    Costo de envío a domicilio
-                  </FieldLabel>
+                  <FieldLabel htmlFor={field.name}>Delivery fee</FieldLabel>
                   <Input
                     {...field}
                     id={field.name}
@@ -448,7 +434,7 @@ export default function LocationForm({
                     onFocus={e => (e.target as HTMLInputElement).select()}
                     inputMode="decimal"
                   />
-                  <FieldDescription>0 = Gratis</FieldDescription>
+                  <FieldDescription>0 = Free</FieldDescription>
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}
@@ -460,12 +446,10 @@ export default function LocationForm({
               control={form.control}
               render={({ field }) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>
-                    Moneda por defecto
-                  </FieldLabel>
+                  <FieldLabel htmlFor={field.name}>Default currency</FieldLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Seleccionar moneda" />
+                      <SelectValue placeholder="Select currency" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value={"MXN"}>MXN</SelectItem>
@@ -486,12 +470,12 @@ export default function LocationForm({
               {statusUpdate === "executing" || statusCreate === "executing" ? (
                 <>
                   <Loader className="mr-2 size-4 animate-spin" />
-                  {"Guardando..."}
+                  {"Saving..."}
                 </>
               ) : data ? (
-                "Actualizar sucursal"
+                "Update location"
               ) : (
-                "Crear sucursal"
+                "Create location"
               )}
             </Button>
           </Field>

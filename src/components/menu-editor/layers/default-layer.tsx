@@ -40,7 +40,8 @@ export default function DefaultLayer({
     if (id == "ROOT" && !expanded) {
       setExpandedState(true)
     }
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id])
 
   return (
     <div

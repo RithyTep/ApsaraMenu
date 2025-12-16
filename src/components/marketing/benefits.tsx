@@ -14,43 +14,42 @@ import { Badge } from "@/components/ui/badge"
 
 const BENEFITS = [
   {
-    title: "Llega a más clientes",
+    title: "Reach more customers",
     Icon: BadgeCheck,
-    description: "Comparte tu menú en línea y refuerza tu presencia digital.",
+    description: "Share your menu online and strengthen your digital presence.",
     soon: false
   },
   {
-    title: "Actualiza tu menú fácilmente",
+    title: "Update your menu easily",
     Icon: RefreshCcw,
     description:
-      "Cambia precios y agrega platillos en segundos sin complicaciones.",
+      "Change prices and add dishes in seconds without complications.",
     soon: false
   },
   {
-    title: "Destaca tu negocio",
+    title: "Highlight your business",
     Icon: QrCodeIcon,
-    description: "Usa códigos QR personalizados que muestran tu estilo único.",
+    description: "Use custom QR codes that showcase your unique style.",
     soon: false
   },
   {
-    title: "Menú flexible",
+    title: "Flexible menu",
     Icon: Group,
-    description:
-      "Crea menús especiales para eventos o promociones sin esfuerzo.",
+    description: "Create special menus for events or promotions effortlessly.",
     soon: false
   },
   {
-    title: "Promociona tu negocio",
+    title: "Promote your business",
     Icon: Gem,
     description:
-      "Resalta ofertas y platillos destacados para atraer más clientes.",
+      "Highlight offers and featured dishes to attract more customers.",
     soon: true
   },
   {
-    title: "Sin compromisos",
+    title: "No commitments",
     Icon: Handshake,
     description:
-      "Empieza sin contratos largos y adapta tu menú a tus necesidades.",
+      "Start without long contracts and adapt your menu to your needs.",
     soon: false
   }
 ]
@@ -72,8 +71,8 @@ export default function Benefits() {
       />
       <div className="dark relative z-10">
         <TitleSection
-          eyebrow="Por qué elegir Biztro"
-          title="Transforma la experiencia de tus clientes y aumenta tus ingresos"
+          eyebrow="Why choose ApsaraMenu"
+          title="Transform your customers' experience and increase your revenue"
         />
         <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 px-4 sm:grid-cols-3 sm:gap-12 sm:px-6 lg:max-w-7xl lg:gap-16 lg:px-8">
           {BENEFITS.map((benefit, index) => (
@@ -108,7 +107,7 @@ const BenefitItem = ({
         {soon && (
           <div>
             <Badge variant="violet" className="tracking-wide uppercase">
-              Pronto
+              Soon
             </Badge>
           </div>
         )}

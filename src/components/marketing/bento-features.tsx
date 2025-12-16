@@ -2,6 +2,7 @@
 
 import { QRCode } from "react-qrcode-logo"
 import { MousePointerClick, QrCodeIcon, SwatchBook } from "lucide-react"
+import Image from "next/image"
 
 import { BentoCard, BentoGrid } from "@/components/flare-ui/bento-grid"
 import GradientBlur from "@/components/flare-ui/gradient-blur"
@@ -10,17 +11,18 @@ import { Ripple } from "@/components/ui/ripple"
 const features = [
   {
     Icon: SwatchBook,
-    name: "Diseño",
+    name: "Design",
     description:
-      "Inicia con una plantilla y modifícala a tu gusto para crear algo original que se ajuste a tú negocio. Con un diseño optimizado para dispositivos móviles.",
+      "Start with a template and customize it to your liking to create something original that fits your business. With a design optimized for mobile devices.",
     href: undefined,
-    cta: "Ver más",
+    cta: "Learn more",
     background: (
       <div className="absolute inset-0 origin-top">
-        <img
-          src="iphone-hero.png"
-          alt="Diseño"
-          className="w-full [mask-image:linear-gradient(to_top,transparent_30%,#000_80%)] transition-all duration-300 ease-out group-hover:scale-105 sm:[mask-image:linear-gradient(to_top,transparent_10%,#000_80%)]"
+        <Image
+          src="/iphone-hero.png"
+          alt="Design"
+          fill
+          className="[mask-image:linear-gradient(to_top,transparent_30%,#000_80%)] object-contain transition-all duration-300 ease-out group-hover:scale-105 sm:[mask-image:linear-gradient(to_top,transparent_10%,#000_80%)]"
         />
         <GradientBlur className="inset-x-0 bottom-0 h-2/3 sm:h-1/3" />
       </div>
@@ -30,17 +32,17 @@ const features = [
   },
   {
     Icon: MousePointerClick,
-    name: "Editor web",
+    name: "Web editor",
     description:
-      "Con una interfaz de arrastrar y soltar, es fácil realizar cambios y los resultados se pueden ver al instante.",
+      "With a drag-and-drop interface, it's easy to make changes and see results instantly.",
     href: undefined,
-    cta: "Ver más",
+    cta: "Learn more",
     background: (
       <div className="absolute inset-x-0 top-1/3 flex items-start justify-center py-2 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-95 sm:inset-auto sm:top-4 sm:right-8">
         <div className="relative flex items-center justify-center">
           <span className="absolute inline-flex h-8 w-22 rounded-full bg-green-500 group-hover:animate-ping"></span>
           <button className="relative inline-flex rounded-full bg-green-500 px-4 py-2 font-medium text-green-50 shadow-lg shadow-green-400/30">
-            Publicar Menú
+            Publish Menu
           </button>
         </div>
       </div>
@@ -50,11 +52,11 @@ const features = [
   },
   {
     Icon: QrCodeIcon,
-    name: "Genera tu código QR",
+    name: "Generate your QR code",
     description:
-      "Permite a tus clientes consultar tu menú utilizando su télefono móvil. Sin necesidad de instalar aplicaciones adicionales.",
+      "Allow your customers to view your menu using their mobile phone. No need to install additional applications.",
     href: undefined,
-    cta: "Ver más",
+    cta: "Learn more",
     background: (
       <>
         <div className="absolte inset-0 flex origin-top items-center justify-center pt-8 transition-all duration-300 ease-out group-hover:scale-95">
@@ -83,11 +85,11 @@ export default function FeaturesBento() {
     <>
       <section className="mt-0 max-w-2xl text-center md:mx-auto md:mt-0 md:text-center xl:max-w-none">
         <h2 className="font-display text-3xl tracking-tight text-balance sm:text-4xl md:text-5xl">
-          Publica tú menú en Internet, fácil y rápido
+          Publish your menu on the Internet, easy and fast
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-pretty text-gray-500">
-          Sin necesidad de conocimientos técnicos, crear tu menú utilizando una
-          interfaz intuitiva y amigable, solo necesitas tu navegador web
+          No technical knowledge required, create your menu using an intuitive
+          and friendly interface, you only need your web browser
         </p>
       </section>
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:mt-32 sm:px-6 lg:px-8">

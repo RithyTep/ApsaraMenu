@@ -46,10 +46,9 @@ export function VariantCreate({
       <Drawer open={open} onOpenChange={setOpen}>
         <DrawerContent>
           <DrawerHeader className="text-left">
-            <DrawerTitle>Variantes</DrawerTitle>
+            <DrawerTitle>Variants</DrawerTitle>
             <DrawerDescription>
-              Agrega una variante para mostrar diferentes opciones de un mismo
-              producto
+              Add a variant to display different options for the same item
             </DrawerDescription>
           </DrawerHeader>
           <div className="px-4 pb-4">
@@ -64,10 +63,9 @@ export function VariantCreate({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Variantes</DialogTitle>
+          <DialogTitle>Variants</DialogTitle>
           <DialogDescription>
-            Agrega una variante para mostrar diferentes opciones de un mismo
-            producto
+            Add a variant to display different options for the same item
           </DialogDescription>
         </DialogHeader>
         <VariantCreateForm menuItemId={menuItemId} onClose={setOpen} />
@@ -105,7 +103,7 @@ export function VariantCreateForm({
       reset()
     },
     onError: () => {
-      toast.error("Ocurrió un error")
+      toast.error("An error occurred")
       reset()
     }
   })
@@ -125,12 +123,8 @@ export function VariantCreateForm({
         control={form.control}
         render={({ field, fieldState }) => (
           <Field>
-            <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
-            <Input
-              {...field}
-              id={field.name}
-              placeholder="Nombre de la variante"
-            />
+            <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+            <Input {...field} id={field.name} placeholder="Variant name" />
             {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
         )}
@@ -140,13 +134,13 @@ export function VariantCreateForm({
         control={form.control}
         render={({ field, fieldState }) => (
           <Field>
-            <FieldLabel htmlFor={field.name}>Precio</FieldLabel>
+            <FieldLabel htmlFor={field.name}>Price</FieldLabel>
             <Input
               {...field}
               id={field.name}
               type="number"
               inputMode="decimal"
-              placeholder="Precio"
+              placeholder="Price"
               onChange={e => field.onChange(Number(e.target.value))}
               onFocus={e => (e.target as HTMLInputElement).select()}
               value={field.value ?? ""}
@@ -159,10 +153,10 @@ export function VariantCreateForm({
         {status === "executing" ? (
           <>
             <Loader className="mr-2 size-4 animate-spin" />
-            {"Creando..."}
+            {"Creating..."}
           </>
         ) : (
-          "Crear variante"
+          "Create variant"
         )}
       </Button>
     </form>

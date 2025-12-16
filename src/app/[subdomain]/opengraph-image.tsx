@@ -38,83 +38,81 @@ export default async function Image({
 
     // Load Inter font (SemiBold ~ weight 600) via Google Fonts once and reuse
     if (!interFontData) {
-      const sample = org?.name ? org.name.slice(0, 60) : "Biztro" // limit for query length
+      const sample = org?.name ? org.name.slice(0, 60) : "ApsaraMenu" // limit for query length
       interFontData = await loadGoogleFont("Inter", [600], sample)
     }
 
     // Use Tailwind classes for layout, minimize inline styles
     return new ImageResponse(
-      (
-        <div
-          style={{
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-            height: "100%",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            backgroundColor: "#f97316"
-          }}
-        >
-          {org?.banner && (
-            <img
-              src={org.banner}
-              alt="Background"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center",
-                zIndex: 0
-              }}
-            />
-          )}
-          {/* Gradient overlay for improved visibility */}
-          <div
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "100%",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          backgroundColor: "#f97316"
+        }}
+      >
+        {org?.banner && (
+          <img
+            src={org.banner}
+            alt="Background"
             style={{
               position: "absolute",
               top: 0,
               left: 0,
               width: "100%",
               height: "100%",
-              background: "linear-gradient(to top, black, transparent)",
-              opacity: 0.7,
-              zIndex: 1
+              objectFit: "cover",
+              objectPosition: "center",
+              zIndex: 0
             }}
           />
-          <div
-            style={{
-              position: "relative",
-              zIndex: 2,
-              width: "100%",
-              height: "100%",
-              display: "flex"
-            }}
-          >
-            <div tw="flex w-full">
-              <div tw="flex flex-row w-full py-12 px-24 items-end justify-start">
-                {org?.logo && (
-                  <img
-                    tw="w-30 h-30 rounded-full mr-8"
-                    src={org.logo}
-                    alt={org.name}
-                    width={120}
-                    height={120}
-                    style={{ objectFit: "cover" }}
-                  />
-                )}
-                <h2 tw="flex flex-col text-7xl font-semibold tracking-tight text-gray-50 text-left truncate">
-                  <span>{org?.name}</span>
-                </h2>
-              </div>
+        )}
+        {/* Gradient overlay for improved visibility */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(to top, black, transparent)",
+            opacity: 0.7,
+            zIndex: 1
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            width: "100%",
+            height: "100%",
+            display: "flex"
+          }}
+        >
+          <div tw="flex w-full">
+            <div tw="flex flex-row w-full py-12 px-24 items-end justify-start">
+              {org?.logo && (
+                <img
+                  tw="w-30 h-30 rounded-full mr-8"
+                  src={org.logo}
+                  alt={org.name}
+                  width={120}
+                  height={120}
+                  style={{ objectFit: "cover" }}
+                />
+              )}
+              <h2 tw="flex flex-col text-7xl font-semibold tracking-tight text-gray-50 text-left truncate">
+                <span>{org?.name}</span>
+              </h2>
             </div>
           </div>
         </div>
-      ),
+      </div>,
       {
         ...size,
         fonts: [

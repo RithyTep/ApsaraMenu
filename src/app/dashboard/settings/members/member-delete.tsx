@@ -29,7 +29,7 @@ export default function MemberDelete({
 }) {
   const { execute, reset } = useAction(removeMember, {
     onExecute: () => {
-      toast.loading("Eliminando miembro...")
+      toast.loading("Deleting member...")
     },
     onSuccess: ({ data }) => {
       if (data?.failure?.reason) {
@@ -37,12 +37,12 @@ export default function MemberDelete({
         toast.error(data.failure.reason)
       } else if (data?.success) {
         toast.dismiss()
-        toast.success("Miembro eliminado con éxito")
+        toast.success("Member deleted successfully")
       }
       reset()
     },
     onError: () => {
-      toast.error("Algo salió mal")
+      toast.error("Something went wrong")
       reset()
     }
   })
@@ -55,15 +55,15 @@ export default function MemberDelete({
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Eliminar Miembro</AlertDialogTitle>
+          <AlertDialogTitle>Delete Member</AlertDialogTitle>
           <AlertDialogDescription>
-            ¿Estás seguro de que deseas eliminar a este miembro? Esta acción no
-            se puede deshacer.
+            Are you sure you want to delete this member? This action cannot be
+            undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel onClick={event => event.stopPropagation()}>
-            Cancelar
+            Cancel
           </AlertDialogCancel>
           <AlertDialogAction
             className={cn(buttonVariants({ variant: "destructive" }))}
@@ -72,7 +72,7 @@ export default function MemberDelete({
               onDeleteMember()
             }}
           >
-            Eliminar
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -38,7 +38,7 @@ export default function Navbar({
       <div className="absolute inset-0 mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex flex-row items-center gap-2">
           <Image src="/logo-bistro.svg" alt="Logo" width={32} height={32} />
-          <span className="font-medium">Biztro</span>
+          <span className="font-medium">ApsaraMenu</span>
         </Link>
         {showLinks && (
           <nav className="hidden space-x-6 text-sm md:flex">
@@ -46,19 +46,19 @@ export default function Navbar({
               href="#how-it-works"
               className="text-gray-800 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-400"
             >
-              Cómo Funciona
+              How It Works
             </Link>
             <Link
               href="#benefits"
               className="text-gray-800 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-400"
             >
-              Beneficios
+              Benefits
             </Link>
             <Link
               href="#pricing"
               className="text-gray-800 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-400"
             >
-              Precios
+              Pricing
             </Link>
           </nav>
         )}
@@ -69,7 +69,7 @@ export default function Navbar({
             size="xs"
             className="rounded-full px-3 shadow-xs"
           >
-            Acceder a mi cuenta
+            Access my account
           </Button>
         </Link>
       </div>

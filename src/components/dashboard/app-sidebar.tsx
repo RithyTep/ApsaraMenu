@@ -80,25 +80,25 @@ type NavigationItem = {
 }
 
 const navigation: NavigationItem[] = [
-  { title: "Menús", url: "/dashboard", icon: LayoutTemplate },
+  { title: "Menus", url: "/dashboard", icon: LayoutTemplate },
   {
-    title: "Catálogo",
+    title: "Catalog",
     url: "/dashboard/menu-items",
     icon: ShoppingBag,
     items: [
-      { title: "Productos", url: "/dashboard/menu-items" },
-      { title: "Categorías", url: "/dashboard/menu-items/categories" }
+      { title: "Products", url: "/dashboard/menu-items" },
+      { title: "Categories", url: "/dashboard/menu-items/categories" }
     ]
   },
   {
-    title: "Configuración",
+    title: "Settings",
     url: "/dashboard/settings",
     icon: Settings,
     items: [
       { title: "General", url: "/dashboard/settings" },
-      { title: "Sucursal", url: "/dashboard/settings/locations" },
-      { title: "Miembros", url: "/dashboard/settings/members" },
-      { title: "Suscripción", url: "/dashboard/settings/billing" }
+      { title: "Location", url: "/dashboard/settings/locations" },
+      { title: "Members", url: "/dashboard/settings/members" },
+      { title: "Subscription", url: "/dashboard/settings/billing" }
     ]
   }
 ]
@@ -169,16 +169,14 @@ export default function AppSidebar({
           <div className="p-1">
             <Card className="border-indigo-400/50 bg-radial-[at_0%_100%] from-pink-500/50 via-indigo-500/20 to-transparent shadow-none">
               <CardHeader className="p-3 pb-2">
-                <CardTitle className="text-sm">Actualiza a Pro</CardTitle>
+                <CardTitle className="text-sm">Upgrade to Pro</CardTitle>
                 <CardDescription className="text-xs">
-                  Productos y menús ilimitados, componentes adicionales y más.
+                  Unlimited products and menus, additional components and more.
                 </CardDescription>
               </CardHeader>
               <CardFooter className="px-3">
                 <Button size="xs" variant="default" className="w-full" asChild>
-                  <Link href="/dashboard/settings/billing">
-                    Actualiza ahora
-                  </Link>
+                  <Link href="/dashboard/settings/billing">Upgrade now</Link>
                 </Button>
               </CardFooter>
             </Card>
@@ -255,7 +253,7 @@ function SidebarWorkgroup() {
     },
     onError: error => {
       console.error(error)
-      toast.error("No se pudo cambiar de organización")
+      toast.error("Could not switch organization")
     },
     onSettled: () => {
       refetch()
@@ -280,7 +278,9 @@ function SidebarWorkgroup() {
               <div className="border-sidebar-border grid size-8 place-items-center rounded-sm border shadow-sm">
                 <Plus className="size-4" />
               </div>
-              <span className="truncate font-semibold">Crear organización</span>
+              <span className="truncate font-semibold">
+                Create organization
+              </span>
             </Link>
           </SidebarMenuButton>
         </SidebarMenu>
@@ -312,12 +312,12 @@ function SidebarWorkgroup() {
                         {currentOrg.name}
                       </span>
                       <span className="truncate text-xs">
-                        {currentOrg.plan === Plan.BASIC ? "Básico" : "Pro"}
+                        {currentOrg.plan === Plan.BASIC ? "Basic" : "Pro"}
                       </span>
                     </div>
                   </>
                 ) : (
-                  <span className="truncate">Selecciona un negocio</span>
+                  <span className="truncate">Select a business</span>
                 )}
                 <ChevronsUpDown className="ml-auto" />
               </SidebarMenuButton>
@@ -329,7 +329,7 @@ function SidebarWorkgroup() {
               sideOffset={4}
             >
               <DropdownMenuLabel className="text-muted-foreground text-xs">
-                Organizaciones
+                Organizations
               </DropdownMenuLabel>
               {organizations?.map(organization => (
                 <DropdownMenuItem
@@ -358,7 +358,7 @@ function SidebarWorkgroup() {
                     <Plus className="size-4" />
                   </div>
                   <div className="text-muted-foreground font-medium">
-                    Agregar organización
+                    Add organization
                   </div>
                 </Link>
               </DropdownMenuItem>
@@ -416,7 +416,7 @@ function AttachToFeedbackButton() {
     <SidebarMenuButton asChild size="sm">
       <a href="#" ref={elRef}>
         <Megaphone />
-        <span>Reportar un problema</span>
+        <span>Report an issue</span>
       </a>
     </SidebarMenuButton>
   )

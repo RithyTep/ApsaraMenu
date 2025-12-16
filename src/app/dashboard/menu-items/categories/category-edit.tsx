@@ -49,9 +49,9 @@ export default function CategoryEdit({
         <DrawerTrigger asChild>{children}</DrawerTrigger>
         <DrawerContent>
           <DrawerHeader className="text-left">
-            <DrawerTitle>Categoría</DrawerTitle>
+            <DrawerTitle>Category</DrawerTitle>
             <DrawerDescription>
-              {action === ActionType.CREATE ? "Agregar" : "Editar"} categoría
+              {action === ActionType.CREATE ? "Add" : "Edit"} category
             </DrawerDescription>
           </DrawerHeader>
           <div className="px-4 pb-4">
@@ -71,9 +71,9 @@ export default function CategoryEdit({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Categoría</DialogTitle>
+          <DialogTitle>Category</DialogTitle>
           <DialogDescription>
-            {action === ActionType.CREATE ? "Agregar" : "Editar"} categoría
+            {action === ActionType.CREATE ? "Add" : "Edit"} category
           </DialogDescription>
         </DialogHeader>
         <CategoryEditForm
@@ -111,7 +111,7 @@ function CategoryEditForm({
   } = useAction(createCategory, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Categoría agregada")
+        toast.success("Category added")
         onClose(false)
       } else if (data?.failure.reason) {
         toast.error(data?.failure.reason)
@@ -120,7 +120,7 @@ function CategoryEditForm({
       resetInsert()
     },
     onError: () => {
-      toast.error("No se pudo agregar la categoría")
+      toast.error("Could not add category")
       resetInsert()
     }
   })
@@ -132,7 +132,7 @@ function CategoryEditForm({
   } = useAction(updateCategory, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Categoría actualizada")
+        toast.success("Category updated")
         onClose(false)
       } else if (data?.failure.reason) {
         toast.error(data?.failure.reason)
@@ -141,7 +141,7 @@ function CategoryEditForm({
       resetUpdate()
     },
     onError: () => {
-      toast.error("No se pudo actualizar la categoría")
+      toast.error("Could not update category")
     }
   })
 
@@ -160,8 +160,8 @@ function CategoryEditForm({
         control={form.control}
         render={({ field, fieldState }) => (
           <Field>
-            <FieldLabel htmlFor={field.name}>Categoría</FieldLabel>
-            <Input {...field} placeholder="Nombre" />
+            <FieldLabel htmlFor={field.name}>Category</FieldLabel>
+            <Input {...field} placeholder="Name" />
             {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
         )}
@@ -173,10 +173,10 @@ function CategoryEditForm({
       >
         {statusInsert === "executing" || statusUpdate === "executing" ? (
           <>
-            <Loader className="mr-2 h-4 w-4 animate-spin" /> {"Guardarando..."}
+            <Loader className="mr-2 h-4 w-4 animate-spin" /> {"Saving..."}
           </>
         ) : (
-          "Guardar"
+          "Save"
         )}
       </Button>
     </form>

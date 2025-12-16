@@ -13,23 +13,23 @@ Sentry.init({
     Sentry.feedbackIntegration({
       autoInject: false,
       colorScheme: "system",
-      formTitle: "Ayúdanos a mejorar",
-      submitButtonLabel: "Enviar",
-      cancelButtonLabel: "Cancelar",
-      confirmButtonLabel: "Confirmar",
-      addScreenshotButtonLabel: "Agregar captura de pantalla",
-      removeScreenshotButtonLabel: "Eliminar captura de pantalla",
-      nameLabel: "Nombre",
-      namePlaceholder: "Nombre",
-      emailLabel: "Correo electrónico",
-      emailPlaceholder: "Correo electrónico",
-      isRequiredLabel: "(requerido)",
-      messageLabel: "Descripción",
-      messagePlaceholder: "¿Cuál es el error? ¿Qué esperabas que sucediera?",
-      successMessageText: "¡Gracias por tu ayuda!"
+      formTitle: "Help us improve",
+      submitButtonLabel: "Submit",
+      cancelButtonLabel: "Cancel",
+      confirmButtonLabel: "Confirm",
+      addScreenshotButtonLabel: "Add screenshot",
+      removeScreenshotButtonLabel: "Remove screenshot",
+      nameLabel: "Name",
+      namePlaceholder: "Name",
+      emailLabel: "Email",
+      emailPlaceholder: "Email",
+      isRequiredLabel: "(required)",
+      messageLabel: "Description",
+      messagePlaceholder: "What's the bug? What did you expect to happen?",
+      successMessageText: "Thank you for your feedback!"
     }),
     Sentry.thirdPartyErrorFilterIntegration({
-      filterKeys: ["biztro"],
+      filterKeys: ["apsaramenu"],
       behaviour: "apply-tag-if-contains-third-party-frames"
     })
   ],

@@ -484,13 +484,15 @@ export default function ThemeSelector({
                     )
                     if (!selectedTheme) {
                       // If the theme is not found, add it to the list
-                      colorThemes.push(theme)
+                      setColorThemes([...colorThemes, theme])
                       setColorThemeId(theme.id)
                     } else {
                       const index = colorThemes.findIndex(
                         t => t.id === theme.id
                       )
-                      colorThemes[index] = theme
+                      const updatedThemes = [...colorThemes]
+                      updatedThemes[index] = theme
+                      setColorThemes(updatedThemes)
                       // Manually update the theme
                       setColorThemeId(colorThemeId)
                       updateColorTheme(theme.id)
@@ -503,8 +505,10 @@ export default function ThemeSelector({
                   removeTheme={(themeId: string) => {
                     const index = colorThemes.findIndex(t => t.id === themeId)
                     // Remove the theme from the list
-                    colorThemes.splice(index, 1)
-                    setColorThemes([...colorThemes])
+                    const updatedThemes = colorThemes.filter(
+                      (_, i) => i !== index
+                    )
+                    setColorThemes(updatedThemes)
 
                     queryClient.invalidateQueries({
                       queryKey: ["themes"]

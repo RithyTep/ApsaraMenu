@@ -8,7 +8,7 @@ import Uppy, {
   type UppyFile
 } from "@uppy/core"
 import ImageEditor from "@uppy/image-editor"
-import Spanish from "@uppy/locales/lib/es_MX"
+import English from "@uppy/locales/lib/en_US"
 import { Dashboard } from "@uppy/react"
 
 // Uppy styles
@@ -83,7 +83,7 @@ export function FileUploader({
         maxNumberOfFiles: 1,
         allowedFileTypes: [".jpg", ".jpeg", ".png"]
       },
-      locale: Spanish
+      locale: English
     })
       .use(AwsS3, {
         shouldUseMultipart: false,
@@ -97,8 +97,8 @@ export function FileUploader({
         locale: {
           strings: {
             // Shown in the Status Bar
-            compressingImages: "Optimizando imágenes...",
-            compressedX: "Ahorro de %{size} al optimizar imágenes"
+            compressingImages: "Compressing images...",
+            compressedX: "Saved %{size} by compressing images"
           },
           pluralize: function (n) {
             return n === 1 ? 0 : 1
@@ -122,7 +122,7 @@ export function FileUploader({
         ) {
           console.error("Image too big")
           uppy.info(
-            `La imagen es demasiado grande, el tamaño máximo es de ${limitDimension}x${limitDimension} píxeles`,
+            `Image is too large, maximum size is ${limitDimension}x${limitDimension} pixels`,
             "error",
             3000
           )
@@ -131,7 +131,7 @@ export function FileUploader({
       } else {
         // If the file is not an image, show an error
         console.error("Not an image")
-        uppy.info("El archivo no es una imagen", "error", 3000)
+        uppy.info("File is not an image", "error", 3000)
         uppy.removeFile(file.id)
       }
     })

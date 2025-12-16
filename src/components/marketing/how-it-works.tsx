@@ -10,25 +10,25 @@ import QRimage from "../../../public/qr-example.png"
 const data = [
   {
     id: 1,
-    title: "1. Configura tu negocio",
+    title: "1. Set up your business",
     content:
-      "Agregar la información del negocio, tus horarios de atención y redes sociales. Nuestro sistema se encargará de todo lo demás.",
+      "Add your business information, hours of operation, and social media. Our system will take care of everything else.",
     image: "/configuration.png",
     icon: <Store className="size-6" />
   },
   {
     id: 2,
-    title: "2. Lista tus productos",
+    title: "2. List your products",
     content:
-      "Captura tus productos, agrega una breve descripción, precio y estarás listo para crear tu menú.",
+      "Add your products, include a brief description, price, and you'll be ready to create your menu.",
     image: "/products.png",
     icon: <ShoppingBag className="size-6" />
   },
   {
     id: 3,
-    title: "3. Lanza tu menú",
+    title: "3. Launch your menu",
     content:
-      "Personaliza tu menú con el editor web, publicalo y comparte el enlace y código QR con tus clientes. ¡Así de fácil!",
+      "Customize your menu with the web editor, publish it, and share the link and QR code with your customers. It's that easy!",
     image: "/editor.png",
     icon: <Rocket className="size-6" />
   }
@@ -41,33 +41,33 @@ export default function Component() {
       className="mx-auto max-w-5xl px-4 pt-20 pb-8 sm:px-6 sm:py-32 sm:pb-28 lg:max-w-7xl lg:px-8"
     >
       <TitleSection
-        eyebrow="Cómo funciona"
-        title="Solo 3 pasos para iniciar"
+        eyebrow="How it works"
+        title="Just 3 steps to get started"
         className="mb-16"
       />
       <Features collapseDelay={6000} data={data} linePosition="bottom" />
       <div className="mx-auto mt-0 grid max-w-5xl grid-cols-1 gap-8 px-4 sm:mt-28 sm:grid-cols-2 sm:px-0">
         <div>
           <h3 className="mb-4 text-lg font-semibold sm:text-2xl lg:text-3xl">
-            Genera y descarga tú código QR
+            Generate and download your QR code
           </h3>
           <div className="flex flex-col gap-3 text-gray-500 sm:text-lg">
             <p>
-              Desde el editor de Biztro, puedes descarga tú código QR. Imprímelo
-              y colócalo en un lugar visible en tú establecimiento.
+              From the ApsaraMenu editor, you can download your QR code. Print
+              it and place it in a visible location in your establishment.
             </p>
             <p>
-              Tus clientes podrán escanear el código QR con su teléfono móvil y
-              acceder a tu menú digital.{" "}
+              Your customers will be able to scan the QR code with their mobile
+              phone and access your digital menu.{" "}
               <span className="text-gray-900">
-                Puedes compartir el enlace de tu menú en redes sociales
+                You can share your menu link on social media
               </span>{" "}
-              o en tu página web.
+              or on your website.
             </p>
             <p>
-              Los menús digitales de Biztro son responsivos y se adaptan a
-              cualquier dispositivo móvil. Son fáciles de leer y navegar, y no
-              necesitas instalar ninguna aplicación adicional.
+              ApsaraMenu digital menus are responsive and adapt to any mobile
+              device. They are easy to read and navigate, and you don&apos;t
+              need to install any additional applications.
             </p>
           </div>
         </div>
@@ -92,12 +92,12 @@ export default function Component() {
             />
           </Link>
           <span className="z-10 flex gap-2 text-gray-600 text-shadow-white">
-            Escanea para ver un{" "}
+            Scan to see an{" "}
             <Link
               href="https://biztro.co/la-bella-italia"
               className="underline underline-offset-2 hover:text-violet-500"
             >
-              ejemplo
+              example
             </Link>
             <CornerRightUp className="size-4" />
           </span>

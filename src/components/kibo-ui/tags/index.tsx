@@ -42,7 +42,6 @@ const TagsContext = createContext<TagsContextType>({
   value: undefined,
   setValue: undefined,
   open: false,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onOpenChange: () => {},
   width: undefined,
   setWidth: undefined

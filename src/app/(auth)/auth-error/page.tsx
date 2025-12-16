@@ -29,18 +29,18 @@ export default async function Page(props: {
               <Image
                 className="h-12 w-12"
                 src="/logo-bistro.svg"
-                alt="Biztro"
+                alt="ApsaraMenu"
                 width={64}
                 height={64}
                 unoptimized
               />
               <div className="text-center">
                 <h2 className="font-display text-3xl leading-9 font-medium">
-                  Estamos casi listos
+                  We are almost ready
                 </h2>
                 <p className="mt-4 text-balance text-gray-500 dark:text-gray-400">
-                  Actualmente estamos en Beta. Nos encontramos afinando los
-                  últimos detalles.
+                  We are currently in Beta. We are fine-tuning the final
+                  details.
                 </p>
                 <div className="my-8">
                   <Waitlist />
@@ -48,7 +48,7 @@ export default async function Page(props: {
               </div>
               <div className="mt-6 text-center">
                 <Link href="/">
-                  <Button>Volver al inicio</Button>
+                  <Button>Back to home</Button>
                 </Link>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default async function Page(props: {
             className="absolute inset-0 h-full w-full object-cover"
             priority
             src="https://images.unsplash.com/photo-1529514027228-b808875f9d37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1980&q=80"
-            alt="Imagen restaurant"
+            alt="Restaurant image"
             fill
             unoptimized
           />
@@ -76,13 +76,11 @@ export default async function Page(props: {
             Oh no...
           </h1>
           <div className="space-y-2 text-center text-gray-500">
-            <h2 className="text-2xl sm:text-3xl">Ha ocurrido un error</h2>
-            <p>
-              Una disculpa, algo salió mal, te sugerimos intentarlo más tarde.
-            </p>
+            <h2 className="text-2xl sm:text-3xl">An error occurred</h2>
+            <p>We apologize, something went wrong. Please try again later.</p>
           </div>
           <Link href="/">
-            <Button>Volver al inicio</Button>
+            <Button>Back to home</Button>
           </Link>
         </div>
         <div className="w-full">

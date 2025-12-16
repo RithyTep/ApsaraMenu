@@ -7,8 +7,8 @@ import Spinner from "@/components/ui/spinner"
 import LoginForm from "@/app/(auth)/login/login-form"
 
 export const metadata: Metadata = {
-  title: "Iniciar sesión",
-  description: "Iniciar sesión en Biztro"
+  title: "Sign in",
+  description: "Sign in to ApsaraMenu"
 }
 
 export default async function LoginPage() {
@@ -21,10 +21,10 @@ export default async function LoginPage() {
               <Image src="/logo-bistro.svg" alt="Logo" width={44} height={44} />
             </Link>
             <h2 className="font-display mt-4 text-3xl leading-9 font-medium tracking-tight text-gray-900 dark:text-gray-200">
-              Bienvenido
+              Welcome
             </h2>
             <span className="mt-2 block text-sm text-gray-600 dark:text-gray-400">
-              Inicia sesión con tu cuenta de Biztro
+              Sign in with your ApsaraMenu account
             </span>
           </div>
           <div className="mt-10">

@@ -59,7 +59,7 @@ function MenuCard({ menu, index }: { menu: Menu; index: number }) {
 
   const { execute: executeDuplicate, reset } = useAction(duplicateMenu, {
     onExecute: () => {
-      toast.loading("Duplicando Menú...")
+      toast.loading("Duplicating Menu...")
     },
     onSuccess: ({ data }) => {
       toast.dismiss()
@@ -67,15 +67,15 @@ function MenuCard({ menu, index }: { menu: Menu; index: number }) {
         if (data.failure.code === BasicPlanLimits.MENU_LIMIT_REACHED) {
           setShowUpgrade(true)
         } else {
-          toast.error(data.failure.reason ?? "Ocurrió un error")
+          toast.error(data.failure.reason ?? "An error occurred")
         }
         return
       }
-      toast.success("Menú duplicado")
+      toast.success("Menu duplicated")
       reset()
     },
     onError: () => {
-      toast.error("No se pudo duplicar el menú")
+      toast.error("Could not duplicate menu")
       reset()
     }
   })
@@ -118,13 +118,13 @@ function MenuCard({ menu, index }: { menu: Menu; index: number }) {
                   case MenuStatus.PUBLISHED:
                     return (
                       <Badge variant="blue" className="rounded-full">
-                        Publicado
+                        Published
                       </Badge>
                     )
                   case MenuStatus.DRAFT:
                     return (
                       <Badge variant="secondary" className="rounded-full">
-                        Borrador
+                        Draft
                       </Badge>
                     )
                   default:
@@ -138,7 +138,7 @@ function MenuCard({ menu, index }: { menu: Menu; index: number }) {
                   className="flex items-center justify-between gap-1 rounded-full px-1.5"
                 >
                   <CircleCheck className="size-3" />
-                  Activo
+                  Active
                 </Badge>
               )}
             </div>
@@ -155,23 +155,23 @@ function MenuCard({ menu, index }: { menu: Menu; index: number }) {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-32">
-                  <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
                   <DropdownMenuItem asChild>
                     <Link href={`/menu-editor/${menu.id}`} prefetch={false}>
-                      <span>Editar</span>
+                      <span>Edit</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     onClick={() => executeDuplicate({ id: menu.id })}
                   >
-                    <span>Duplicar</span>
+                    <span>Duplicate</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setOpenRename(true)}>
-                    <span>Renombrar</span>
+                    <span>Rename</span>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => setOpenDelete(true)}>
-                    <span className="text-red-500">Eliminar</span>
+                    <span className="text-red-500">Delete</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -184,8 +184,8 @@ function MenuCard({ menu, index }: { menu: Menu; index: number }) {
       <UpgradeDialog
         open={showUpgrade}
         onClose={() => setShowUpgrade(false)}
-        title="Impulsa tu negocio con el plan Pro"
-        description="Actualiza tu plan a Pro para crear más menús y acceder a todas las funciones premium."
+        title="Boost your business with the Pro plan"
+        description="Upgrade your plan to Pro to create more menus and access all premium features."
       />
     </motion.div>
   )

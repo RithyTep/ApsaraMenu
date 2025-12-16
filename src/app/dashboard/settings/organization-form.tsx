@@ -71,7 +71,7 @@ export default function OrganizationForm({
   const { execute, status, reset } = useAction(updateOrg, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Información actualizada")
+        toast.success("Information updated")
         queryClient.invalidateQueries({
           queryKey: ["workgroup", "current"]
         })
@@ -82,7 +82,7 @@ export default function OrganizationForm({
       reset()
     },
     onError: () => {
-      toast.error("No se pudo actualizar la información del negocio")
+      toast.error("Could not update business information")
     }
   })
 
@@ -118,12 +118,12 @@ export default function OrganizationForm({
             <Dialog>
               <DialogTrigger asChild>
                 <Button type="button" variant="outline">
-                  Cambiar imágen
+                  Change image
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-xl">
                 <DialogHeader>
-                  <DialogTitle>Subir imágen</DialogTitle>
+                  <DialogTitle>Upload image</DialogTitle>
                 </DialogHeader>
                 <FileUploader
                   organizationId={data.id}
@@ -140,7 +140,7 @@ export default function OrganizationForm({
               </DialogContent>
             </Dialog>
             <p className="mt-2 text-xs">
-              Se recomienda un tamaño de 500x500 en formato JPG o PNG.
+              A size of 500x500 in JPG or PNG format is recommended.
             </p>
           </div>
         </div>
@@ -149,12 +149,12 @@ export default function OrganizationForm({
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor={field.name}>Nombre del negocio</FieldLabel>
+              <FieldLabel htmlFor={field.name}>Business name</FieldLabel>
               <Input
                 {...field}
                 id={field.name}
                 aria-invalid={fieldState.invalid}
-                placeholder="Nombre del negocio"
+                placeholder="Business name"
               />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
@@ -165,15 +165,15 @@ export default function OrganizationForm({
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor={field.name}>Descripción</FieldLabel>
+              <FieldLabel htmlFor={field.name}>Description</FieldLabel>
               <Textarea
                 {...field}
                 id={field.name}
                 aria-invalid={fieldState.invalid}
-                placeholder="Descripción"
+                placeholder="Description"
               />
               <FieldDescription>
-                Escribe una breve descripción de tu negocio
+                Write a brief description of your business
               </FieldDescription>
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
@@ -184,13 +184,13 @@ export default function OrganizationForm({
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor={field.name}>Sitio web</FieldLabel>
+              <FieldLabel htmlFor={field.name}>Website</FieldLabel>
               <InputGroup>
                 <InputGroupInput
                   {...field}
                   id={field.name}
                   aria-invalid={fieldState.invalid}
-                  placeholder="tu-sitio"
+                  placeholder="your-site"
                   className="pl-1!"
                 />
                 <InputGroupAddon>
@@ -198,15 +198,14 @@ export default function OrganizationForm({
                 </InputGroupAddon>
               </InputGroup>
               <FieldDescription>
-                Este es el nombre de tu sitio web. Cambiarlo puede afectar tu
-                SEO
+                This is your website name. Changing it may affect your SEO
               </FieldDescription>
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
         <div className="space-y-2">
-          <FieldLabel>Imágen de portada</FieldLabel>
+          <FieldLabel>Cover image</FieldLabel>
           {data.banner ? (
             <ImageField
               src={data.banner}
@@ -228,18 +227,18 @@ export default function OrganizationForm({
             />
           )}
           <FieldDescription>
-            La imágen de portada se mostrará en tu sitio web de manera
-            prominente. Se recomienda un tamaño de 1200x800 en formato JPG.
+            The cover image will be displayed prominently on your website. A
+            size of 1200x800 in JPG format is recommended.
           </FieldDescription>
         </div>
         <Button disabled={status === "executing"} type="submit">
           {status === "executing" ? (
             <>
               <Loader className="mr-2 size-4 animate-spin" />
-              {"Guardando..."}
+              {"Saving..."}
             </>
           ) : (
-            "Guardar"
+            "Save"
           )}
         </Button>
       </fieldset>

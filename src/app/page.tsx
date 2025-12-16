@@ -12,11 +12,10 @@ import Navbar from "@/components/marketing/nav-bar"
 import Pricing from "@/components/marketing/pricing"
 
 export const metadata: Metadata = {
-  title: "Biztro | Crea tu menú digital profesional en minutos",
+  title: "ApsaraMenu | Create your professional digital menu in minutes",
   description:
-    "Diseña, actualiza y comparte menús QR profesionales. Aumenta tus ventas y mejora la experiencia de tus clientes sin conocimientos técnicos.",
-  keywords:
-    "menu digital, menu QR, restaurante, cafetería, hostelería, menú online"
+    "Design, update and share professional QR menus. Increase your sales and improve your customers' experience without technical knowledge.",
+  keywords: "digital menu, QR menu, restaurant, cafe, hospitality, online menu"
 }
 
 export default function Page() {

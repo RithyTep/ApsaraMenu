@@ -42,14 +42,14 @@ export default function ItemImport() {
         return
       }
       toast.success(
-        `${response.data?.success?.length} productos importados correctamente`
+        `${response.data?.success?.length} items imported successfully`
       )
       setOpen(false)
       reset()
     },
     onError: error => {
       console.error(error)
-      toast.error("Error al importar los productos")
+      toast.error("Error importing items")
       reset()
     }
   })
@@ -58,22 +58,22 @@ export default function ItemImport() {
     const errors: string[] = []
 
     if (!row.nombre?.trim()) {
-      errors.push("El nombre es requerido")
+      errors.push("Name is required")
     }
 
     if (!row.precio) {
-      errors.push("El precio es requerido")
+      errors.push("Price is required")
     } else {
       const price = parseFloat(row.precio)
       if (isNaN(price) || price < 0) {
-        errors.push("El precio debe ser un número positivo")
+        errors.push("Price must be a positive number")
       }
     }
 
     if (row.moneda) {
       const m = row.moneda.trim().toUpperCase()
       if (!(m === "MXN" || m === "USD")) {
-        errors.push("Moneda inválida (usar MXN o USD)")
+        errors.push("Invalid currency (use MXN or USD)")
       }
     }
 
@@ -91,7 +91,7 @@ export default function ItemImport() {
       encoding: "iso-8859-1",
       complete: results => {
         if (results.data.length === 0) {
-          setErrors([{ row: 0, errors: ["El archivo está vacío"] }])
+          setErrors([{ row: 0, errors: ["File is empty"] }])
           return
         }
 
@@ -99,7 +99,7 @@ export default function ItemImport() {
           setErrors([
             {
               row: 0,
-              errors: ["No puedes importar más de 50 productos a la vez"]
+              errors: ["You cannot import more than 50 items at once"]
             }
           ])
           return
@@ -137,7 +137,7 @@ export default function ItemImport() {
       },
       error: error => {
         setErrors([
-          { row: 0, errors: [`Error al procesar el archivo: ${error.message}`] }
+          { row: 0, errors: [`Error processing file: ${error.message}`] }
         ])
       }
     })
@@ -146,10 +146,10 @@ export default function ItemImport() {
   const handleDownloadTemplate = () => {
     const template = [
       {
-        nombre: "Producto ejemplo",
-        descripcion: "Descripcion del producto",
+        nombre: "Sample item",
+        descripcion: "Item description",
         precio: "100.00",
-        categoria: "Categoria (opcional)",
+        categoria: "Category (optional)",
         moneda: "MXN"
       }
     ]
@@ -160,7 +160,7 @@ export default function ItemImport() {
     const url = URL.createObjectURL(blob)
 
     link.setAttribute("href", url)
-    link.setAttribute("download", "plantilla-productos.csv")
+    link.setAttribute("download", "items-template.csv")
     link.style.visibility = "hidden"
     document.body.appendChild(link)
     link.click()
@@ -182,16 +182,16 @@ export default function ItemImport() {
         ) : (
           <Upload className="size-4" />
         )}
-        Importar CSV
+        Import CSV
       </Button>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Importar productos desde CSV</DialogTitle>
+            <DialogTitle>Import items from CSV</DialogTitle>
             <DialogDescription>
-              Sube un archivo CSV con las columnas: nombre, descripcion
-              (opcional), precio, categoria (opcional)
+              Upload a CSV file with columns: nombre, descripcion (optional),
+              precio, categoria (optional)
             </DialogDescription>
           </DialogHeader>
 
@@ -201,18 +201,18 @@ export default function ItemImport() {
             onClick={handleDownloadTemplate}
           >
             <FileSpreadsheet className="mr-1" />
-            Descargar plantilla CSV de ejemplo
+            Download sample CSV template
           </Button>
 
           {errors.length > 0 && (
             <Alert variant="destructive">
               <AlertCircle className="size-4" />
-              <AlertTitle>Errores en el archivo</AlertTitle>
+              <AlertTitle>File errors</AlertTitle>
               <AlertDescription>
                 <ul className="list-inside list-disc">
                   {errors.map((error, i) => (
                     <li key={i}>
-                      Fila {error.row}: {error.errors.join(", ")}
+                      Row {error.row}: {error.errors.join(", ")}
                     </li>
                   ))}
                 </ul>

@@ -32,7 +32,7 @@ export default function AcceptInviteCard({ invite }: { invite: InviteData }) {
     onSuccess: ({ data }) => {
       if (data?.failure?.reason) {
         console.error(data.failure.reason)
-        toast.error("Falló la aceptación de la invitación")
+        toast.error("Failed to accept invitation")
       } else if (data?.success) {
         router.push("/dashboard")
       }
@@ -55,8 +55,8 @@ export default function AcceptInviteCard({ invite }: { invite: InviteData }) {
             <Skeleton className="h-6 w-3/4" />
           ) : (
             <>
-              Hola{session?.user.name ? ` ${session.user.name},` : ","} has sido
-              invitado a unirte al equipo de{" "}
+              Hello{session?.user.name ? ` ${session.user.name},` : ","} you
+              have been invited to join the team at{" "}
               <span className="text-orange-600">
                 {invite?.organizationName}
               </span>
@@ -85,11 +85,11 @@ export default function AcceptInviteCard({ invite }: { invite: InviteData }) {
                   </AvatarFallback>
                 </Avatar>
                 <span className="text-sm font-medium">
-                  Firmado con {session?.user.email}
+                  Signed in as {session?.user.email}
                 </span>
               </div>
               <p className="text-sm">
-                Da clic en el botón de abajo para aceptar la invitación.
+                Click the button below to accept the invitation.
               </p>
             </div>
             <form>
@@ -100,7 +100,7 @@ export default function AcceptInviteCard({ invite }: { invite: InviteData }) {
                   onClick={() => handleAccept(invite?.id)}
                   disabled={status === "executing" || isPending}
                 >
-                  Aceptar invitación
+                  Accept invitation
                 </Button>
               </div>
             </form>
@@ -109,7 +109,7 @@ export default function AcceptInviteCard({ invite }: { invite: InviteData }) {
       </CardContent>
       <CardFooter>
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Al aceptar la invitación, aceptas los términos y condiciones.
+          By accepting the invitation, you agree to the terms and conditions.
         </p>
       </CardFooter>
     </Card>

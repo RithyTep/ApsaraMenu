@@ -29,7 +29,7 @@ export default function VariantDelete({
 }) {
   const { execute, reset } = useAction(deleteVariant, {
     onExecute: () => {
-      toast.loading("Eliminando Variante...")
+      toast.loading("Deleting variant...")
     },
     onSuccess: ({ data }) => {
       if (data?.failure?.reason) {
@@ -43,7 +43,7 @@ export default function VariantDelete({
     onError: error => {
       console.error(error)
       toast.dismiss()
-      toast.error("Algo salió mal")
+      toast.error("Something went wrong")
       reset()
     }
   })
@@ -60,19 +60,19 @@ export default function VariantDelete({
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Eliminar Variante</AlertDialogTitle>
+          <AlertDialogTitle>Delete Variant</AlertDialogTitle>
           <AlertDialogDescription>
-            ¿Estás seguro de eliminar esta variante? Esta acción no se puede
-            deshacer
+            Are you sure you want to delete this variant? This action cannot be
+            undone
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             className={cn(buttonVariants({ variant: "destructive" }))}
             onClick={() => onDeleteVariant()}
           >
-            Eliminar
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

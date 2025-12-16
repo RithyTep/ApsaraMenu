@@ -29,19 +29,19 @@ export default function MenuDelete({
 }) {
   const { execute, reset } = useAction(deleteMenu, {
     onExecute: () => {
-      toast.loading("Eliminando Menú...")
+      toast.loading("Deleting Menu...")
     },
     onSuccess: ({ data }) => {
       toast.dismiss()
       if (data?.failure?.reason) {
         toast.error(data.failure.reason)
       } else if (data?.success) {
-        toast.success("Menú eliminado")
+        toast.success("Menu deleted")
       }
       reset()
     },
     onError: () => {
-      toast.error("Algo salió mal")
+      toast.error("Something went wrong")
       reset()
     }
   })
@@ -54,19 +54,19 @@ export default function MenuDelete({
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Eliminar Menú</AlertDialogTitle>
+          <AlertDialogTitle>Delete Menu</AlertDialogTitle>
           <AlertDialogDescription>
-            ¿Estás seguro de eliminar este menú? Esta acción no se puede
-            deshacer
+            Are you sure you want to delete this menu? This action cannot be
+            undone
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             className={cn(buttonVariants({ variant: "destructive" }))}
             onClick={() => onDeleteMenu()}
           >
-            Eliminar
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

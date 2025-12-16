@@ -39,7 +39,7 @@ export function BasicPlanView({ itemCount }: { itemCount: number }) {
 
     if (error) {
       console.error("Error creating checkout session:", error)
-      toast.error("Error al iniciar el proceso de pago. Inténtalo de nuevo.")
+      toast.error("Failed to start payment process. Please try again.")
     }
   }
 
@@ -47,7 +47,7 @@ export function BasicPlanView({ itemCount }: { itemCount: number }) {
     <Card>
       <CardHeader>
         <CardTitle>Plan</CardTitle>
-        <CardDescription>Básico</CardDescription>
+        <CardDescription>Basic</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="mt-2 flex flex-row gap-4">
@@ -62,12 +62,12 @@ export function BasicPlanView({ itemCount }: { itemCount: number }) {
           </div>
           <div className="flex flex-col justify-center gap-1">
             <p className="text-sm font-semibold text-gray-600 dark:text-gray-300">
-              Has consumido {itemCount} de los {appConfig.itemLimit} productos
-              disponibles en tu plan
+              You have used {itemCount} of {appConfig.itemLimit} products
+              available in your plan
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              Actualiza tu plan para agregar más productos a tu menú y disfrutar
-              de más beneficios.
+              Upgrade your plan to add more products to your menu and enjoy more
+              benefits.
             </p>
           </div>
         </div>
@@ -85,13 +85,13 @@ export function BasicPlanView({ itemCount }: { itemCount: number }) {
                 value="monthly"
                 className="w-1/2 text-sm data-[state=on]:bg-indigo-600 data-[state=on]:text-white"
               >
-                Mensual
+                Monthly
               </ToggleGroupItem>
               <ToggleGroupItem
                 value="yearly"
                 className="w-1/2 text-sm data-[state=on]:bg-indigo-600 data-[state=on]:text-white"
               >
-                Anual
+                Annual
                 <span className="ml-1.5 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-600 dark:bg-green-900 dark:text-green-300">
                   -20%
                 </span>
@@ -119,7 +119,7 @@ export function BasicPlanView({ itemCount }: { itemCount: number }) {
                         : `${new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN" }).format(tier.priceYearly)} MXN/año`}
                     </div>
                   ) : (
-                    <div className="mt-1 text-sm text-gray-500">Gratis</div>
+                    <div className="mt-1 text-sm text-gray-500">Free</div>
                   )}
                 </div>
               </CardHeader>
@@ -137,7 +137,7 @@ export function BasicPlanView({ itemCount }: { itemCount: number }) {
       <Separator />
       <CardFooter className="justify-end py-4">
         <Button onClick={handleStripeCheckout} className="w-full sm:w-auto">
-          Obtener Pro {billingInterval === "monthly" ? "Mensual" : "Anual"}
+          Get Pro {billingInterval === "monthly" ? "Monthly" : "Annual"}
         </Button>
       </CardFooter>
     </Card>

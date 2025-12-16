@@ -52,12 +52,12 @@ export default function Hero() {
                   }}
                 >
                   <AnimatedShinyText className="inset-0 inline-flex items-center justify-center px-4 py-1 text-xs transition ease-out hover:text-gray-600 hover:duration-300 sm:text-sm dark:hover:text-gray-400">
-                    📣 Biztro en versión beta
+                    📣 ApsaraMenu in beta version
                     <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
                   </AnimatedShinyText>
                 </motion.div>
                 <Link
-                  href="/blog/beta-biztro"
+                  href="/blog/beta-apsaramenu"
                   className="z-50 col-start-1 row-start-1"
                 >
                   <span className="block h-full w-full"></span>
@@ -76,8 +76,8 @@ export default function Hero() {
                   type: "spring"
                 }}
               >
-                Tu menú digital <br />
-                en minutos
+                Your digital menu <br />
+                in minutes
               </motion.h1>
 
               <motion.p
@@ -92,7 +92,7 @@ export default function Hero() {
                   type: "spring"
                 }}
               >
-                Con Biztro, crea y administra tu menú online de forma sencilla.
+                With ApsaraMenu, create and manage your online menu with ease.
               </motion.p>
 
               <motion.div
@@ -107,9 +107,7 @@ export default function Hero() {
                   type: "spring"
                 }}
               >
-                <span className="text-gray-500">
-                  Únete a nuestra lista de espera
-                </span>
+                <span className="text-gray-500">Join our waitlist</span>
                 <Waitlist />
               </motion.div>
             </div>

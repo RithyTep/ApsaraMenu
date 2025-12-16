@@ -6,8 +6,8 @@ type Link = {
 }
 
 export const links: Link[] = [
-  { text: "Términos", url: "/terms" },
-  { text: "Privacidad", url: "/privacy" }
+  { text: "Terms", url: "/terms" },
+  { text: "Privacy", url: "/privacy" }
 ]
 
 export default async function Footer() {
@@ -24,17 +24,17 @@ export default async function Footer() {
             className="opacity-30 dark:invert"
           />
           <p className="text-sm font-medium text-gray-500 dark:text-white">
-            <span className="hidden sm:inline">Biztro</span> &copy;{" "}
+            <span className="hidden sm:inline">ApsaraMenu</span> &copy;{" "}
             {new Date().getFullYear()}
           </p>
         </div>
 
         <ul className="flex items-center justify-center gap-x-5 sm:gap-x-10">
           <a
-            href="mailto:contacto@biztro.co"
+            href="mailto:teprithy2020@gmail.com"
             className="text-[15px]/normal font-medium text-gray-500 transition-all duration-100 ease-linear hover:text-gray-900 hover:underline hover:underline-offset-4 dark:font-medium dark:text-gray-400 dark:hover:text-gray-100"
           >
-            Contacto
+            Contact
           </a>
           {links.map((link, index) => (
             <li

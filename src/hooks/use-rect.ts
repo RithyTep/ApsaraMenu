@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
-export const useRect = <T extends Element>( // skipcq: JS-0356
+export const useRect = (
+  // skipcq: JS-0356
   dom: HTMLElement | null
 ): DOMRect | undefined => {
   // const ref = useRef<T>(null)

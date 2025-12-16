@@ -52,8 +52,8 @@ export function OnboardingCards({
       <div className="mb-4 flex items-end sm:mb-2 sm:items-center">
         <div className="grow">
           <PageSubtitle
-            title="Bienvenido a Biztro"
-            description="Puedes iniciar completando los siguientes pasos para tener tú menú listo."
+            title="Welcome to ApsaraMenu"
+            description="Get started by completing the following steps to have your menu ready."
           >
             <OnboardingProgress progres={progress} />
           </PageSubtitle>
@@ -74,7 +74,7 @@ export function OnboardingCards({
                 <Badge className="p-2" variant="violet">
                   <Store className="size-4" />
                 </Badge>
-                <CardTitle className="text-lg font-medium">Negocio</CardTitle>
+                <CardTitle className="text-lg font-medium">Business</CardTitle>
               </div>
               <Link href="/dashboard/settings">
                 <Button
@@ -85,11 +85,11 @@ export function OnboardingCards({
                   {orgReady ? (
                     <>
                       <CheckCircle className="size-4" />
-                      <span className="hidden xl:inline">Listo</span>
+                      <span className="hidden xl:inline">Ready</span>
                     </>
                   ) : (
                     <>
-                      <span className="hidden xl:inline">Ver</span>
+                      <span className="hidden xl:inline">View</span>
                       <ArrowRight className="size-4" />
                     </>
                   )}
@@ -98,7 +98,7 @@ export function OnboardingCards({
             </CardHeader>
             <CardContent className="space-y-2 p-3">
               <CardDescription className="text-xs">
-                Captura la información de tu negocio, como nombre, logo, etc.
+                Capture your business information, such as name, logo, etc.
               </CardDescription>
             </CardContent>
           </Card>
@@ -109,7 +109,7 @@ export function OnboardingCards({
                 <Badge className="p-2" variant="destructive">
                   <MapPin className="size-4" />
                 </Badge>
-                <CardTitle className="text-lg font-medium">Sucursal</CardTitle>
+                <CardTitle className="text-lg font-medium">Location</CardTitle>
               </div>
               <Link href="/dashboard/settings/locations">
                 <Button
@@ -120,11 +120,11 @@ export function OnboardingCards({
                   {locationReady ? (
                     <>
                       <CheckCircle className="size-4" />
-                      <span className="hidden xl:inline">Listo</span>
+                      <span className="hidden xl:inline">Ready</span>
                     </>
                   ) : (
                     <>
-                      <span className="hidden xl:inline">Ver</span>
+                      <span className="hidden xl:inline">View</span>
                       <ArrowRight className="size-4" />
                     </>
                   )}
@@ -133,7 +133,7 @@ export function OnboardingCards({
             </CardHeader>
             <CardContent className="space-y-2 p-3">
               <CardDescription className="text-xs">
-                Registra la dirección, horarios y redes sociales.
+                Register the address, hours, and social media.
               </CardDescription>
             </CardContent>
           </Card>
@@ -144,7 +144,7 @@ export function OnboardingCards({
                 <Badge className="p-2" variant="green">
                   <ShoppingBag className="size-4" />
                 </Badge>
-                <CardTitle className="text-lg font-medium">Productos</CardTitle>
+                <CardTitle className="text-lg font-medium">Products</CardTitle>
               </div>
               <Link href="/dashboard/menu-items">
                 <Button
@@ -155,11 +155,11 @@ export function OnboardingCards({
                   {menuItemsReady ? (
                     <>
                       <CheckCircle className="size-4" />
-                      <span className="hidden xl:inline">Listo</span>
+                      <span className="hidden xl:inline">Ready</span>
                     </>
                   ) : (
                     <>
-                      <span className="hidden xl:inline">Ver</span>
+                      <span className="hidden xl:inline">View</span>
                       <ArrowRight className="size-4" />
                     </>
                   )}
@@ -168,7 +168,7 @@ export function OnboardingCards({
             </CardHeader>
             <CardContent className="space-y-2 p-3">
               <CardDescription className="text-xs">
-                Crea tus productos y categorías para tu menú.
+                Create your products and categories for your menu.
               </CardDescription>
             </CardContent>
           </Card>

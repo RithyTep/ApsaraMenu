@@ -8,6 +8,8 @@ export function useForwardedRef<T>(ref: React.ForwardedRef<T>) {
     if (typeof ref === "function") {
       ref(innerRef.current)
     } else {
+      // This is intentional - we're syncing refs
+      // eslint-disable-next-line react-hooks/immutability
       ref.current = innerRef.current
     }
   })

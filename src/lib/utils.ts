@@ -1,4 +1,5 @@
 import InviteUserEmail from "@/emails/invite"
+import type { OpeningHours } from "@/generated/prisma-client/client"
 import {
   getLocalTimeZone,
   parseTime,
@@ -7,7 +8,6 @@ import {
   toCalendarDateTime,
   today
 } from "@internationalized/date"
-import type { OpeningHours } from "@/generated/prisma-client/client"
 import { clsx, type ClassValue } from "clsx"
 import { Resend } from "resend"
 import { twMerge } from "tailwind-merge"
@@ -37,7 +37,7 @@ export const getBaseUrl = () => {
 }
 
 export function getOpenHoursLegend(openingHours: OpeningHours[]) {
-  let status = "Cerrado"
+  let status = "Closed"
 
   const currentDate = today(getLocalTimeZone())
   const now = new Date()
@@ -45,7 +45,7 @@ export function getOpenHoursLegend(openingHours: OpeningHours[]) {
     currentDate,
     new Time(now.getHours(), now.getMinutes())
   )
-  const startWeek = startOfWeek(currentDate, "es-MX")
+  const startWeek = startOfWeek(currentDate, "en-US")
   // console.log("startWeek", startWeek)
 
   for (const day of openingHours) {
@@ -97,7 +97,7 @@ export function getOpenHoursLegend(openingHours: OpeningHours[]) {
 
     const formatClosed = closeDateTime
       .toDate(getLocalTimeZone())
-      .toLocaleTimeString("es-MX", {
+      .toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit"
       })
@@ -107,7 +107,7 @@ export function getOpenHoursLegend(openingHours: OpeningHours[]) {
       currentTime.compare(openDateTime) >= 0 &&
       currentTime.compare(closeDateTime) <= 0
     ) {
-      status = `Abierto - Hasta ${endTime.hour === 1 ? "la" : "las"} ${formatClosed}`
+      status = `Open - Until ${formatClosed}`
       break
     }
   }
@@ -124,7 +124,7 @@ export function getOpenHoursStatus(openingHours: OpeningHours[]) {
     new Time(now.getHours(), now.getMinutes())
   )
 
-  const startWeek = startOfWeek(currentDate, "es-MX")
+  const startWeek = startOfWeek(currentDate, "en-US")
 
   for (const day of openingHours) {
     // convert day to date based on the week start
@@ -193,7 +193,7 @@ export function getFormattedTime(time: string | null | undefined) {
   const timeDate = toCalendarDateTime(currentDate, parsedTime)
   return timeDate
     .toDate(getLocalTimeZone())
-    .toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit" })
+    .toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
 }
 
 export const calculateTrialEndUnixTimestamp = (
@@ -243,9 +243,9 @@ export const sendOrganizationInvitation = async ({
   const baseUrl = getBaseUrl()
 
   const { error } = await resend.emails.send({
-    from: "noreply@biztro.co",
+    from: "teprithy2020@gmail.com",
     to: email,
-    subject: `Invitación a unirse a ${teamName}`,
+    subject: `Invitation to join ${teamName}`,
     react: InviteUserEmail({
       username: shortname,
       invitedByUsername,
@@ -277,7 +277,7 @@ export async function upgradeOrganizationPlan(
       console.error("Error upgrading organization plan:", error)
       return {
         failure: {
-          reason: "No se pudo actualizar el plan de la organización"
+          reason: "Could not update organization plan"
         }
       }
     }

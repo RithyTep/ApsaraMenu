@@ -2,311 +2,291 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Términos de uso",
-  description: "Términos de uso de la aplicación Cargo."
+  title: "Terms of Service",
+  description: "Terms of Service for the ApsaraMenu application."
 }
 
 export default function TermsPage() {
-  const application = "Biztro"
+  const application = "ApsaraMenu"
   return (
-    <section className="prose prose-gray mt-10 dark:prose-invert">
-      <h1>Términos de uso</h1>
+    <section className="prose prose-gray dark:prose-invert mt-10">
+      <h1>Terms of Service</h1>
       <h2 className="font-medium text-gray-500">
-        A partir del 1 de junio de 2024
+        Effective as of June 1, 2024
       </h2>
       <ol>
         <li>
           <p>
-            <strong>Acuerdo.</strong> Los siguientes Términos de servicio (los{" "}
-            <strong>&quot;Términos&quot;</strong> ) constituyen un acuerdo
-            vinculante entre usted y {application} Software ({" "}
+            <strong>Agreement.</strong> The following Terms of Service (the{" "}
+            <strong>&quot;Terms&quot;</strong>) constitute a binding agreement
+            between you and {application} Software ({" "}
             <strong>&quot;{application}&quot;,</strong>{" "}
-            <strong>&quot;nosotros&quot;,</strong>{" "}
-            <strong>&quot;nuestro&quot;</strong> y{" "}
-            <strong>&quot;nos&quot;</strong> ), el operador de la plataforma
-            {application} (la <strong>&quot; Plataforma&quot;</strong> ). Estos
-            Términos establecen condiciones con respecto a su acceso y uso de la
-            Plataforma.
+            <strong>&quot;we&quot;,</strong> <strong>&quot;our&quot;</strong>{" "}
+            and <strong>&quot;us&quot;</strong>), the operator of the{" "}
+            {application} platform (the <strong>&quot;Platform&quot;</strong>).
+            These Terms establish conditions regarding your access and use of
+            the Platform.
           </p>
           <p>
-            Al acceder o utilizar la Plataforma de cualquier manera, usted
-            acepta estar sujeto a estos Términos.
+            By accessing or using the Platform in any way, you agree to be bound
+            by these Terms.
           </p>
           <p>
-            Su acceso y uso de la Plataforma se realiza en nombre de una o más
-            organizaciones a las que está afiliado (cada una, una{" "}
-            <strong>&quot;Organización&quot;</strong> ). {application} y cada
-            una de las Organizaciones han celebrado un acuerdo separado (el{" "}
-            <strong>“Acuerdo de Organización”</strong> ) que rige la prestación
-            de servicios de {application} a esa Organización. Estos Términos no
-            alteran de ninguna manera los términos de los Acuerdos de
-            Organización. En la medida en que estos Términos entren en conflicto
-            con los Acuerdos de organización, prevalecerán los términos de los
-            Acuerdos de organización.
+            Your access and use of the Platform is on behalf of one or more
+            organizations to which you are affiliated (each, an{" "}
+            <strong>&quot;Organization&quot;</strong>). {application} and each
+            of the Organizations have entered into a separate agreement (the{" "}
+            <strong>&quot;Organization Agreement&quot;</strong>) that governs
+            the provision of {application} services to that Organization. These
+            Terms do not alter in any way the terms of the Organization
+            Agreements. To the extent these Terms conflict with the Organization
+            Agreements, the terms of the Organization Agreements shall prevail.
           </p>
         </li>
         <li>
           <p>
-            <strong>Modificación.</strong> {application} se reserva el derecho,
-            a su exclusivo criterio, de modificar estos Términos en cualquier
-            momento y sin previo aviso. La fecha de la última modificación de
-            los Términos se publicará al comienzo de estos Términos. Es su
-            responsabilidad comprobar periódicamente si hay actualizaciones. Al
-            continuar accediendo o utilizando la Plataforma, usted indica que
-            acepta estar sujeto a los Términos modificados.
+            <strong>Modification.</strong> {application} reserves the right, at
+            its sole discretion, to modify these Terms at any time and without
+            prior notice. The date of the last modification of the Terms will be
+            posted at the beginning of these Terms. It is your responsibility to
+            periodically check for updates. By continuing to access or use the
+            Platform, you indicate that you agree to be bound by the modified
+            Terms.
           </p>
         </li>
         <li>
-          <strong>Privacidad.</strong> Estos Términos incluyen las disposiciones
-          de este documento, así como las de nuestra{" "}
-          <Link href="/privacy">Política de Privacidad</Link>.
+          <strong>Privacy.</strong> These Terms include the provisions of this
+          document, as well as those of our{" "}
+          <Link href="/privacy">Privacy Policy</Link>.
         </li>
         <li>
           <p>
-            <strong>Uso Aceptable.</strong> Por el presente, {application} le
-            otorga permiso para acceder y utilizar la Plataforma, siempre que
-            dicho uso cumpla con estos Términos y, además, acepta
-            específicamente que su uso cumplirá con las siguientes restricciones
-            y obligaciones:
+            <strong>Acceptable Use.</strong> {application} hereby grants you
+            permission to access and use the Platform, provided that such use
+            complies with these Terms and, furthermore, you specifically agree
+            that your use will comply with the following restrictions and
+            obligations:
           </p>
           <ul>
             <li>
-              Solo puede utilizar la Plataforma en nombre de las Organizaciones
-              y solo según lo permitido en los Acuerdos de la Organización.
+              You may only use the Platform on behalf of the Organizations and
+              only as permitted in the Organization Agreements.
             </li>
             <li>
-              No puede transferir su acceso a otros ni permitir que otros
-              accedan a la Plataforma a través de su propio acceso.
+              You may not transfer your access to others or allow others to
+              access the Platform through your own access.
             </li>
             <li>
-              Sólo puede utilizar la Plataforma para actividades legales. Es su
-              responsabilidad cumplir con todas las leyes y regulaciones
-              locales, estatales y federales aplicables.
+              You may only use the Platform for legal activities. It is your
+              responsibility to comply with all applicable local, state, and
+              federal laws and regulations.
             </li>
             <li>
-              No puede descompilar, realizar ingeniería inversa ni intentar
-              obtener el código fuente o las ideas subyacentes o información de
-              la Plataforma o relacionada con ella.
+              You may not decompile, reverse engineer, or attempt to obtain the
+              source code or underlying ideas or information from or related to
+              the Platform.
             </li>
             <li>
-              No puede ingresar, almacenar ni transmitir virus, gusanos u otros
-              códigos maliciosos dentro, a través de, hacia o utilizando la
-              Plataforma.
+              You may not enter, store, or transmit viruses, worms, or other
+              malicious code within, through, to, or using the Platform.
             </li>
             <li>
-              No puede anular, evitar, eludir, eliminar, desactivar ni eludir de
-              otro modo ningún mecanismo de protección de software en la
-              Plataforma.
+              You may not override, circumvent, bypass, remove, disable, or
+              otherwise defeat any software protection mechanism on the
+              Platform.
             </li>
             <li>
-              No puede eliminar ni ocultar ninguna identificación de producto,
-              derechos de autor u otro aviso de propiedad de ningún elemento de
-              la Plataforma o documentación asociada.
+              You may not remove or hide any product identification, copyright,
+              or other proprietary notice from any element of the Platform or
+              associated documentation.
             </li>
           </ul>
         </li>
         <li>
           <p>
-            <strong>Cuentas de usuario.</strong> Puede crear una cuenta
-            iniciando sesión en su cuenta con ciertas plataformas de terceros
-            (&quot;Autenticadores de terceros&quot;, incluido, entre otros,
-            Google). El Autenticador de terceros determinará a qué información
-            podremos acceder y utilizar. Su cuenta de {application} se creará
-            para su uso de la Plataforma en función de la información personal
-            que nos proporcione o que obtengamos a través del Autenticador de
-            terceros.
+            <strong>User Accounts.</strong> You may create an account by logging
+            in with your account on certain third-party platforms
+            (&quot;Third-Party Authenticators&quot;, including but not limited
+            to Google). The Third-Party Authenticator will determine what
+            information we can access and use. Your {application} account will
+            be created for your use of the Platform based on the personal
+            information you provide us or that we obtain through the Third-Party
+            Authenticator.
           </p>
           <p>
-            Usted y las Organizaciones son responsables de mantener la
-            confidencialidad de su contraseña y cuenta, y son totalmente
-            responsables de todas y cada una de las actividades que ocurran bajo
-            su contraseña o cuenta. Usted acepta (a) notificar inmediatamente a
-            {application} sobre cualquier uso no autorizado de su contraseña o
-            cuenta o cualquier otra violación de seguridad, y (b) asegurarse de
-            salir de su cuenta al final de cada sesión cuando acceda a la
-            Plataforma.
-            {application} no será responsable de ninguna pérdida o daño que
-            surja del incumplimiento de esta sección.
+            You and the Organizations are responsible for maintaining the
+            confidentiality of your password and account, and are fully
+            responsible for any and all activities that occur under your
+            password or account. You agree to (a) immediately notify{" "}
+            {application} of any unauthorized use of your password or account or
+            any other security breach, and (b) ensure that you log out of your
+            account at the end of each session when accessing the Platform.{" "}
+            {application} will not be liable for any loss or damage arising from
+            your failure to comply with this section.
           </p>
           <p>
-            Si desea que cancelemos su cuenta, siga los procedimientos
-            establecidos en nuestra{" "}
-            <Link href="/privacy">Política de Privacidad.</Link>
+            If you want us to cancel your account, please follow the procedures
+            set forth in our <Link href="/privacy">Privacy Policy.</Link>
           </p>
           <p>
-            No puede transferir su cuenta a nadie más sin nuestro permiso previo
-            por escrito.
+            You may not transfer your account to anyone else without our prior
+            written permission.
           </p>
         </li>
         <li>
           <p>
-            <strong>Contenido.</strong> Cada Organización es propietaria de todo
-            el contenido que envía a través de la Plataforma, incluido cualquier
-            contenido que usted u otros representantes de la Organización envíen
-            a través de la Plataforma (colectivamente, el{" "}
-            <strong>&quot;Contenido de la Organización&quot;</strong> ).{" "}
+            <strong>Content.</strong> Each Organization owns all content it
+            submits through the Platform, including any content that you or
+            other representatives of the Organization submit through the
+            Platform (collectively, the{" "}
+            <strong>&quot;Organization Content&quot;</strong>).{" "}
           </p>
           <p>
-            No puede usar, copiar, adaptar, modificar, preparar trabajos
-            derivados basados ​​en, distribuir, licenciar, vender, transferir,
-            exhibir públicamente, transmitir, difundir o explotar de otro modo
-            el Contenido del {application}, excepto cuando sea necesario para
-            acceder y utilizar la Plataforma en nombre de las Organizaciones de
-            conformidad con estos Términos y los Acuerdos de Organización.
-          </p>
-        </li>
-        <li>
-          <p>
-            <strong>Aplicaciones de terceros.</strong> Usted o las
-            Organizaciones pueden optar por utilizar ciertos productos o
-            servicios de terceros en relación con la Plataforma (las{" "}
-            <strong>“Aplicaciones de Terceros”</strong> ). Su uso de cualquier
-            Aplicación de terceros está sujeto a un acuerdo separado entre la
-            Organización correspondiente y el proveedor de esa Aplicación de
-            terceros (el <strong>&quot;Proveedor externo&quot;</strong> ) o
-            usted y el Proveedor externo. Por la presente, reconoce que{" "}
-            {application} no controla dichos Proveedores externos o Aplicaciones
-            de terceros, y no se hace responsable de su contenido, operación o
-            uso. {application} no realiza ninguna representación, garantía o
-            respaldo, expreso o implícito, con respecto a la legalidad,
-            exactitud, calidad o autenticidad del contenido, la información o
-            los servicios proporcionados por las aplicaciones de terceros. POR
-            EL PRESENTE,
-            {application} RENUNCIA A TODA RESPONSABILIDAD POR CUALQUIER
-            APLICACIÓN DE TERCEROS Y POR LOS ACTOS U OMISIONES DE CUALQUIER
-            PROVEEDOR DE TERCEROS, y por la presente usted renuncia
-            irrevocablemente a cualquier reclamo contra {application} con
-            respecto al contenido o el funcionamiento de cualquier Aplicación de
-            terceros.
-          </p>
-        </li>
-        <li>
-          <strong>Comentario.</strong> Le damos la bienvenida y le animamos a
-          que proporcione su opinión, comentarios y sugerencias para mejorar la
-          Plataforma ( <strong>&quot;Comentarios&quot;</strong> ). Usted acepta
-          que {application} tiene el derecho, pero no la obligación, de utilizar
-          dichos Comentarios sin ninguna obligación de proporcionarle crédito,
-          pago de regalías o interés de propiedad en los cambios en la
-          Plataforma.
-        </li>
-        <li>
-          <p>
-            <strong>Terminación.</strong> {application} puede rescindir
-            inmediatamente y sin previo aviso estos Términos e inhabilitar su
-            acceso a la Plataforma si {application} determina, a su entera
-            discreción, que (a) usted ha violado estos Términos, o (b) ha
-            violado las leyes, regulaciones o derechos de terceros aplicables. .
-            Además, si todos los Acuerdos de organización vencen o se rescinden
-            por cualquier motivo, {application}
-            rescindirá inmediatamente estos Términos y su acceso a la
-            Plataforma. {application} podrá suspender temporalmente su acceso a
-            la Plataforma en determinadas circunstancias establecidas en los
-            Acuerdos de Organización.
-          </p>
-          <p>
-            Las disposiciones que, por su naturaleza, deberían sobrevivir a la
-            terminación de estos Términos seguirán vigentes. A modo de ejemplo,
-            todo lo siguiente sobrevivirá a la terminación: cualquier limitación
-            de nuestra responsabilidad, cualquier término relacionado con la
-            propiedad o los derechos de propiedad intelectual y los términos
-            relacionados con las disputas entre nosotros.
+            You may not use, copy, adapt, modify, prepare derivative works based
+            on, distribute, license, sell, transfer, publicly display, publicly
+            perform, transmit, broadcast, or otherwise exploit {application}{" "}
+            Content, except as necessary to access and use the Platform on
+            behalf of the Organizations in accordance with these Terms and the
+            Organization Agreements.
           </p>
         </li>
         <li>
           <p>
-            <strong>Renuncia de Garantías.</strong> POR LA PRESENTE USTED
-            RECONOCE QUE ESTÁ UTILIZANDO LA PLATAFORMA BAJO SU PROPIO RIESGO. LA
-            PLATAFORMA Y EL CONTENIDO DE {application} SE PROPORCIONAN &quot;TAL
-            CUAL&quot;, Y {application}, SUS AFILIADOS Y SUS PROVEEDORES DE
-            SERVICIOS TERCEROS POR EL PRESENTE RECHAZAN CUALQUIER GARANTÍA,
-            EXPRESA E IMPLÍCITA, INCLUYENDO, PERO NO LIMITADO A, CUALQUIER
-            GARANTÍA DE EXACTITUD, CONFIABILIDAD, COMERCIABILIDAD, NO
-            INFRACCIÓN, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y CUALQUIER OTRA
-            GARANTÍA, CONDICIÓN O DECLARACIÓN, YA SEA ORAL, POR ESCRITO O EN
-            FORMA ELECTRÓNICA. {application}, SUS AFILIADOS Y SUS TERCEROS
-            PROVEEDORES DE SERVICIOS NO DECLARA NI GARANTIZAN QUE EL ACCESO A LA
-            PLATAFORMA SERÁ ININTERRUMPIDO O QUE NO HABRÁ FALLAS, ERRORES U
-            OMISIONES O PÉRDIDA DE INFORMACIÓN TRANSMITIDA, O QUE NO SE
-            TRANSMITIRÁN VIRUS A TRAVÉS DEL PLATAFORMA.
+            <strong>Third-Party Applications.</strong> You or the Organizations
+            may choose to use certain third-party products or services in
+            connection with the Platform (the{" "}
+            <strong>&quot;Third-Party Applications&quot;</strong>). Your use of
+            any Third-Party Application is subject to a separate agreement
+            between the corresponding Organization and the provider of that
+            Third-Party Application (the{" "}
+            <strong>&quot;Third-Party Provider&quot;</strong>) or you and the
+            Third-Party Provider. You hereby acknowledge that {application} does
+            not control such Third-Party Providers or Third-Party Applications
+            and is not responsible for their content, operation, or use.{" "}
+            {application} makes no representation, warranty, or endorsement,
+            express or implied, regarding the legality, accuracy, quality, or
+            authenticity of the content, information, or services provided by
+            Third-Party Applications. {application} HEREBY DISCLAIMS ALL
+            LIABILITY FOR ANY THIRD-PARTY APPLICATION AND FOR THE ACTS OR
+            OMISSIONS OF ANY THIRD-PARTY PROVIDER, and you hereby irrevocably
+            waive any claim against {application} with respect to the content or
+            operation of any Third-Party Application.
+          </p>
+        </li>
+        <li>
+          <strong>Feedback.</strong> We welcome and encourage you to provide
+          your feedback, comments, and suggestions for improving the Platform ({" "}
+          <strong>&quot;Feedback&quot;</strong>). You agree that {application}{" "}
+          has the right, but not the obligation, to use such Feedback without
+          any obligation to provide you with credit, royalty payment, or
+          ownership interest in changes to the Platform.
+        </li>
+        <li>
+          <p>
+            <strong>Termination.</strong> {application} may immediately
+            terminate these Terms without notice and disable your access to the
+            Platform if {application} determines, in its sole discretion, that
+            (a) you have violated these Terms, or (b) you have violated
+            applicable laws, regulations, or third-party rights. Additionally,
+            if all Organization Agreements expire or are terminated for any
+            reason, {application} will immediately terminate these Terms and
+            your access to the Platform. {application} may temporarily suspend
+            your access to the Platform under certain circumstances set forth in
+            the Organization Agreements.
           </p>
           <p>
-            Debido a que algunos estados no permiten la renuncia de garantías
-            implícitas, es posible que tenga derechos adicionales según las
-            leyes locales.
+            Provisions that by their nature should survive termination of these
+            Terms will remain in effect. By way of example, all of the following
+            will survive termination: any limitation of our liability, any terms
+            regarding ownership or intellectual property rights, and terms
+            relating to disputes between us.
           </p>
         </li>
         <li>
           <p>
-            <strong>Limitación de responsabilidad.</strong> SU ACCESO Y USO DE
-            LA PLATAFORMA ES EN NOMBRE DE UNA O MÁS ORGANIZACIONES. EN
-            CONSECUENCIA, EN LA MEDIDA MÁXIMA PERMITIDA POR LA LEY APLICABLE,
-            BAJO NINGUNA CIRCUNSTANCIA Y BAJO NINGUNA TEORÍA LEGAL (INCLUYENDO,
-            SIN LIMITACIÓN, AGRAVIO, CONTRATO, RESPONSABILIDAD ESTRICTA O DE
-            OTRA MANERA), {application} (O SUS LICENCIANTES O PROVEEDORES) SERÁ
-            RESPONSABLE ANTE USTED POR CUALQUIER DAÑOS DIRECTOS, INDIRECTOS,
-            ESPECIALES, INCIDENTALES O CONSECUENCIALES DE CUALQUIER TIPO,
-            INCLUYENDO DAÑOS POR PÉRDIDA DE BENEFICIOS, PÉRDIDA DE BUENA
-            VOLUNTAD, PARO LABORAL, EXACTITUD DE LOS RESULTADOS O FALLA O MAL
-            FUNCIONAMIENTO DE LA COMPUTADORA.
+            <strong>Disclaimer of Warranties.</strong> YOU HEREBY ACKNOWLEDGE
+            THAT YOU ARE USING THE PLATFORM AT YOUR OWN RISK. THE PLATFORM AND{" "}
+            {application} CONTENT ARE PROVIDED &quot;AS IS,&quot; AND{" "}
+            {application}, ITS AFFILIATES, AND ITS THIRD-PARTY SERVICE PROVIDERS
+            HEREBY DISCLAIM ANY WARRANTIES, EXPRESS AND IMPLIED, INCLUDING BUT
+            NOT LIMITED TO ANY WARRANTIES OF ACCURACY, RELIABILITY,
+            MERCHANTABILITY, NON-INFRINGEMENT, FITNESS FOR A PARTICULAR PURPOSE,
+            AND ANY OTHER WARRANTY, CONDITION, OR REPRESENTATION, WHETHER ORAL,
+            WRITTEN, OR IN ELECTRONIC FORM. {application}, ITS AFFILIATES, AND
+            ITS THIRD-PARTY SERVICE PROVIDERS DO NOT REPRESENT OR WARRANT THAT
+            ACCESS TO THE PLATFORM WILL BE UNINTERRUPTED OR THAT THERE WILL BE
+            NO FAILURES, ERRORS, OR OMISSIONS OR LOSS OF TRANSMITTED
+            INFORMATION, OR THAT NO VIRUSES WILL BE TRANSMITTED THROUGH THE
+            PLATFORM.
+          </p>
+          <p>
+            Because some states do not allow the disclaimer of implied
+            warranties, you may have additional rights under local laws.
           </p>
         </li>
         <li>
-          <strong>Avisos.</strong> Cualquier aviso u otra comunicación permitida
-          o requerida en virtud del presente se realizará por escrito y será
-          entregada por {application} (a) por correo electrónico (en cada caso a
-          la dirección que usted proporcione) o (b) mediante publicación en el
-          sitio web.
+          <p>
+            <strong>Limitation of Liability.</strong> YOUR ACCESS AND USE OF THE
+            PLATFORM IS ON BEHALF OF ONE OR MORE ORGANIZATIONS. CONSEQUENTLY, TO
+            THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, UNDER NO
+            CIRCUMSTANCES AND UNDER NO LEGAL THEORY (INCLUDING WITHOUT
+            LIMITATION TORT, CONTRACT, STRICT LIABILITY, OR OTHERWISE) SHALL{" "}
+            {application} (OR ITS LICENSORS OR PROVIDERS) BE LIABLE TO YOU FOR
+            ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+            OF ANY KIND, INCLUDING DAMAGES FOR LOSS OF PROFITS, LOSS OF
+            GOODWILL, WORK STOPPAGE, ACCURACY OF RESULTS, OR COMPUTER FAILURE OR
+            MALFUNCTION.
+          </p>
         </li>
         <li>
-          <strong>No renuncio.</strong> El hecho de que {application} no haga
-          cumplir cualquier derecho o disposición de estos Términos no
-          constituirá una renuncia a la aplicación futura de ese derecho o
-          disposición.
+          <strong>Notices.</strong> Any notice or other communication permitted
+          or required hereunder shall be in writing and shall be delivered by{" "}
+          {application} (a) by email (in each case to the address you provide)
+          or (b) by posting on the website.
         </li>
         <li>
-          <strong>Asignación.</strong> No puede ceder ni transferir estos
-          Términos, por aplicación de la ley o de otro modo, sin el
-          consentimiento previo por escrito de {application}. Cualquier intento
-          por su parte de ceder o transferir estos Términos sin dicho
-          consentimiento será nulo y sin efecto. {application} puede ceder o
-          transferir estos Términos, a su exclusivo criterio, sin restricciones.
-          Sujeto a lo anterior, estos Términos vincularán y redundarán en
-          beneficio de las partes, sus sucesores y cesionarios permitidos. A
-          menos que una persona o entidad se identifique explícitamente como un
-          tercero beneficiario de estos Términos, estos Términos no confieren ni
-          tienen la intención de conferir ningún derecho o recurso a ninguna
-          persona o entidad que no sean las partes.
+          <strong>No Waiver.</strong> The failure of {application} to enforce
+          any right or provision of these Terms shall not constitute a waiver of
+          future enforcement of that right or provision.
         </li>
         <li>
-          <strong>Divisibilidad.</strong> Si por algún motivo un árbitro o un
-          tribunal de jurisdicción competente determina que alguna disposición
-          de estos Términos es inválida o inaplicable, esa disposición se
-          aplicará en la medida máxima permitida y las demás disposiciones de
-          estos Términos permanecerán en pleno vigor y efecto.
+          <strong>Assignment.</strong> You may not assign or transfer these
+          Terms, by operation of law or otherwise, without the prior written
+          consent of {application}. Any attempt by you to assign or transfer
+          these Terms without such consent shall be void and of no effect.{" "}
+          {application} may assign or transfer these Terms, at its sole
+          discretion, without restriction. Subject to the foregoing, these Terms
+          shall bind and inure to the benefit of the parties, their successors,
+          and permitted assigns. Unless a person or entity is explicitly
+          identified as a third-party beneficiary of these Terms, these Terms do
+          not confer and are not intended to confer any rights or remedies upon
+          any person or entity other than the parties.
         </li>
         <li>
-          <strong>Ley que rige.</strong> Las leyes del Estado de California, sin
-          referencia a su elección o ley o reglas o principios de conflicto de
-          leyes, regirán estos Términos y cualquier disputa de cualquier tipo
-          que pueda surgir entre usted y {application} con respecto a estos
-          Términos. Sin perjuicio de lo anterior, usted reconoce que, dado que
-          su acceso y uso de la Plataforma se realiza en nombre de una o más
-          Organizaciones y está sujeto a los Acuerdos de la Organización,
-          cualquier disputa que surja de su uso de la Plataforma se manejará de
-          acuerdo con el proceso de resolución de disputas. establecidos en los
-          Acuerdos de Organización aplicables.
+          <strong>Severability.</strong> If for any reason an arbitrator or
+          court of competent jurisdiction determines that any provision of these
+          Terms is invalid or unenforceable, that provision shall be enforced to
+          the maximum extent permitted and the other provisions of these Terms
+          shall remain in full force and effect.
         </li>
         <li>
-          <strong>Acuerdo completo.</strong> Estos Términos constituyen el
-          acuerdo completo entre usted y {application} con respecto a su uso de
-          la Plataforma, y reemplazan todos los acuerdos anteriores, escritos u
-          orales, distintos de los Acuerdos de organización.
+          <strong>Governing Law.</strong> The laws of the State of California,
+          without reference to its choice of law or conflict of laws rules or
+          principles, shall govern these Terms and any dispute of any kind that
+          may arise between you and {application} with respect to these Terms.
+          Notwithstanding the foregoing, you acknowledge that, since your access
+          and use of the Platform is on behalf of one or more Organizations and
+          is subject to the Organization Agreements, any dispute arising from
+          your use of the Platform will be handled in accordance with the
+          dispute resolution process set forth in the applicable Organization
+          Agreements.
         </li>
-        {/* <li>
-          <strong>Contáctenos.</strong> Si tiene alguna pregunta sobre la
-          Plataforma, no dude en contactarnos en soporte@{application}hq.co o en
-          nuestra <Link href="/contact">página de contacto</Link> .
-        </li> */}
+        <li>
+          <strong>Entire Agreement.</strong> These Terms constitute the entire
+          agreement between you and {application} with respect to your use of
+          the Platform, and supersede all prior agreements, written or oral,
+          other than the Organization Agreements.
+        </li>
       </ol>
     </section>
   )

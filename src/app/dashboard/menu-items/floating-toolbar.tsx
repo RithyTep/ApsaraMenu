@@ -48,7 +48,7 @@ function FloatingToolbar({
           toast.error(data.failure.reason)
           return
         }
-        toast.success("Categorías actualizadas")
+        toast.success("Categories updated")
         table.toggleAllRowsSelected(false)
       }
     }
@@ -62,7 +62,7 @@ function FloatingToolbar({
           toast.error(data.failure.reason)
           return
         }
-        toast.success("Productos eliminados")
+        toast.success("Items deleted")
         table.toggleAllRowsSelected(false)
       }
     }
@@ -75,7 +75,7 @@ function FloatingToolbar({
           toast.error(data.failure.reason)
           return
         }
-        toast.success("Productos actualizados")
+        toast.success("Items updated")
         table.toggleAllRowsSelected(false)
       }
     })
@@ -128,10 +128,10 @@ function FloatingToolbar({
     <div className="mx-auto flex w-fit items-center gap-2">
       <div className="flex h-7 items-center rounded-full border border-dashed border-gray-600 pr-1 pl-2.5 dark:border-gray-700">
         <span className="text-xs whitespace-nowrap">
-          {rows.length} seleccionado(s)
+          {rows.length} selected
         </span>
         <Separator orientation="vertical" className="mr-1 ml-2 bg-gray-600" />
-        <TooltipHelper content="Deseleccionar todo">
+        <TooltipHelper content="Deselect all">
           <Button
             variant="ghost"
             size="icon"
@@ -144,7 +144,7 @@ function FloatingToolbar({
       </div>
       <Separator orientation="vertical" className="mx-1" />
       <Select onValueChange={handleUpdateCategory}>
-        <TooltipHelper content="Actualizar categoría">
+        <TooltipHelper content="Update category">
           <SelectTrigger asChild>
             <Button
               variant="ghost"
@@ -170,7 +170,7 @@ function FloatingToolbar({
           </SelectGroup>
         </SelectContent>
       </Select>
-      <TooltipHelper content="Recomendado">
+      <TooltipHelper content="Featured">
         <Button
           variant="ghost"
           size="icon"
@@ -185,7 +185,7 @@ function FloatingToolbar({
           )}
         </Button>
       </TooltipHelper>
-      <TooltipHelper content="Eliminar">
+      <TooltipHelper content="Delete">
         <Button
           variant="ghost"
           size="icon"
@@ -204,19 +204,19 @@ function FloatingToolbar({
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>¿Confirmar eliminación?</AlertDialogTitle>
+            <AlertDialogTitle>Confirm deletion?</AlertDialogTitle>
             <AlertDialogDescription>
-              Esta acción no se puede deshacer. Se eliminarán{" "}
-              {selectedIds.length} productos seleccionados.
+              This action cannot be undone. {selectedIds.length} selected items
+              will be deleted.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               className={cn(buttonVariants({ variant: "destructive" }))}
               onClick={handleDelete}
             >
-              Eliminar
+              Delete
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
