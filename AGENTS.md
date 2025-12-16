@@ -15,19 +15,19 @@
 
 ## Project Details
 
-| Category | Technologies |
-|----------|-------------|
-| **Core** | TypeScript, Node.js, Next.js (App Router), React 19 |
-| **UI** | Shadcn UI, Radix UI, Tailwind CSS, Lucide Icons |
-| **Forms** | React Hook Form + Zod validation |
-| **State** | nuqs (URL state), Jotai (client state) |
-| **Server** | next-safe-action (server actions) |
-| **Auth** | better-auth + middleware protection |
-| **Database** | Prisma ORM + Turso (edge SQLite) |
-| **Runtime** | Bun (package manager & scripts) |
-| **Payments** | Stripe |
-| **Email** | React Email + Resend |
-| **Analytics** | PostHog, Sentry |
+| Category      | Technologies                                        |
+| ------------- | --------------------------------------------------- |
+| **Core**      | TypeScript, Node.js, Next.js (App Router), React 19 |
+| **UI**        | Shadcn UI, Radix UI, Tailwind CSS, Lucide Icons     |
+| **Forms**     | React Hook Form + Zod validation                    |
+| **State**     | nuqs (URL state), Jotai (client state)              |
+| **Server**    | next-safe-action (server actions)                   |
+| **Auth**      | better-auth + middleware protection                 |
+| **Database**  | Prisma ORM + Turso (edge SQLite)                    |
+| **Runtime**   | Bun (package manager & scripts)                     |
+| **Payments**  | Stripe                                              |
+| **Email**     | React Email + Resend                                |
+| **Analytics** | PostHog, Sentry                                     |
 
 ---
 
@@ -77,12 +77,14 @@ bun run email        # Email dev preview
 **Role**: Senior TypeScript/React developer implementing features and writing production code.
 
 **Responsibilities**:
+
 - Implement new features following existing patterns
 - Write type-safe code with proper interfaces (never `any`)
 - Follow React Server Components (RSC) first approach
 - Maintain consistency with existing codebase style
 
 **Key Principles**:
+
 ```
 1. READ before writing - understand existing patterns
 2. Prefer server components - minimize 'use client'
@@ -92,6 +94,7 @@ bun run email        # Email dev preview
 ```
 
 **Checklist Before Submitting Code**:
+
 - [ ] TypeScript compiles without errors (`bun run typecheck`)
 - [ ] ESLint passes (`bun run lint`)
 - [ ] No `any` types introduced
@@ -100,6 +103,7 @@ bun run email        # Email dev preview
 - [ ] Follows existing naming conventions
 
 **Files to Inspect First**:
+
 - `src/env.mjs` - Environment schema
 - `src/middleware.ts` - Auth rules
 - `prisma/schema.prisma` - Database schema
@@ -113,41 +117,47 @@ bun run email        # Email dev preview
 
 **Review Categories**:
 
-| Category | Focus Areas |
-|----------|-------------|
-| **Security** | XSS, SQL injection, auth bypass, secrets exposure |
-| **Performance** | Bundle size, unnecessary re-renders, N+1 queries |
-| **Type Safety** | Proper interfaces, no `any`, correct generics |
-| **Best Practices** | RSC usage, error handling, accessibility |
-| **Consistency** | Naming, structure, patterns alignment |
+| Category           | Focus Areas                                       |
+| ------------------ | ------------------------------------------------- |
+| **Security**       | XSS, SQL injection, auth bypass, secrets exposure |
+| **Performance**    | Bundle size, unnecessary re-renders, N+1 queries  |
+| **Type Safety**    | Proper interfaces, no `any`, correct generics     |
+| **Best Practices** | RSC usage, error handling, accessibility          |
+| **Consistency**    | Naming, structure, patterns alignment             |
 
 **Review Checklist**:
+
 ```markdown
 ## Security
+
 - [ ] No hardcoded secrets or credentials
 - [ ] Input validation on all user inputs
 - [ ] Auth checks on protected routes
 - [ ] No XSS vulnerabilities in dynamic content
 
 ## Performance
+
 - [ ] No unnecessary client components
 - [ ] Images optimized (WebP, lazy loading)
 - [ ] No large dependencies in client bundles
 - [ ] Efficient database queries (no N+1)
 
 ## Code Quality
+
 - [ ] No `any` types
 - [ ] Proper error handling
 - [ ] Consistent naming conventions
 - [ ] DRY principles followed
 
 ## Documentation
+
 - [ ] Complex logic is commented
 - [ ] Public APIs have JSDoc
 - [ ] Breaking changes documented
 ```
 
 **Feedback Format**:
+
 ```
 [SEVERITY] file:line - Issue description
 
@@ -193,22 +203,28 @@ Severity levels: `CRITICAL`, `WARNING`, `SUGGESTION`, `NITPICK`
 ```
 
 **Structured Bug Report Template**:
+
 ```markdown
 ## Bug Description
+
 [What is happening vs what should happen]
 
 ## Steps to Reproduce
+
 1. [Step 1]
 2. [Step 2]
 
 ## Environment
+
 - Browser: [if relevant]
 - Component: [file path]
 - Related state: [relevant state/props]
 
 ## Error Messages
 ```
+
 [Stack trace or console errors]
+
 ```
 
 ## Root Cause Analysis
@@ -219,6 +235,7 @@ Severity levels: `CRITICAL`, `WARNING`, `SUGGESTION`, `NITPICK`
 ```
 
 **Common Issues in This Codebase**:
+
 - Missing env vars - check `src/env.mjs` schema
 - Auth issues - verify middleware in `src/middleware.ts`
 - Database state - ensure `prisma generate` has run
@@ -231,45 +248,52 @@ Severity levels: `CRITICAL`, `WARNING`, `SUGGESTION`, `NITPICK`
 **Role**: Analyst working with data, metrics, and database queries.
 
 **Capabilities**:
+
 - Prisma query optimization
 - Database schema analysis
 - Data transformation and validation
 - Analytics integration (PostHog)
 
 **Best Practices**:
+
 ```typescript
 // Efficient Prisma queries
 const users = await prisma.user.findMany({
-  where: { status: 'active' },
+  where: { status: "active" },
   select: { id: true, name: true, email: true }, // Select only needed fields
-  take: 50, // Always paginate
-});
+  take: 50 // Always paginate
+})
 
 // Use transactions for related operations
 await prisma.$transaction([
   prisma.order.create({ data: orderData }),
-  prisma.inventory.update({ where: { id }, data: { quantity: { decrement: 1 } } }),
-]);
+  prisma.inventory.update({
+    where: { id },
+    data: { quantity: { decrement: 1 } }
+  })
+])
 ```
 
 **Data Validation Pattern**:
+
 ```typescript
-import { z } from 'zod';
+import { z } from "zod"
 
 const DataSchema = z.object({
   id: z.string().uuid(),
   value: z.number().positive(),
-  timestamp: z.date(),
-});
+  timestamp: z.date()
+})
 
-type DataType = z.infer<typeof DataSchema>;
+type DataType = z.infer<typeof DataSchema>
 
 function processData(input: unknown): DataType {
-  return DataSchema.parse(input);
+  return DataSchema.parse(input)
 }
 ```
 
 **Key Files**:
+
 - `prisma/schema.prisma` - Database models
 - `src/server/` - Server-side data logic
 - `src/lib/` - Utility functions
@@ -281,6 +305,7 @@ function processData(input: unknown): DataType {
 **Role**: Information gatherer for documentation, best practices, and external resources.
 
 **Research Workflow**:
+
 ```
 1. DEFINE scope and specific questions
 2. SEARCH authoritative sources (docs, GitHub, Stack Overflow)
@@ -302,21 +327,26 @@ function processData(input: unknown): DataType {
 | Zod | zod.dev |
 
 **Research Report Format**:
+
 ```markdown
 ## Research Summary: [Topic]
 
 ### Key Findings
+
 - [Finding 1]
 - [Finding 2]
 
 ### Recommendations
+
 1. [Recommendation with rationale]
 
 ### Sources
+
 - [Source 1](url) - [brief description]
 - [Source 2](url) - [brief description]
 
 ### Implementation Notes
+
 [Any codebase-specific considerations]
 ```
 
@@ -327,11 +357,13 @@ function processData(input: unknown): DataType {
 **Role**: Automated git operations following project conventions.
 
 **Capabilities**:
+
 - Generate conventional commit messages from staged changes
 - Create semantic, descriptive commits
 - Validate commit message format before committing
 
 **How to Invoke**:
+
 ```
 "As Git Agent, commit the current changes"
 "As Git Agent, stage and commit all menu-related changes"
@@ -339,6 +371,7 @@ function processData(input: unknown): DataType {
 ```
 
 **Commit Workflow**:
+
 ```
 1. Review staged changes (git diff --staged)
 2. Analyze the type of change (feat/fix/refactor/etc.)
@@ -348,6 +381,7 @@ function processData(input: unknown): DataType {
 ```
 
 **Auto-Commit Command Examples**:
+
 ```bash
 # Let agent decide message
 "Commit these changes with appropriate conventional commit"
@@ -368,6 +402,7 @@ function processData(input: unknown): DataType {
 This project uses **Conventional Commits** with commitlint enforcement.
 
 **Format**:
+
 ```
 <type>(<scope>): <description>
 
@@ -390,6 +425,7 @@ This project uses **Conventional Commits** with commitlint enforcement.
 | `ci` | CI/CD changes |
 
 **Scopes** (project-specific):
+
 - `auth` - Authentication/authorization
 - `api` - API routes and handlers
 - `ui` - UI components
@@ -399,6 +435,7 @@ This project uses **Conventional Commits** with commitlint enforcement.
 - `payment` - Stripe/payment features
 
 **Examples**:
+
 ```bash
 feat(menu): add item variant support
 fix(auth): resolve session expiration issue
@@ -419,31 +456,43 @@ main (protected)
 ### Pre-commit Hooks
 
 Husky runs on commit:
+
 - ESLint with auto-fix
 - Prettier formatting
 - Commitlint validation
+
+**Note**: Hooks are configured to work with Claude Code and any shell environment:
+
+- Auto-detects `bun` or `npx` runtime
+- Graceful fallback if neither is available
+- No `--no-verify` needed for normal commits
 
 ### Pull Request Guidelines
 
 ```markdown
 ## Summary
+
 [Brief description of changes]
 
 ## Type of Change
+
 - [ ] Feature
 - [ ] Bug fix
 - [ ] Refactor
 - [ ] Documentation
 
 ## Testing
+
 - [ ] Tested locally
 - [ ] Type check passes
 - [ ] Lint passes
 
 ## Screenshots (if UI changes)
+
 [Add screenshots]
 
 ## Related Issues
+
 Closes #[issue number]
 ```
 
@@ -457,6 +506,7 @@ Closes #[issue number]
 - Use React Hook Forms with Zod validation when creating Forms
 
 **Component Structure**:
+
 ```typescript
 // components/feature/my-component.tsx
 'use client'; // Only if needed
@@ -494,6 +544,7 @@ export function MyComponent({ title, onAction }: MyComponentProps) {
 - Optimize Web Vitals (LCP, CLS, FID)
 
 **Server Component Pattern**:
+
 ```typescript
 // Prefer this (Server Component)
 async function UserList() {
@@ -516,15 +567,15 @@ function UserList() {
 
 ## Key Conventions Summary
 
-| Concern | Solution |
-|---------|----------|
-| URL state | `nuqs` |
-| Server actions | `next-safe-action` |
-| Authentication | `better-auth` |
-| Package manager | `bun` |
-| Form handling | React Hook Form + Zod |
-| Styling | Tailwind CSS |
-| Components | Shadcn UI |
+| Concern         | Solution              |
+| --------------- | --------------------- |
+| URL state       | `nuqs`                |
+| Server actions  | `next-safe-action`    |
+| Authentication  | `better-auth`         |
+| Package manager | `bun`                 |
+| Form handling   | React Hook Form + Zod |
+| Styling         | Tailwind CSS          |
+| Components      | Shadcn UI             |
 
 ---
 
@@ -557,5 +608,5 @@ Use MCP tools to gather more information about libraries used in this project wh
 
 ---
 
-*Last updated: December 2025*
-*Based on best practices from: [Awesome Reviewers](https://github.com/baz-scm/awesome-reviewers), [JetBrains Guidelines](https://blog.jetbrains.com/idea/2025/05/coding-guidelines-for-your-ai-agents/), [Conventional Commits](https://www.conventionalcommits.org/)*
+_Last updated: December 2025_
+_Based on best practices from: [Awesome Reviewers](https://github.com/baz-scm/awesome-reviewers), [JetBrains Guidelines](https://blog.jetbrains.com/idea/2025/05/coding-guidelines-for-your-ai-agents/), [Conventional Commits](https://www.conventionalcommits.org/)_
