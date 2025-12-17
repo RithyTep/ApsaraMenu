@@ -11,6 +11,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
+import ItemDelete from "@/components/features/menu-items/item-delete"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -22,7 +23,6 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 import type { getMenuItemById } from "@/server/actions/item/queries"
-import ItemDelete from "@/app/dashboard/menu-items/item-delete"
 import { formatPrice, resolveCurrency } from "@/lib/currency"
 import { MenuItemStatus } from "@/lib/types"
 

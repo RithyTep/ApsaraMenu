@@ -12,8 +12,8 @@ import { useRouter } from "next/navigation"
 import type { z } from "zod/v4"
 
 import { EmptyImageField } from "@/components/dashboard/empty-image-field"
-import { FileUploader } from "@/components/dashboard/file-uploader"
 import { ImageField } from "@/components/dashboard/image-field"
+import { FileUploader } from "@/components/shared/file-uploader"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {

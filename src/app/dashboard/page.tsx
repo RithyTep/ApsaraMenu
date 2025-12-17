@@ -5,13 +5,13 @@ import { redirect } from "next/navigation"
 import InfoHelper from "@/components/dashboard/info-helper"
 import OnboardingStatus from "@/components/dashboard/onboarding-status"
 import PageSubtitle from "@/components/dashboard/page-subtitle"
+import MenuList from "@/components/features/menu/menu-list"
 import { Skeleton } from "@/components/ui/skeleton"
 import { getMenus } from "@/server/actions/menu/queries"
 import {
   getCurrentOrganization,
   hasOrganizations
 } from "@/server/actions/user/queries"
-import MenuList from "@/app/dashboard/menu-list"
 
 export const metadata: Metadata = {
   title: "Inicio"

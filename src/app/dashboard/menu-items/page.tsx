@@ -3,11 +3,11 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import PageSubtitle from "@/components/dashboard/page-subtitle"
+import ItemCreate from "@/components/features/menu-items/item-create"
+import ItemImport from "@/components/features/menu-items/item-import"
+import ItemTable from "@/components/features/menu-items/item-table"
 import { getCategories, getMenuItems } from "@/server/actions/item/queries"
 import { getCurrentOrganization } from "@/server/actions/user/queries"
-import ItemCreate from "@/app/dashboard/menu-items/item-create"
-import ItemImport from "@/app/dashboard/menu-items/item-import"
-import ItemTable from "@/app/dashboard/menu-items/item-table"
 import type { MenuItemQueryFilter } from "@/lib/types"
 
 export const metadata: Metadata = {

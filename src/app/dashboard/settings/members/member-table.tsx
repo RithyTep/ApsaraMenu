@@ -1,6 +1,6 @@
 "use client"
 
-import { DataTable } from "@/components/data-table/data-table"
+import { DataTable } from "@/components/shared/data-table/data-table"
 import { useDataTable } from "@/hooks/use-data-table"
 import type { AuthMember } from "@/lib/auth"
 import { getColumns } from "./columns"
@@ -12,7 +12,6 @@ export default function MemberTable({
   data: AuthMember[]
   canDeleteMember: boolean
 }) {
-
   const cols = getColumns(canDeleteMember)
 
   const { table, globalFilter, setGlobalFilter } = useDataTable({

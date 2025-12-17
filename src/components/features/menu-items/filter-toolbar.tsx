@@ -3,7 +3,7 @@
 import type { Category } from "@/generated/prisma-client/client"
 import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs"
 
-import { DataTableFilter } from "@/components/data-table/data-table-filter"
+import { DataTableFilter } from "@/components/shared/data-table/data-table-filter"
 import { MenuItemStatus } from "@/lib/types"
 
 const status = [

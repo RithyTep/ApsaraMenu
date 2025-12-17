@@ -11,6 +11,9 @@ import Link from "next/link"
 import gradient from "random-gradient"
 
 import { UpgradeDialog } from "@/components/dashboard/upgrade-dialog"
+import MenuCreate from "@/components/features/menu/menu-create"
+import MenuDelete from "@/components/features/menu/menu-delete"
+import { MenuRename } from "@/components/features/menu/menu-rename"
 import { AlertDialog } from "@/components/ui/alert-dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -23,9 +26,6 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 import { duplicateMenu } from "@/server/actions/menu/mutations"
-import MenuCreate from "@/app/dashboard/menu-create"
-import MenuDelete from "@/app/dashboard/menu-delete"
-import { MenuRename } from "@/app/dashboard/menu-rename"
 import { BasicPlanLimits, MenuStatus } from "@/lib/types"
 
 export default function MenuList({

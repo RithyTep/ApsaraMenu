@@ -1,13 +1,13 @@
 "use client"
 
-import { useDataTable } from "@/hooks/use-data-table"
 import { useRouter } from "next/navigation"
 
-import { DataTable } from "@/components/data-table/data-table"
-import { columns } from "@/app/dashboard/menu-items/columns"
-import FilterToolbar from "@/app/dashboard/menu-items/filter-toolbar"
-import FloatingToolbar from "@/app/dashboard/menu-items/floating-toolbar"
+import { columns } from "@/components/features/menu-items/columns"
+import FilterToolbar from "@/components/features/menu-items/filter-toolbar"
+import FloatingToolbar from "@/components/features/menu-items/floating-toolbar"
+import { DataTable } from "@/components/shared/data-table/data-table"
 import type { getCategories, getMenuItems } from "@/server/actions/item/queries"
+import { useDataTable } from "@/hooks/use-data-table"
 
 export default function ItemTable({
   data,

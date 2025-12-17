@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { ImageIcon } from "lucide-react"
 
-import { FileUploader } from "@/components/dashboard/file-uploader"
+import { FileUploader } from "@/components/shared/file-uploader"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,

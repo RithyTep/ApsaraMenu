@@ -4,7 +4,7 @@ import { useState } from "react"
 import { ImageUp } from "lucide-react"
 import Image from "next/image"
 
-import { FileUploader } from "@/components/dashboard/file-uploader"
+import { FileUploader } from "@/components/shared/file-uploader"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 
-import ConfettiOnMount from "@/components/confetti-on-mount"
+import ConfettiOnMount from "@/components/shared/confetti-on-mount"
 import { getCurrentOrganization } from "@/server/actions/user/queries"
 import NewOrgForm from "@/app/(auth)/new-org/new-org-form"
 

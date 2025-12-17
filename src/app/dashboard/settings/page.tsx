@@ -4,13 +4,13 @@ import { headers } from "next/headers"
 import { notFound } from "next/navigation"
 
 import PageSubtitle from "@/components/dashboard/page-subtitle"
+import OrganizationDelete from "@/components/features/settings/organization-delete"
+import OrganizationForm from "@/components/features/settings/organization-form"
 import { Badge } from "@/components/ui/badge"
 import {
   getCurrentOrganization,
   safeHasPermission
 } from "@/server/actions/user/queries"
-import OrganizationDelete from "@/app/dashboard/settings/organization-delete"
-import OrganizationForm from "@/app/dashboard/settings/organization-form"
 import { SubscriptionStatus } from "@/lib/types"
 
 export const metadata: Metadata = {
