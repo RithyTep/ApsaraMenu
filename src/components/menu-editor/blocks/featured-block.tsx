@@ -48,9 +48,8 @@ export default function FeaturedBlock({
   const {
     connectors: { connect }
   } = useNode()
-  const { isEditing } = useEditor(state => ({
-    isEditing: state.options.enabled
-  }))
+  // Return primitive boolean directly to avoid creating new object references
+  const isEditing = useEditor(state => state.options.enabled)
 
   const [selectedItem, setSelectedItem] = useState<(typeof items)[0] | null>(
     null
@@ -69,7 +68,7 @@ export default function FeaturedBlock({
         className="flex items-center justify-center gap-2 text-gray-500"
       >
         <CircleAlert className="size-4" />
-        <span>No hay elementos recomendados</span>
+        <span>No featured items</span>
       </div>
     )
 

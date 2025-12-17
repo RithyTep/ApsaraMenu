@@ -94,7 +94,7 @@ export default function ProfileMenu() {
           }
         >
           <LogOut className="mr-2 size-4" />
-          <span>Salir</span>
+          <span>Sign out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

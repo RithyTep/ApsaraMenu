@@ -57,12 +57,12 @@ export function ImageField({
                 className="border border-white/50 bg-transparent hover:bg-white/10"
               >
                 <ImageUp className="mr-2 size-4" />
-                Cambiar imágen
+                Change image
               </Button>
             </DialogTrigger>
             <DialogContent className="max-w-xl">
               <DialogHeader>
-                <DialogTitle>Subir imágen</DialogTitle>
+                <DialogTitle>Upload image</DialogTitle>
               </DialogHeader>
               <FileUploader
                 organizationId={organizationId}

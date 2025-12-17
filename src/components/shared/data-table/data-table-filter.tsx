@@ -87,7 +87,7 @@ export function DataTableFilter({
           <CommandInput placeholder={title} />
           <CommandList>
             <CommandEmpty className="p-2 text-center text-sm text-gray-500">
-              No encontrado
+              Not found
             </CommandEmpty>
             <CommandGroup>
               {options.map(option => {

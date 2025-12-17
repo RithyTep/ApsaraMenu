@@ -19,7 +19,7 @@ import RevalidateStatus from "@/app/dashboard/settings/billing/revalidate-status
 import { MembershipRole } from "@/lib/types"
 
 export const metadata: Metadata = {
-  title: "Suscripción"
+  title: "Subscription"
 }
 
 export default async function BillingPage() {
@@ -38,8 +38,8 @@ export default async function BillingPage() {
   return (
     <div className="mx-auto max-w-2xl grow px-4 sm:px-0">
       <PageSubtitle
-        title="Planes de suscripción"
-        description="Maneja tu plan de suscripción e historial de pagos"
+        title="Subscription plans"
+        description="Manage your subscription plan and payment history"
         Icon={Wallet}
       />
       {role === MembershipRole.OWNER && subsEnabled ? (
@@ -60,10 +60,9 @@ export default async function BillingPage() {
       ) : (
         <Alert className="my-10" variant="warning">
           <AlertCircle className="size-4" />
-          <AlertTitle>Aviso</AlertTitle>
+          <AlertTitle>Notice</AlertTitle>
           <AlertDescription>
-            Solo los miembros propietarios de la organización pueden acceder a
-            esta página
+            Only organization owners can access this page
           </AlertDescription>
         </Alert>
       )}

@@ -115,8 +115,8 @@ export function BasicPlanView({ itemCount }: { itemCount: number }) {
                   {tier.id === Plan.PRO ? (
                     <div className="mt-1 text-sm">
                       {billingInterval === "monthly"
-                        ? `${new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN" }).format(tier.priceMonthly)} MXN/mes`
-                        : `${new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN" }).format(tier.priceYearly)} MXN/año`}
+                        ? `${new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }).format(tier.priceMonthly)} MXN/month`
+                        : `${new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }).format(tier.priceYearly)} MXN/year`}
                     </div>
                   ) : (
                     <div className="mt-1 text-sm text-gray-500">Free</div>

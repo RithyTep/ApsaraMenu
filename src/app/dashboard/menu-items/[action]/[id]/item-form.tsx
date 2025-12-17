@@ -151,7 +151,7 @@ export default function ItemForm({
     {
       onSuccess: ({ data }) => {
         if (data?.success) {
-          // toast.success("Categoría agregada")
+          // toast.success("Category added")
         } else if (data?.failure.reason) {
           toast.error(data?.failure.reason)
         }

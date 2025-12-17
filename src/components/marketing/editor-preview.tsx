@@ -69,12 +69,12 @@ export default function EditorPreview() {
         <Image
           src={editorLight}
           className="relative block h-full w-full rounded-md border border-orange-300 sm:rounded-xl dark:hidden"
-          alt="Imagen del editor de menús en web"
+          alt="Menu editor web interface"
         />
         <Image
           src={editorDark}
           className="relative hidden h-full w-full rounded-md border border-gray-700/70 sm:rounded-xl dark:block"
-          alt="Imagen del editor de menús en web"
+          alt="Menu editor web interface"
         />
 
         {!isMobile && (

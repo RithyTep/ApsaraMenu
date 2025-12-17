@@ -66,7 +66,7 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex flex-col gap-3 py-2 sm:flex-row sm:items-center sm:justify-between">
         <Input
-          placeholder="Buscar en resultados"
+          placeholder="Search results"
           value={globalFilter}
           onChange={e => setGlobalFilter(e.target.value)}
           className="h-8 w-[200px]"
@@ -118,10 +118,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  <EmptyState
-                    icon={<SearchX />}
-                    title="No se encontraron datos"
-                  />
+                  <EmptyState icon={<SearchX />} title="No data found" />
                 </TableCell>
               </TableRow>
             )}

@@ -20,8 +20,8 @@ export default function FeaturedSettings() {
         <dt className="col-span-2 flex items-start">
           <Label size="xs">Auto play</Label>
           <InfoHelper>
-            Activa la auto reproducción para que los elementos destacados
-            cambien automáticamente hasta que el usuario interactúe con ellos.
+            Enable auto play so featured items change automatically until the
+            user interacts with them.
           </InfoHelper>
         </dt>
         <dd className="flex items-center">

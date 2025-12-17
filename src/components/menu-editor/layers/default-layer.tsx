@@ -1,30 +1,18 @@
 import React, { useEffect, useRef } from "react"
-import { useEditor } from "@craftjs/core"
 import { useLayer } from "@craftjs/layers"
 
 import LayerHeader from "@/components/menu-editor/layers/layer-header"
-import { cn } from "@/lib/utils"
 
-export default function DefaultLayer({
-  children
-}: {
-  children: React.ReactNode
-}) {
+// Minimal version to test if Layers panel is causing the infinite loop
+function DefaultLayerInner({ children }: { children: React.ReactNode }) {
   const {
     id,
     expanded,
-    hovered,
-    actions: { setExpandedState },
-    connectors: { layer }
+    connectors: { layer },
+    actions: { setExpandedState }
   } = useLayer(layer => ({
-    hovered: layer.event.hovered,
     expanded: layer.expanded
   }))
-  const { hasChildCanvases } = useEditor((state, query) => {
-    return {
-      hasChildCanvases: query.node(id).isParentOfTopLevelNodes()
-    }
-  })
 
   const divRef = useRef<HTMLDivElement>(null)
 
@@ -34,37 +22,21 @@ export default function DefaultLayer({
     }
   }, [layer])
 
-  // If layer has child canvases, expand the layer (do this in an effect
-  // to avoid performing side-effects during render)
+  // Auto-expand ROOT on mount
   useEffect(() => {
-    if (id == "ROOT" && !expanded) {
+    if (id === "ROOT") {
       setExpandedState(true)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id])
+  }, [id, setExpandedState])
 
   return (
-    <div
-      ref={divRef}
-      className={cn(
-        hovered ? "bg-gray-100 dark:bg-gray-800/70" : "bg-transparent",
-        hasChildCanvases && expanded ? "pb-1" : "pb-0",
-        "editor-layers mx-2 mt-2 block rounded-sm"
-      )}
-    >
+    <div ref={divRef} className="editor-layers mx-2 mt-2 block rounded-sm">
       <LayerHeader />
-      {children ? (
-        <div
-          className={cn(
-            hasChildCanvases
-              ? "ml-9 bg-gray-50 dark:bg-gray-800/70"
-              : "m-0 bg-transparent",
-            "craft-layer-children relative"
-          )}
-        >
-          {children}
-        </div>
+      {expanded && children ? (
+        <div className="craft-layer-children relative ml-4">{children}</div>
       ) : null}
     </div>
   )
 }
+
+export default DefaultLayerInner

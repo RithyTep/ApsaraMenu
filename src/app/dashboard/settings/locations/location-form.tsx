@@ -253,7 +253,7 @@ export default function LocationForm({
                   />
                   Facebook
                 </FieldLabel>
-                <Input {...field} id={field.name} placeholder="usuario" />
+                <Input {...field} id={field.name} placeholder="username" />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
@@ -277,7 +277,7 @@ export default function LocationForm({
                   />
                   Instagram
                 </FieldLabel>
-                <Input {...field} id={field.name} placeholder="usuario" />
+                <Input {...field} id={field.name} placeholder="username" />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
@@ -301,7 +301,7 @@ export default function LocationForm({
                   />
                   Twitter
                 </FieldLabel>
-                <Input {...field} id={field.name} placeholder="usuario" />
+                <Input {...field} id={field.name} placeholder="username" />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
@@ -325,7 +325,7 @@ export default function LocationForm({
                   />
                   TikTok
                 </FieldLabel>
-                <Input {...field} id={field.name} placeholder="usuario" />
+                <Input {...field} id={field.name} placeholder="username" />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}

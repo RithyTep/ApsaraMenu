@@ -20,7 +20,7 @@ export function BottomBar({
 }: BottomBarProps) {
   return (
     <>
-      <div className="editor-bottombar fixed bottom-0 z-10 flex w-full flex-row items-center justify-between border-t bg-gray-50 px-8 pb-5 pt-1 dark:border-gray-700 dark:bg-gray-800">
+      <div className="editor-bottombar fixed bottom-0 z-10 flex w-full flex-row items-center justify-between border-t bg-gray-50 px-8 pt-1 pb-5 dark:border-gray-700 dark:bg-gray-800">
         <div className="flex flex-col items-center">
           <Button
             variant="ghost"
@@ -82,7 +82,7 @@ export function BottomBar({
             <Settings2 className="size-6" />
           </Button>
           <span className="text-xs text-gray-600 dark:text-gray-300">
-            Ajustes
+            Settings
           </span>
         </div>
       </div>

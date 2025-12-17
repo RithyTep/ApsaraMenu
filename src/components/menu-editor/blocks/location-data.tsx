@@ -84,7 +84,7 @@ export default function LocationData({
         isMobile ? () => setIsDrawerOpen(true) : () => setIsDialogOpen(true)
       }
       className="flex flex-row items-center gap-1 rounded-full border-[0.5px] border-white/50 bg-white/20 px-1 py-0.5 backdrop-blur-md"
-      aria-label="Ver horario"
+      aria-label="View hours"
     >
       <div className="dark">
         {isOpenNow ? (
@@ -107,13 +107,13 @@ export default function LocationData({
       {location.openingHours?.map(day => (
         <div key={day.day} className="grid grid-cols-3 py-2 text-xs">
           <span className="font-medium">
-            {day.day === "MONDAY" && "Lunes"}
-            {day.day === "TUESDAY" && "Martes"}
-            {day.day === "WEDNESDAY" && "Miércoles"}
-            {day.day === "THURSDAY" && "Jueves"}
-            {day.day === "FRIDAY" && "Viernes"}
-            {day.day === "SATURDAY" && "Sábado"}
-            {day.day === "SUNDAY" && "Domingo"}
+            {day.day === "MONDAY" && "Monday"}
+            {day.day === "TUESDAY" && "Tuesday"}
+            {day.day === "WEDNESDAY" && "Wednesday"}
+            {day.day === "THURSDAY" && "Thursday"}
+            {day.day === "FRIDAY" && "Friday"}
+            {day.day === "SATURDAY" && "Saturday"}
+            {day.day === "SUNDAY" && "Sunday"}
           </span>
           <span
             className={cn(
@@ -125,7 +125,7 @@ export default function LocationData({
           >
             {day.allDay
               ? `${getFormattedTime(day.startTime)} - ${getFormattedTime(day.endTime)}`
-              : "Cerrado"}
+              : "Closed"}
           </span>
         </div>
       ))}
@@ -134,7 +134,7 @@ export default function LocationData({
 
   const servicesList = (
     <div className="mt-3 text-sm">
-      <div className="font-medium">Servicios</div>
+      <div className="font-medium">Services</div>
       <ItemGroup className="mt-2 gap-1">
         {location.serviceDelivery && (
           <Item size="sm" variant="outline">
@@ -143,10 +143,10 @@ export default function LocationData({
             </ItemMedia>
             <ItemContent>
               <ItemTitle>
-                Entrega a domicilio —{" "}
+                Delivery —{" "}
                 <span className="text-muted-foreground">
                   {location.deliveryFee === 0
-                    ? "Gratis"
+                    ? "Free"
                     : formatCurrency(
                         location.deliveryFee,
                         location.currency as "MXN" | "USD"
@@ -163,7 +163,7 @@ export default function LocationData({
               <ShoppingBag />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>Para llevar</ItemTitle>
+              <ItemTitle>Takeout</ItemTitle>
             </ItemContent>
           </Item>
         )}
@@ -174,7 +174,7 @@ export default function LocationData({
               <HandPlatter />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>Comer en el lugar</ItemTitle>
+              <ItemTitle>Dine in</ItemTitle>
             </ItemContent>
           </Item>
         )}
@@ -215,7 +215,7 @@ export default function LocationData({
               <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
                 <DrawerContent className="px-4 pb-8">
                   <DrawerHeader>
-                    <DrawerTitle>Horarios</DrawerTitle>
+                    <DrawerTitle>Hours</DrawerTitle>
                     <p className="text-muted-foreground text-xs">{legend}</p>
                   </DrawerHeader>
                   {hoursList}
@@ -228,7 +228,7 @@ export default function LocationData({
               <DialogTrigger asChild>{hoursTrigger}</DialogTrigger>
               <DialogContent className="max-w-md">
                 <DialogHeader>
-                  <DialogTitle>Información</DialogTitle>
+                  <DialogTitle>Information</DialogTitle>
                   <DialogDescription className="text-xs">
                     {legend}
                   </DialogDescription>

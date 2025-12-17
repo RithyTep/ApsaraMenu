@@ -58,7 +58,7 @@ export const createItem = authMemberActionClient
       if (!currentOrgId) {
         return {
           failure: {
-            reason: "No se pudo obtener la organización actual"
+            reason: "Could not get current organization"
           }
         }
       }
@@ -70,8 +70,7 @@ export const createItem = authMemberActionClient
       if (!proMember && itemCount >= itemLimit) {
         return {
           failure: {
-            reason:
-              "Límite de 10 productos alcanzado. Actualiza a Pro para crear más.",
+            reason: "10 product limit reached. Upgrade to Pro to create more.",
             code: BasicPlanLimits.ITEM_LIMIT_REACHED
           }
         }
@@ -88,7 +87,7 @@ export const createItem = authMemberActionClient
       // If the item already exists, generate a new name for it assigning a unique suffix
       if (existingItem) {
         let suffix = 1
-        let candidateName = `${name} (copia)`
+        let candidateName = `${name} (copy)`
 
         // Check if the name with "copia" suffix already exists
         let nameExists = await prisma.menuItem.findFirst({
@@ -150,7 +149,7 @@ export const createItem = authMemberActionClient
           message = error
         } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
           if (error.code === "P2002" || error.code === "SQLITE_CONSTRAINT") {
-            message = "Ya existe un producto con ese nombre"
+            message = "A product with that name already exists"
           } else {
             message = error.message
           }
@@ -177,7 +176,7 @@ export const bulkCreateItems = authMemberActionClient
     if (!currentOrgId) {
       return {
         failure: {
-          reason: "No se pudo obtener la organización actual"
+          reason: "Could not get current organization"
         }
       }
     }
@@ -189,8 +188,7 @@ export const bulkCreateItems = authMemberActionClient
     if (!proMember && itemCount + items.length > itemLimit) {
       return {
         failure: {
-          reason:
-            "Excederías el límite de productos permitidos en el plan básico",
+          reason: "You would exceed the product limit in the basic plan",
           code: BasicPlanLimits.ITEM_LIMIT_REACHED
         }
       }
@@ -287,19 +285,19 @@ export const bulkCreateItems = authMemberActionClient
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
           switch (error.code) {
             case "P2002":
-              return { failure: { reason: "Entrada duplicada" } }
+              return { failure: { reason: "Duplicate entry" } }
             case "P2003":
-              return { failure: { reason: "Referencia invalidad" } }
+              return { failure: { reason: "Invalid reference" } }
             default:
               return {
                 failure: {
-                  reason: `Error: Verifique que productos no estén duplicados. ${error.code}`
+                  reason: `Error: Verify that products are not duplicated. ${error.code}`
                 }
               }
           }
         }
       } else {
-        return { failure: { reason: "Error desconocido" } }
+        return { failure: { reason: "Unknown error" } }
       }
     }
   })
@@ -370,7 +368,7 @@ export const updateItem = authMemberActionClient
         } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
           console.error(error)
           if (error.code === "P2002" || error.code === "SQLITE_CONSTRAINT") {
-            message = "Ya existe un producto con ese nombre"
+            message = "A product with that name already exists"
           } else {
             message = error.message
           }
@@ -453,7 +451,7 @@ export const createCategory = authMemberActionClient
     if (!currentOrgId) {
       return {
         failure: {
-          reason: "No se pudo obtener la organización actual"
+          reason: "Could not get current organization"
         }
       }
     }
@@ -475,7 +473,7 @@ export const createCategory = authMemberActionClient
       } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
         console.error(error)
         if (error.code === "P2002" || error.code === "SQLITE_CONSTRAINT") {
-          message = "Ya existe una categoría con ese nombre"
+          message = "A category with that name already exists"
         } else {
           message = error.message
         }
@@ -518,7 +516,7 @@ export const updateCategory = authMemberActionClient
       } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
         console.error(error)
         if (error.code === "P2002" || error.code === "SQLITE_CONSTRAINT") {
-          message = "Ya existe una categoría con ese nombre"
+          message = "A category with that name already exists"
         } else {
           message = error.message
         }
@@ -558,8 +556,7 @@ export const deleteCategory = authMemberActionClient
       if (items.length > 0) {
         return {
           failure: {
-            reason:
-              "No se puede eliminar una categoría que tiene productos asociados"
+            reason: "Cannot delete a category with associated products"
           }
         }
       }
@@ -602,7 +599,7 @@ export const createVariant = authMemberActionClient
     if (!menuItemId) {
       return {
         failure: {
-          reason: "No se pudo obtener el producto asociado"
+          reason: "Could not get associated product"
         }
       }
     }
@@ -704,7 +701,7 @@ export const bulkUpdateCategory = authMemberActionClient
       console.error(error)
       return {
         failure: {
-          reason: "Error al actualizar las categorías"
+          reason: "Error updating categories"
         }
       }
     }
@@ -754,7 +751,7 @@ export const bulkDeleteItems = authMemberActionClient
       console.error(error)
       return {
         failure: {
-          reason: "Error al eliminar los productos"
+          reason: "Error deleting products"
         }
       }
     }
@@ -788,7 +785,7 @@ export const bulkToggleFeature = authMemberActionClient
       console.error(error)
       return {
         failure: {
-          reason: "Error al actualizar los productos destacados"
+          reason: "Error updating featured products"
         }
       }
     }

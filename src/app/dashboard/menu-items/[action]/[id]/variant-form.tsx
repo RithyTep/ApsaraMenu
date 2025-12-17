@@ -53,9 +53,9 @@ function MultiVariantForm({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Nombre</TableHead>
-          <TableHead>Precio</TableHead>
-          <TableHead>Acciones</TableHead>
+          <TableHead>Name</TableHead>
+          <TableHead>Price</TableHead>
+          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -68,12 +68,12 @@ function MultiVariantForm({
                 render={({ field, fieldState }) => (
                   <Field className="space-y-0">
                     <FieldLabel htmlFor={field.name} className="sr-only">
-                      Nombre
+                      Name
                     </FieldLabel>
                     <Input
                       {...field}
                       id={field.name}
-                      placeholder="Nombre de la variante"
+                      placeholder="Variant name"
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -89,7 +89,7 @@ function MultiVariantForm({
                 render={({ field, fieldState }) => (
                   <Field className="space-y-0">
                     <FieldLabel htmlFor={field.name} className="sr-only">
-                      Precio
+                      Price
                     </FieldLabel>
                     <Input
                       {...field}
@@ -98,7 +98,7 @@ function MultiVariantForm({
                       inputMode="decimal"
                       step="0.01"
                       min={0}
-                      placeholder="Precio"
+                      placeholder="Price"
                       onChange={e => field.onChange(Number(e.target.value))}
                       onFocus={e => (e.target as HTMLInputElement).select()}
                       value={field.value ?? ""}
@@ -140,13 +140,13 @@ function SingleVariantForm({
       control={control}
       render={({ field, fieldState }) => (
         <Field>
-          <FieldLabel htmlFor={field.name}>Precio</FieldLabel>
+          <FieldLabel htmlFor={field.name}>Price</FieldLabel>
           <Input
             {...field}
             id={field.name}
             type="number"
             inputMode="numeric"
-            placeholder="Precio"
+            placeholder="Price"
             className="w-1/3"
             onChange={e => field.onChange(Number(e.target.value))}
             onFocus={e => (e.target as HTMLInputElement).select()}

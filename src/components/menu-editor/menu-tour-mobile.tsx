@@ -14,27 +14,26 @@ import { tourModeAtom } from "@/lib/atoms"
 const steps: Step[] = [
   {
     target: ".editor-topbar",
-    title: "Barra Superior",
+    title: "Top Bar",
     content: (
       <div>
-        Accede a las opciones de guardado, vista previa y exportación de tu
-        menú.
+        Access save, preview, and export options for your menu.
         <ul className="my-4 space-y-3">
           <li className="flex items-center gap-2">
             <Play className="size-4 text-orange-400 dark:text-white" />
-            <span>Visualiza tu menú</span>
+            <span>Preview your menu</span>
           </li>
           <li className="flex items-center gap-2">
             <Check className="size-4 text-green-400 dark:text-white" />
-            <span>Guarda los cambios</span>
+            <span>Save changes</span>
           </li>
           <li className="flex items-center gap-2">
             <QrCode className="size-4 text-blue-400 dark:text-white" />
-            <span>Genera tu código QR</span>
+            <span>Generate your QR code</span>
           </li>
           <li className="flex items-center gap-2">
-            <strong className="dark:text-white">Publicar</strong>
-            <span>Publica tu menú en la web</span>
+            <strong className="dark:text-white">Publish</strong>
+            <span>Publish your menu on the web</span>
           </li>
         </ul>
       </div>
@@ -43,36 +42,33 @@ const steps: Step[] = [
   },
   {
     target: ".editor-toolbar",
-    title: "Barra de Herramientas",
-    content: "Accede rápidamente a funciones como deshacer/rehacer.",
+    title: "Toolbar",
+    content: "Quickly access features like undo/redo.",
     placement: "top"
   },
   {
     target: ".editor-bottombar",
-    title: "Barra Inferior",
+    title: "Bottom Bar",
     content: (
       <div>
-        Accede a las opciones de elementos y temas para personalizar tu menú.
+        Access element and theme options to customize your menu.
         <ul className="mt-2 space-y-2">
           <li className="flex flex-col gap-2">
-            <strong className="text-white">Elementos</strong>
-            <span>Agrega elementos como encabezados y texto libre.</span>
+            <strong className="text-white">Elements</strong>
+            <span>Add elements like headings and free text.</span>
           </li>
           <li className="flex flex-col gap-2">
-            <strong className="text-white">Temas</strong>
-            <span>Elige un tema de color y fuente para tu menú.</span>
+            <strong className="text-white">Themes</strong>
+            <span>Choose a color and font theme for your menu.</span>
           </li>
           <li className="flex flex-col gap-2">
-            <strong className="text-white">Secciones</strong>
+            <strong className="text-white">Sections</strong>
+            <span>List the elements of your menu and change their order.</span>
+          </li>
+          <li className="flex flex-col gap-2">
+            <strong className="text-white">Settings</strong>
             <span>
-              Lista los elementos de tu menú y cambia el orden de los mismos.
-            </span>
-          </li>
-          <li className="flex flex-col gap-2">
-            <strong className="text-white">Ajustes</strong>
-            <span>
-              Selecciona un elemento de tu menú para despúes cambiar su
-              configuración.
+              Select an element of your menu to change its configuration.
             </span>
           </li>
         </ul>
@@ -116,12 +112,12 @@ export default function MenuTourMobile() {
         }
       }}
       locale={{
-        back: "Anterior",
-        close: "Cerrar",
-        last: "Último",
-        next: "Siguiente",
-        skip: "Saltar",
-        open: "Abre el cuadro de diálogo de ayuda"
+        back: "Back",
+        close: "Close",
+        last: "Last",
+        next: "Next",
+        skip: "Skip",
+        open: "Open help dialog"
       }}
     />
   )
@@ -149,21 +145,21 @@ function Tooltip({
       </div>
       <div className="mt-4 flex items-center justify-between">
         <div className="text-xs text-gray-500">
-          {index + 1} de {size}
+          {index + 1} of {size}
         </div>
         <div className="flex justify-end gap-x-2">
           {!isLastStep && (
             <Button {...skipProps} variant="link" size="xs">
-              Saltar
+              Skip
             </Button>
           )}
           {index > 0 && (
             <Button {...backProps} variant="secondary" size="xs">
-              Anterior
+              Back
             </Button>
           )}
           <Button {...primaryProps} size="xs">
-            {isLastStep ? "Terminar" : "Siguiente"}
+            {isLastStep ? "Finish" : "Next"}
           </Button>
         </div>
       </div>

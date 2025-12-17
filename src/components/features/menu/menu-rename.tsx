@@ -20,7 +20,7 @@ import { Input } from "@/components/ui/input"
 import { updateMenuName } from "@/server/actions/menu/mutations"
 
 const nameSchema = z.object({
-  name: z.string().min(1, "El nombre es requerido")
+  name: z.string().min(1, "Name is required")
 })
 
 export function MenuRename({
@@ -55,7 +55,7 @@ export function MenuRename({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Renombrar menú</DialogTitle>
+          <DialogTitle>Rename menu</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
@@ -64,7 +64,7 @@ export function MenuRename({
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field>
-                  <FieldLabel>Nombre</FieldLabel>
+                  <FieldLabel>Name</FieldLabel>
                   <Input {...field} />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -73,7 +73,7 @@ export function MenuRename({
               )}
             />
             <Button variant="default" className="w-full" type="submit">
-              Guardar
+              Save
             </Button>
           </form>
         </Form>

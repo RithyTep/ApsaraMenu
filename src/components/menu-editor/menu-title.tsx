@@ -20,7 +20,7 @@ import { updateMenuName } from "@/server/actions/menu/mutations"
 import type { getMenuById } from "@/server/actions/menu/queries"
 
 const nameSchema = z.object({
-  name: z.string().min(1, "El nombre es requerido")
+  name: z.string().min(1, "Name is required")
 })
 
 export default function MenuTitle({
@@ -30,7 +30,7 @@ export default function MenuTitle({
 }) {
   const form = useForm<z.infer<typeof nameSchema>>({
     resolver: zodResolver(nameSchema),
-    defaultValues: { name: menu.name ?? "Sin nombre" },
+    defaultValues: { name: menu.name ?? "Untitled" },
     mode: "onBlur"
   })
   const [name, setName] = useState(menu.name)
@@ -72,12 +72,12 @@ export default function MenuTitle({
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>Name</FieldLabel>
                   <Input
                     {...field}
                     id={field.name}
                     className="h-8"
-                    placeholder="Nombre"
+                    placeholder="Name"
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />

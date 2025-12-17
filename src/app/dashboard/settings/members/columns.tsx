@@ -32,7 +32,7 @@ export function getColumns(canDeleteMember: boolean): ColumnDef<AuthMember>[] {
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Usuario
+          User
           {{
             asc: <ChevronUp className="ml-2 h-4 w-4" />,
             desc: <ChevronDown className="ml-2 h-4 w-4" />
@@ -43,7 +43,7 @@ export function getColumns(canDeleteMember: boolean): ColumnDef<AuthMember>[] {
       ),
       cell: ({ row }) => {
         const member = row.original
-        const name = member.user?.name ?? member.user?.email ?? "Usuario"
+        const name = member.user?.name ?? member.user?.email ?? "User"
         const email = member.user?.email ?? ""
         const initials = getInitials(name)
 
@@ -67,15 +67,11 @@ export function getColumns(canDeleteMember: boolean): ColumnDef<AuthMember>[] {
     },
     {
       accessorKey: "role",
-      header: "Rol",
+      header: "Role",
       cell: ({ row }) => {
         const role = row.original.role
         const label =
-          role === "owner"
-            ? "Propietario"
-            : role === "admin"
-              ? "Administrador"
-              : "Miembro"
+          role === "owner" ? "Owner" : role === "admin" ? "Admin" : "Member"
         return <span className="text-sm">{label}</span>
       }
     },
@@ -115,14 +111,14 @@ function ActionsColumn({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+          <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={() => {
               setOpenDelete(true)
             }}
           >
-            <span className="text-red-500">Remover</span>
+            <span className="text-red-500">Remove</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

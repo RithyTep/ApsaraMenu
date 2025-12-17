@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useEditor, useNode } from "@craftjs/core"
 import type { RgbaColor } from "@uiw/react-color"
 import Image from "next/image"
@@ -46,21 +46,11 @@ export default function ItemBlock({
   showImage
 }: ItemBlockProps) {
   const {
-    connectors: { connect },
-    actions: { setCustom }
+    connectors: { connect }
   } = useNode()
 
-  useEffect(() => {
-    if (!item?.name) return
-
-    setCustom((custom: { displayName?: string }) => {
-      custom.displayName = item.name
-    })
-  }, [item?.name, setCustom])
-
-  const { isEditing } = useEditor(state => ({
-    isEditing: state.options.enabled
-  }))
+  // Return primitive boolean directly to avoid creating new object references
+  const isEditing = useEditor(state => state.options.enabled)
 
   return (
     <div
@@ -266,7 +256,7 @@ export function ItemView({
 }
 
 ItemBlock.craft = {
-  displayName: "Producto",
+  displayName: "Product",
   props: {
     backgroundMode: "none",
     categoryFontSize: 20,

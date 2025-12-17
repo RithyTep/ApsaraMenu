@@ -24,7 +24,7 @@ export const columns: ColumnDef<Category>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Categoría
+          Category
           {{
             asc: <ChevronUp className="ml-2 h-4 w-4" />,
             desc: <ChevronDown className="ml-2 h-4 w-4" />

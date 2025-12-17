@@ -156,7 +156,7 @@ export default function SyncStatusBanner({
       }
     }
 
-    toast.success("Información actualizada")
+    toast.success("Information updated")
     setSyncReq(false)
   }
 
@@ -168,8 +168,8 @@ export default function SyncStatusBanner({
             <div className="flex items-center gap-x-3">
               <RefreshCcw className="size-8 text-indigo-400 sm:size-4" />
               <span className="text-sm text-indigo-700 dark:text-indigo-300">
-                La información del negocio o productos ha cambiado, sincroniza
-                para aplicar los cambios
+                Business or product information has changed, sync to apply
+                changes
               </span>
             </div>
             <Button

@@ -37,7 +37,7 @@ export const columns: ColumnDef<Awaited<ReturnType<typeof getMenuItemById>>>[] =
             (table.getIsSomePageRowsSelected() && "indeterminate")
           }
           onCheckedChange={() => table.toggleAllPageRowsSelected()}
-          aria-label="Selecciona todas las filas"
+          aria-label="Select all rows"
         />
       ),
       cell: ({ row }) => {
@@ -46,7 +46,7 @@ export const columns: ColumnDef<Awaited<ReturnType<typeof getMenuItemById>>>[] =
             <Checkbox
               checked={row.getIsSelected()}
               onCheckedChange={() => row.toggleSelected()}
-              aria-label="Selecciona fila"
+              aria-label="Select row"
               className="translate-y-0.5"
             />
           </div>
@@ -61,7 +61,7 @@ export const columns: ColumnDef<Awaited<ReturnType<typeof getMenuItemById>>>[] =
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Producto
+            Product
             {{
               asc: <ChevronUp className="ml-2 h-4 w-4" />,
               desc: <ChevronDown className="ml-2 h-4 w-4" />
@@ -86,7 +86,7 @@ export const columns: ColumnDef<Awaited<ReturnType<typeof getMenuItemById>>>[] =
     },
     {
       accessorKey: "description",
-      header: "Descripción",
+      header: "Description",
       enableHiding: true
     },
     {
@@ -97,7 +97,7 @@ export const columns: ColumnDef<Awaited<ReturnType<typeof getMenuItemById>>>[] =
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Categoría
+            Category
             {{
               asc: <ChevronUp className="ml-2 h-4 w-4" />,
               desc: <ChevronDown className="ml-2 h-4 w-4" />
@@ -111,7 +111,7 @@ export const columns: ColumnDef<Awaited<ReturnType<typeof getMenuItemById>>>[] =
     },
     {
       accessorKey: "status",
-      header: "Estatus",
+      header: "Status",
       enableHiding: true,
       enableSorting: false,
       meta: {
@@ -126,19 +126,19 @@ export const columns: ColumnDef<Awaited<ReturnType<typeof getMenuItemById>>>[] =
                 case MenuItemStatus.ACTIVE:
                   return (
                     <Badge variant="green" className="rounded-full">
-                      Activo
+                      Active
                     </Badge>
                   )
                 case MenuItemStatus.DRAFT:
                   return (
                     <Badge variant="violet" className="rounded-full">
-                      Borrador
+                      Draft
                     </Badge>
                   )
                 case MenuItemStatus.ARCHIVED:
                   return (
                     <Badge variant="secondary" className="rounded-full">
-                      Archivado
+                      Archived
                     </Badge>
                   )
                 default:
@@ -151,7 +151,7 @@ export const columns: ColumnDef<Awaited<ReturnType<typeof getMenuItemById>>>[] =
     },
     {
       accessorKey: "variants",
-      header: "Precio",
+      header: "Price",
       cell: ({ row }) => {
         const item = row.original
         if (!item?.variants) return null
@@ -218,13 +218,13 @@ function ActionsColumn({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-32">
-          <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+          <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem asChild>
             <Link
               href={`/dashboard/menu-items/edit/${item.id}`}
               prefetch={false}
             >
-              <span>Editar</span>
+              <span>Edit</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem
@@ -233,7 +233,7 @@ function ActionsColumn({
               setOpenDelete(true)
             }}
           >
-            <span className="text-red-500">Eliminar</span>
+            <span className="text-red-500">Delete</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

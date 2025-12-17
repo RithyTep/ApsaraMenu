@@ -30,7 +30,7 @@ export default function HeaderSettings() {
   }))
   return (
     <>
-      <SideSection title="Diseño">
+      <SideSection title="Layout">
         <Select
           value={layout}
           onValueChange={value =>
@@ -41,15 +41,15 @@ export default function HeaderSettings() {
           }
         >
           <SelectTrigger className="focus:ring-transparent sm:h-7! sm:text-xs">
-            <SelectValue placeholder="Selecciona" />
+            <SelectValue placeholder="Select" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="classic">Clásico</SelectItem>
-            <SelectItem value="modern">Moderno</SelectItem>
+            <SelectItem value="classic">Classic</SelectItem>
+            <SelectItem value="modern">Modern</SelectItem>
           </SelectContent>
         </Select>
       </SideSection>
-      <SideSection title="Imágenes">
+      <SideSection title="Images">
         <div className="grid grid-cols-2 items-center gap-y-2">
           <dt>
             <Label size="xs">Logo</Label>
@@ -67,7 +67,7 @@ export default function HeaderSettings() {
             />
           </dd>
           <dt>
-            <Label size="xs">Portada</Label>
+            <Label size="xs">Cover</Label>
           </dt>
           <dd className="flex items-center">
             <Switch
@@ -83,10 +83,10 @@ export default function HeaderSettings() {
           </dd>
         </div>
       </SideSection>
-      <SideSection title="Negocio">
+      <SideSection title="Business">
         <div className="grid grid-cols-2 items-center gap-y-2">
           <dt>
-            <Label size="xs">Datos del negocio</Label>
+            <Label size="xs">Business data</Label>
           </dt>
           <dd className="flex items-center">
             <Switch
@@ -101,7 +101,7 @@ export default function HeaderSettings() {
             />
           </dd>
           <dt>
-            <Label size="xs">Redes sociales</Label>
+            <Label size="xs">Social media</Label>
           </dt>
           <dd className="flex items-center">
             <Switch

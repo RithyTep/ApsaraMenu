@@ -44,39 +44,39 @@ const enum DateRangePickerPresets {
 
 const presetButtons = [
   {
-    label: "Hoy",
+    label: "Today",
     value: DateRangePickerPresets.TODAY
   },
   {
-    label: "Ayer",
+    label: "Yesterday",
     value: DateRangePickerPresets.YESTERDAY
   },
   {
-    label: "Esta semana",
+    label: "This week",
     value: DateRangePickerPresets.THIS_WEEK
   },
   {
-    label: "Semana pasada",
+    label: "Last week",
     value: DateRangePickerPresets.LAST_WEEK
   },
   {
-    label: "Este mes",
+    label: "This month",
     value: DateRangePickerPresets.THIS_MONTH
   },
   {
-    label: "Mes pasado",
+    label: "Last month",
     value: DateRangePickerPresets.LAST_MONTH
   },
   // {
-  //   label: "Este trimestre",
+  //   label: "This quarter",
   //   value: DateRangePickerPresets.THIS_QUARTER
   // },
   // {
-  //   label: "Trimestre pasado",
+  //   label: "Last quarter",
   //   value: DateRangePickerPresets.LAST_QUARTER
   // },
   {
-    label: "Este año",
+    label: "This year",
     value: DateRangePickerPresets.THIS_YEAR
   }
 ]

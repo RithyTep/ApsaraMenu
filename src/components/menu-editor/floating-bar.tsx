@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { useEditor } from "@craftjs/core"
 import { useAtom } from "jotai"
 import {
@@ -20,88 +20,121 @@ import { elementPropsAtom, frameSizeAtom } from "@/lib/atoms"
 import { FrameSize } from "@/lib/types"
 
 export default function FloatingBar() {
-  const { enabled, canUndo, canRedo, actions, query, selectedNodeId, store } =
-    useEditor((state, query) => ({
-      enabled: state.options.enabled,
-      canUndo: query.history.canUndo(),
-      canRedo: query.history.canRedo(),
-      selectedNodeId: state.events.selected
-    }))
+  // Get actions and query without subscribing to state changes
+  const { actions, query } = useEditor()
+
+  // Manually track undo/redo state with polling instead of reactive subscription
+  const [canUndo, setCanUndo] = useState(false)
+  const [canRedo, setCanRedo] = useState(false)
+  const [enabled, setEnabled] = useState(true)
+
+  // Poll for history state changes instead of subscribing reactively
+  useEffect(() => {
+    const checkHistoryState = () => {
+      try {
+        setCanUndo(query.history.canUndo())
+        setCanRedo(query.history.canRedo())
+        // Access enabled state through query to avoid subscription
+        const state = query.getState()
+        setEnabled(state.options.enabled)
+      } catch {
+        // Ignore errors during unmount
+      }
+    }
+
+    // Initial check
+    checkHistoryState()
+
+    // Poll every 500ms instead of subscribing to state changes
+    const interval = setInterval(checkHistoryState, 500)
+
+    return () => clearInterval(interval)
+  }, [query])
+
   const [propsCopy, setPropsCopy] = useAtom(elementPropsAtom)
 
-  const [historyPointer, setHistoryPointer] = useState(store.history.pointer)
+  const onPasteProps = useCallback(
+    (clonedProps: unknown) => {
+      const nodeId = query.getEvent("selected").first()
+      if (nodeId) {
+        actions.setProp(nodeId, props => {
+          return (props = Object.assign(props, clonedProps))
+        })
+      }
+    },
+    [query, actions]
+  )
 
-  useEffect(() => {
-    return store.subscribe(_state => store.history.pointer, setHistoryPointer)
-  }, [store])
-
-  const onPasteProps = (clonedProps: unknown) => {
-    const values = selectedNodeId.values()
-    const nodeId = values.next()
-    if (nodeId.value) {
-      actions.setProp(nodeId.value, props => {
-        return (props = Object.assign(props, clonedProps))
-      })
-    }
-  }
-
-  const onCopyProps = () => {
-    const values = selectedNodeId.values()
-    const nodeId = values.next()
-    if (selectedNodeId && nodeId.value) {
-      const node = query.node(nodeId.value).get()
+  const onCopyProps = useCallback(() => {
+    const nodeId = query.getEvent("selected").first()
+    if (nodeId) {
+      const node = query.node(nodeId).get()
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { data, text, ...props } = node.data.props
       setPropsCopy(props)
     }
-  }
+  }, [query, setPropsCopy])
 
   const { setUnsavedChanges, clearUnsavedChanges } = useSetUnsavedChanges()
 
+  // Store actions.history.clear in a ref to avoid dependency issues
+  const clearHistoryRef = useRef(() => actions.history.clear())
+
+  // Update ref in effect to avoid accessing during render
   useEffect(() => {
-    if (canUndo && historyPointer >= 0) {
+    clearHistoryRef.current = () => actions.history.clear()
+  }, [actions])
+
+  useEffect(() => {
+    if (canUndo) {
       setUnsavedChanges({
         message:
-          "Tienes cambios sin guardar ¿Estás seguro de salir del Editor?",
-        dismissButtonLabel: "Cancelar",
-        proceedLinkLabel: "Descartar cambios",
+          "You have unsaved changes. Are you sure you want to leave the Editor?",
+        dismissButtonLabel: "Cancel",
+        proceedLinkLabel: "Discard changes",
         proceedAction: () => {
-          actions.history.clear()
+          clearHistoryRef.current()
         }
       })
     } else {
       clearUnsavedChanges()
     }
-  }, [
-    setUnsavedChanges,
-    clearUnsavedChanges,
-    canUndo,
-    historyPointer,
-    actions.history
-  ])
+  }, [setUnsavedChanges, clearUnsavedChanges, canUndo])
 
   const [frameSize, setFrameSize] = useAtom(frameSizeAtom)
 
+  const handleUndo = useCallback(() => {
+    actions.history.undo()
+  }, [actions])
+
+  const handleRedo = useCallback(() => {
+    actions.history.redo()
+  }, [actions])
+
+  const handleToggleEnabled = useCallback(() => {
+    actions.setOptions(options => (options.enabled = !enabled))
+  }, [actions, enabled])
+
   return (
     <div className="editor-toolbar fixed bottom-24 left-1/2 flex h-12 -translate-x-1/2 flex-row items-center justify-between rounded-full bg-gray-800 px-1 text-white shadow-lg sm:bottom-8 sm:min-w-[200px] dark:border dark:border-gray-700 dark:bg-gray-900">
-      <TooltipHelper content="Deshacer">
+      <TooltipHelper content="Undo">
         <Button
           disabled={!canUndo}
           variant="ghost"
           size="icon"
           className="rounded-full"
-          onClick={() => actions.history.undo()}
+          onClick={handleUndo}
         >
           <Undo2 className="size-4" />
         </Button>
       </TooltipHelper>
-      <TooltipHelper content="Rehacer">
+      <TooltipHelper content="Redo">
         <Button
           disabled={!canRedo}
           variant="ghost"
           size="icon"
           className="rounded-full"
-          onClick={() => actions.history.redo()}
+          onClick={handleRedo}
         >
           <Redo2 className="size-4" />
         </Button>
@@ -113,8 +146,8 @@ export default function FloatingBar() {
       <TooltipHelper
         content={
           frameSize === FrameSize.MOBILE
-            ? "Cambiar a vista Escritorio"
-            : "Cambiar a vista Móvil"
+            ? "Switch to Desktop view"
+            : "Switch to Mobile view"
         }
       >
         <Button
@@ -140,17 +173,17 @@ export default function FloatingBar() {
         orientation="vertical"
         className="mx-1 hidden h-6! bg-gray-600 sm:inline-flex"
       />
-      <TooltipHelper content="Copiar estilo">
+      <TooltipHelper content="Copy style">
         <Button
           variant="ghost"
           size="icon"
           className="hidden rounded-full sm:inline-flex"
-          onClick={() => onCopyProps()}
+          onClick={onCopyProps}
         >
           <Clipboard className="size-4" />
         </Button>
       </TooltipHelper>
-      <TooltipHelper content="Pegar estilo">
+      <TooltipHelper content="Paste style">
         <Button
           disabled={Object.keys(propsCopy).length === 0}
           variant="ghost"
@@ -165,14 +198,12 @@ export default function FloatingBar() {
         orientation="vertical"
         className="mx-1 hidden h-6! bg-gray-600 sm:inline-flex"
       />
-      <TooltipHelper content="Restringir cambios">
+      <TooltipHelper content="Restrict changes">
         <Button
           variant="ghost"
           size="icon"
           className="hidden rounded-full sm:inline-flex"
-          onClick={() =>
-            actions.setOptions(options => (options.enabled = !enabled))
-          }
+          onClick={handleToggleEnabled}
         >
           {enabled ? (
             <LockOpen className="size-4" />

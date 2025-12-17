@@ -78,7 +78,7 @@ export function ItemDetail({
         </h2>
       </FontWrapper>
       <FontWrapper fontFamily={descriptionFontFamily}>
-        <Label className="text-gray-500">Descripción</Label>
+        <Label className="text-gray-500">Description</Label>
         <p className="text-pretty">{item.description}</p>
       </FontWrapper>
       <FontWrapper fontFamily={priceFontFamily}>
@@ -116,7 +116,7 @@ export function ItemDetail({
       <Drawer open={isOpen} onOpenChange={onClose}>
         <DrawerContent className="h-[96%] px-3">
           <DrawerHeader>
-            <DrawerTitle>Detalle del menú</DrawerTitle>
+            <DrawerTitle>Menu details</DrawerTitle>
           </DrawerHeader>
           {content}
         </DrawerContent>
@@ -128,7 +128,7 @@ export function ItemDetail({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle>Detalle del menú</DialogTitle>
+          <DialogTitle>Menu details</DialogTitle>
         </DialogHeader>
         {content}
       </DialogContent>

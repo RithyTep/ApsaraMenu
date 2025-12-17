@@ -14,7 +14,7 @@ import { MembershipRole } from "@/lib/types"
 import { getInitials } from "@/lib/utils"
 
 export const metadata: Metadata = {
-  title: "Mi Perfil"
+  title: "My Profile"
 }
 
 export default async function ProfilePage() {
@@ -28,11 +28,11 @@ export default async function ProfilePage() {
   const roleLabel = (() => {
     switch (membership?.role) {
       case MembershipRole.ADMIN:
-        return "Administrador"
+        return "Admin"
       case MembershipRole.MEMBER:
-        return "Miembro"
+        return "Member"
       case MembershipRole.OWNER:
-        return "Propietario"
+        return "Owner"
       default:
         return ""
     }
@@ -40,12 +40,12 @@ export default async function ProfilePage() {
 
   return (
     <>
-      <PageHeader title="Mi Perfil" />
+      <PageHeader title="My Profile" />
       <div className="flex grow py-4">
         <div className="mx-auto max-w-2xl grow px-4 sm:px-0">
           <PageSubtitle
-            title="Datos generales"
-            description="Información general sobre mi cuenta"
+            title="General data"
+            description="General information about my account"
           />
           <div className="relative my-6 rounded-xl bg-linear-to-t from-white to-gray-100 dark:from-gray-950 dark:to-gray-900">
             <div className="bg-dot-pattern dark:bg-dot-pattern-white absolute inset-0 size-full mask-t-from-50%" />
@@ -72,25 +72,25 @@ export default async function ProfilePage() {
           </div>
           <div>
             <PageSubtitle
-              title="Membresía actual"
-              description="Información sobre tu membresía actual"
+              title="Current membership"
+              description="Information about your current membership"
             />
             <div className="mt-6">
               {membership ? (
                 <div className="grid grid-cols-1 gap-6 rounded-lg border border-gray-200 px-6 py-3 sm:grid-cols-2 dark:border-gray-800">
                   <div>
-                    <Label>Organización</Label>
+                    <Label>Organization</Label>
                     <h4 className="text-gray-500">
                       {organization?.name || "N/A"}
                     </h4>
                   </div>
                   <div>
-                    <Label>Rol</Label>
+                    <Label>Role</Label>
                     <p className="text-gray-500">{roleLabel}</p>
                   </div>
                 </div>
               ) : (
-                <EmptyState title="No tienes membresía en ninguna organización" />
+                <EmptyState title="You don't have membership in any organization" />
               )}
             </div>
           </div>

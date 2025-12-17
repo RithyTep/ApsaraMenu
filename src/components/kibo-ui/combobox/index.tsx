@@ -213,7 +213,7 @@ export const ComboboxInput = ({
   return (
     <CommandInput
       onValueChange={onValueChange}
-      placeholder={`Buscar ${type}...`}
+      placeholder={`Search ${type}...`}
       value={value}
       {...props}
     />
@@ -327,7 +327,7 @@ export const ComboboxCreateNew = ({
       ) : (
         <>
           <PlusIcon className="text-muted-foreground h-4 w-4" />
-          <span>{`Agregar ${type}: "${inputValue}"`}</span>
+          <span>{`Add ${type}: "${inputValue}"`}</span>
         </>
       )}
     </button>

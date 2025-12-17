@@ -14,7 +14,7 @@ export async function generateMetadata(props: {
   params: Promise<{ action: string; id: string }>
 }): Promise<Metadata> {
   const params = await props.params
-  const title = `${params.action === "new" ? "Crear" : "Editar"} Producto`
+  const title = `${params.action === "new" ? "Create" : "Edit"} Product`
   return {
     title
   }

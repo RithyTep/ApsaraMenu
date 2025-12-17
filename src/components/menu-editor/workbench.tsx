@@ -5,10 +5,10 @@ import {
   useEffect,
   useLayoutEffect,
   useRef,
-  useState,
-  type RefObject
+  useState
 } from "react"
-import IFrame, { FrameContextConsumer } from "react-frame-component"
+// IFrame temporarily disabled for testing
+// import IFrame, { FrameContextConsumer } from "react-frame-component"
 import { Editor, Element, Frame } from "@craftjs/core"
 import { Layers } from "@craftjs/layers"
 import { useAtom, useSetAtom } from "jotai"
@@ -82,7 +82,7 @@ export default function Workbench({
   const isMobile = useIsMobile()
   const [isOpen, setIsOpen] = useState(false)
   const [activePanel, setActivePanel] = useState<PanelType | null>(null)
-  const [shouldRenderFrame, setShouldRenderFrame] = useState(true)
+  const [, setShouldRenderFrame] = useState(true)
   const [iframeHeight, setIframeHeight] = useState(0)
   // Key to force ScrollArea re-render after ResizablePanel establishes dimensions
   const [scrollAreaKey, setScrollAreaKey] = useState(0)
@@ -145,9 +145,10 @@ export default function Workbench({
     })
   }, [frameDocRef, getFrameContentHeight])
 
-  const handleNodesChange = useCallback(() => {
-    updateFrameHeight()
-  }, [updateFrameHeight])
+  // Temporarily disabled to test if this is causing the infinite loop
+  // const handleNodesChange = useCallback(() => {
+  //   updateFrameHeight()
+  // }, [updateFrameHeight])
 
   // Use useLayoutEffect so cleanup runs immediately when Activity hides this component
   useLayoutEffect(() => {
@@ -210,7 +211,7 @@ export default function Workbench({
         return (
           <>
             <DrawerHeader>
-              <DrawerTitle>Ajustes</DrawerTitle>
+              <DrawerTitle>Settings</DrawerTitle>
             </DrawerHeader>
             <SettingsPanel />
           </>
@@ -307,7 +308,8 @@ export default function Workbench({
             FeaturedBlock
           }}
           onRender={RenderNode}
-          onNodesChange={handleNodesChange}
+          // Temporarily disabled to test if this is causing the infinite loop
+          // onNodesChange={handleNodesChange}
         >
           <Header className="fixed inset-x-0 top-0">
             <Toolbar menu={menu} />
@@ -332,7 +334,8 @@ export default function Workbench({
                     isPro={organization.plan?.toUpperCase() === "PRO"}
                   />
                   <Separator />
-                  <Layers renderLayer={DefaultLayer} />
+                  {/* Temporarily disabled to test drag-and-drop without Layers */}
+                  {/* <Layers renderLayer={DefaultLayer} /> */}
                 </div>
               </ScrollArea>
             </ResizablePanel>
@@ -356,7 +359,7 @@ export default function Workbench({
                   )}
                 >
                   <span className="editor-size block p-2 text-center text-sm text-gray-400">
-                    {frameSize === FrameSize.DESKTOP ? "Escritorio" : "Móvil"}
+                    {frameSize === FrameSize.DESKTOP ? "Desktop" : "Mobile"}
                   </span>
                   <div
                     className={cn(
@@ -369,32 +372,17 @@ export default function Workbench({
                       maxHeight: 1200
                     }}
                   >
-                    {shouldRenderFrame ? (
-                      <IFrame
-                        className="grow"
-                        key={`frame-${menu.id}`}
-                        style={{ height: "100%", width: "100%" }}
-                      >
-                        <FrameContextConsumer>
-                          {({ document: frameDocument }) => {
-                            return (
-                              <FramePreviewContent
-                                frameDocument={frameDocument}
-                                frameDocRef={frameDocRef}
-                                json={json}
-                                organization={organization}
-                                location={location}
-                                updateFrameHeight={updateFrameHeight}
-                              />
-                            )
-                          }}
-                        </FrameContextConsumer>
-                      </IFrame>
-                    ) : (
-                      <div className="text-muted-foreground flex grow items-center justify-center text-sm">
-                        Vista previa pausada
-                      </div>
-                    )}
+                    {/* TEMPORARY: Direct Frame render to test if iframe causes infinite loop */}
+                    <Frame data={json}>
+                      <Element is={ContainerBlock} canvas>
+                        <HeaderBlock
+                          layout="modern"
+                          organization={organization}
+                          location={location ?? undefined}
+                          showBanner={organization.banner !== null}
+                        />
+                      </Element>
+                    </Frame>
                   </div>
                 </div>
                 <FloatingBar />
@@ -417,85 +405,87 @@ export default function Workbench({
   )
 }
 
-interface FramePreviewContentProps {
-  frameDocument: Document | null | undefined
-  frameDocRef: RefObject<Document | null>
-  json?: string
-  organization: NonNullable<Awaited<ReturnType<typeof getCurrentOrganization>>>
-  location: Awaited<ReturnType<typeof getDefaultLocation>> | null
-  updateFrameHeight: () => void
-}
+// Temporarily disabled - FramePreviewContentProps and pauseFrameMedia are not used while iframe is disabled
+// interface FramePreviewContentProps {
+//   frameDocument: Document | null | undefined
+//   frameDocRef: RefObject<Document | null>
+//   json?: string
+//   organization: NonNullable<Awaited<ReturnType<typeof getCurrentOrganization>>>
+//   location: Awaited<ReturnType<typeof getDefaultLocation>> | null
+//   updateFrameHeight: () => void
+// }
+//
+// function pauseFrameMedia(doc: Document | null | undefined) {
+//   if (!doc) return
+//
+//   try {
+//     ;(
+//       doc.querySelectorAll("video, audio") as NodeListOf<HTMLMediaElement>
+//     ).forEach(el => {
+//       try {
+//         el.pause()
+//       } catch {
+//         // ignore
+//       }
+//     })
+//     ;(doc.querySelectorAll("iframe") as NodeListOf<HTMLIFrameElement>).forEach(
+//       iframe => {
+//         try {
+//           const win = iframe.contentWindow
+//           win?.postMessage({ type: "react-activity-hidden" }, "*")
+//         } catch {
+//           // ignore
+//         }
+//       }
+//     )
+//   } catch {
+//     // ignore
+//   }
+// }
 
-function pauseFrameMedia(doc: Document | null | undefined) {
-  if (!doc) return
-
-  try {
-    ;(
-      doc.querySelectorAll("video, audio") as NodeListOf<HTMLMediaElement>
-    ).forEach(el => {
-      try {
-        el.pause()
-      } catch {
-        // ignore
-      }
-    })
-    ;(doc.querySelectorAll("iframe") as NodeListOf<HTMLIFrameElement>).forEach(
-      iframe => {
-        try {
-          const win = iframe.contentWindow
-          win?.postMessage({ type: "react-activity-hidden" }, "*")
-        } catch {
-          // ignore
-        }
-      }
-    )
-  } catch {
-    // ignore
-  }
-}
-
-function FramePreviewContent({
-  frameDocument,
-  frameDocRef,
-  json,
-  organization,
-  location,
-  updateFrameHeight
-}: FramePreviewContentProps) {
-  useEffect(() => {
-    frameDocRef.current = frameDocument ?? null
-    if (!frameDocument) return
-
-    updateFrameHeight()
-    const win = frameDocument.defaultView
-    const target = frameDocument.body ?? frameDocument.documentElement
-    if (!target) return
-
-    const ResizeObserverClass = win?.ResizeObserver ?? window.ResizeObserver
-    if (!ResizeObserverClass) return
-
-    const resizeObserver = new ResizeObserverClass(() => {
-      updateFrameHeight()
-    })
-    resizeObserver.observe(target)
-    return () => {
-      resizeObserver.disconnect()
-      pauseFrameMedia(frameDocument)
-    }
-  }, [frameDocument, frameDocRef, updateFrameHeight])
-
-  return (
-    <CssStyles frameDocument={frameDocument}>
-      <Frame data={json}>
-        <Element is={ContainerBlock} canvas>
-          <HeaderBlock
-            layout="modern"
-            organization={organization}
-            location={location ?? undefined}
-            showBanner={organization.banner !== null}
-          />
-        </Element>
-      </Frame>
-    </CssStyles>
-  )
-}
+// Temporarily disabled - FramePreviewContent is not used while iframe is disabled
+// function FramePreviewContent({
+//   frameDocument,
+//   frameDocRef,
+//   json,
+//   organization,
+//   location,
+//   updateFrameHeight
+// }: FramePreviewContentProps) {
+//   useEffect(() => {
+//     frameDocRef.current = frameDocument ?? null
+//     if (!frameDocument) return
+//
+//     updateFrameHeight()
+//     const win = frameDocument.defaultView
+//     const target = frameDocument.body ?? frameDocument.documentElement
+//     if (!target) return
+//
+//     const ResizeObserverClass = win?.ResizeObserver ?? window.ResizeObserver
+//     if (!ResizeObserverClass) return
+//
+//     const resizeObserver = new ResizeObserverClass(() => {
+//       updateFrameHeight()
+//     })
+//     resizeObserver.observe(target)
+//     return () => {
+//       resizeObserver.disconnect()
+//       pauseFrameMedia(frameDocument)
+//     }
+//   }, [frameDocument, frameDocRef, updateFrameHeight])
+//
+//   return (
+//     <CssStyles frameDocument={frameDocument}>
+//       <Frame data={json}>
+//         <Element is={ContainerBlock} canvas>
+//           <HeaderBlock
+//             layout="modern"
+//             organization={organization}
+//             location={location ?? undefined}
+//             showBanner={organization.banner !== null}
+//           />
+//         </Element>
+//       </Frame>
+//     </CssStyles>
+//   )
+// }

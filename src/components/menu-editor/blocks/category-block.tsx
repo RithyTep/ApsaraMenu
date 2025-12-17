@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useEditor, useNode } from "@craftjs/core"
 import type { RgbaColor } from "@uiw/react-color"
 
@@ -50,20 +49,15 @@ export default function CategoryBlock({
 }: CategoryBlockProps) {
   const {
     connectors: { connect },
-    actions: { setCustom },
     id
   } = useNode()
 
-  useEffect(() => {
-    if (!data?.name) return
+  // Note: Removed setCustom useEffect that was setting displayName
+  // The displayName is now handled by the craft.displayName static property
+  // and the data.name is used directly in layer-name for display
 
-    setCustom((custom: { displayName?: string }) => {
-      custom.displayName = data.name
-    })
-  }, [data.name, setCustom])
-  const { isEditing } = useEditor(state => ({
-    isEditing: state.options.enabled
-  }))
+  // Return primitive boolean directly to avoid creating new object references
+  const isEditing = useEditor(state => state.options.enabled)
   return (
     <div
       ref={ref => {
@@ -121,7 +115,7 @@ export default function CategoryBlock({
 }
 
 CategoryBlock.craft = {
-  displayName: "Categoría",
+  displayName: "Category",
   props: {
     backgroundMode: "none",
     categoryFontSize: 20,

@@ -144,7 +144,7 @@ export default function Pricing() {
                   "text-base"
                 )}
               >
-                {isYearly ? "MXN/año" : "MXN/mes"}
+                {isYearly ? "MXN/year" : "MXN/month"}
               </span>
             </p>
             <p

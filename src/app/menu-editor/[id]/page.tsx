@@ -28,7 +28,7 @@ export async function generateMetadata(props: {
     }
   } else {
     return {
-      title: "Menú no encontrado"
+      title: "Menu not found"
     }
   }
 }

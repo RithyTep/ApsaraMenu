@@ -28,7 +28,7 @@ export default async function InvitePage(props: {
     // console.dir(invite, { depth: null })
     return (
       <InviteExpiredOrInvalid
-        title="Invitación inválida"
+        title="Invalid invitation"
         description={invite.error}
       />
     )
@@ -60,8 +60,8 @@ type InviteExpiredOrInvalidProps = {
 }
 
 const InviteExpiredOrInvalid = ({
-  title = "Invitación ha expirado o no es válida",
-  description = "La invitación ha expirado o ya ha sido utilizada."
+  title = "Invitation has expired or is invalid",
+  description = "The invitation has expired or has already been used."
 }: InviteExpiredOrInvalidProps) => {
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center">

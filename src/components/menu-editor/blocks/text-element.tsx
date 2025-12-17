@@ -27,9 +27,8 @@ export default function TextElement({
     actions: { setProp }
   } = useNode()
 
-  const { enabled } = useEditor(state => ({
-    enabled: state.options.enabled
-  }))
+  // Return primitive boolean directly to avoid creating new object references
+  const enabled = useEditor(state => state.options.enabled)
 
   return (
     <FontWrapper fontFamily={fontFamily}>

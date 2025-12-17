@@ -1,17 +1,32 @@
-import React, { useCallback, useEffect, useRef, useState } from "react"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
 import ContentEditable from "react-contenteditable"
 import { useEditor } from "@craftjs/core"
 import { useLayer } from "@craftjs/layers"
 
-export const LayerName = () => {
+const LayerNameInner = () => {
   const { id } = useLayer()
 
-  const { displayName, actions } = useEditor(state => ({
-    displayName: state.nodes[id]?.data.custom.displayName
-      ? state.nodes[id]?.data.custom.displayName
-      : state.nodes[id]?.data.displayName,
-    hidden: state.nodes[id]?.data.hidden
-  }))
+  // Don't subscribe to state.nodes directly - access via query to avoid re-renders
+  const { actions, query } = useEditor()
+
+  // Get displayName on mount only - use ref to avoid re-renders
+  const getDisplayName = useCallback(() => {
+    try {
+      const node = query.node(id).get()
+      return (
+        node?.data?.custom?.displayName ?? node?.data?.displayName ?? "Unknown"
+      )
+    } catch {
+      return "Unknown"
+    }
+  }, [id, query])
+
+  const [displayName, setDisplayName] = useState(() => getDisplayName())
+
+  // Update displayName only when needed (not during render)
+  useEffect(() => {
+    setDisplayName(getDisplayName())
+  }, [getDisplayName])
 
   const [editingName, setEditingName] = useState(false)
   const nameDOM = useRef<HTMLElement | null>(null)
@@ -55,3 +70,6 @@ export const LayerName = () => {
     />
   )
 }
+
+// Wrap in memo to prevent unnecessary re-renders during drag operations
+export const LayerName = memo(LayerNameInner)

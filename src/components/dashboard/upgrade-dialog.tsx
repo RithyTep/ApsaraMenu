@@ -47,10 +47,10 @@ export function UpgradeDialog({
           <RainbowButton
             onClick={() => router.push("/dashboard/settings/billing")}
           >
-            Actualizar a Pro
+            Upgrade to Pro
           </RainbowButton>
           <Button variant="link" onClick={onClose}>
-            Seguir en el plan gratuito
+            Continue with free plan
           </Button>
         </DialogFooter>
       </DialogContent>

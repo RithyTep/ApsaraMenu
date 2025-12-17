@@ -13,7 +13,7 @@ import {
   type RgbaColor
 } from "@uiw/react-color"
 import { differenceInMinutes, formatDate, formatDistanceToNow } from "date-fns"
-import { es } from "date-fns/locale"
+import { enUS } from "date-fns/locale"
 import { useAtomValue, useSetAtom } from "jotai"
 import {
   Check,
@@ -70,9 +70,9 @@ export default function MenuPublish({
 }: {
   menu: Awaited<ReturnType<typeof getMenuById>>
 }) {
-  const { store, query, actions, nodes } = useEditor((state, query) => ({
-    nodes: query.getSerializedNodes()
-  }))
+  // Don't return nodes from useEditor selector as getSerializedNodes() creates new object each time
+  // causing infinite re-renders. We only need store, query, and actions.
+  const { store, query, actions } = useEditor()
 
   const queryClient = useQueryClient()
   const fontTheme = useAtomValue(fontThemeAtom)
@@ -82,7 +82,7 @@ export default function MenuPublish({
   const { execute, status, reset } = useAction(updateMenuStatus, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Menú actualizado")
+        toast.success("Menu updated")
         queryClient.invalidateQueries({
           queryKey: ["menu", menu?.id]
         })
@@ -94,14 +94,14 @@ export default function MenuPublish({
       reset()
     },
     onError: () => {
-      toast.error("Ocurrió un error al actualizar el menú")
+      toast.error("An error occurred updating the menu")
       reset()
     }
   })
 
   useEffect(() => {
     // console.dir(store.history.timeline)
-  }, [store.history.timeline, query, nodes])
+  }, [store.history.timeline, query])
 
   // Verify if the menu theme has changed
   const { clearUnsavedChanges } = useSetUnsavedChanges()
@@ -112,7 +112,7 @@ export default function MenuPublish({
   } = useAction(updateMenuSerialData, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        // toast.success("Cambios guardados")
+        // toast.success("Changes saved")
         queryClient.invalidateQueries({
           queryKey: ["menu", menu?.id]
         })
@@ -127,7 +127,7 @@ export default function MenuPublish({
       resetSerialData()
     },
     onError: () => {
-      toast.error("Ocurrió un error")
+      toast.error("An error occurred")
       resetSerialData()
     }
   })
@@ -159,7 +159,6 @@ export default function MenuPublish({
   }, [
     store.history.timeline.length,
     lastSavedTimelineLength,
-    nodes,
     handleUpdateSerialData
   ])
 
@@ -181,7 +180,7 @@ export default function MenuPublish({
 
   return (
     <div className="editor-published flex h-8 justify-end gap-4 sm:gap-2">
-      <TooltipHelper content="Vista previa">
+      <TooltipHelper content="Preview">
         <div>
           <GuardLink href={`/menu-editor/${menu.id}/preview`}>
             <Button size="xs" variant="ghost">
@@ -190,7 +189,7 @@ export default function MenuPublish({
           </GuardLink>
         </div>
       </TooltipHelper>
-      <TooltipHelper content="Guardar cambios">
+      <TooltipHelper content="Save changes">
         <Button
           size="xs"
           variant="ghost"
@@ -205,7 +204,7 @@ export default function MenuPublish({
         </Button>
       </TooltipHelper>
       <Dialog>
-        <TooltipHelper content="Generar código QR">
+        <TooltipHelper content="Generate QR code">
           <DialogTrigger asChild>
             <Button size="xs" variant="ghost">
               <QrCodeIcon className="size-4" />
@@ -214,10 +213,10 @@ export default function MenuPublish({
         </TooltipHelper>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Generar código QR</DialogTitle>
+            <DialogTitle>Generate QR code</DialogTitle>
             <DialogDescription>
-              Al escanear el código con la cámara de tu móvil o aplicación QR te
-              llevará a la siguiente dirección:{" "}
+              Scanning the code with your mobile camera or QR app will take you
+              to the following address:{" "}
               <Link
                 href={`${getBaseUrl()}/${orgSlug}`}
                 className="text-blue-600 hover:text-blue-800"
@@ -235,8 +234,8 @@ export default function MenuPublish({
           {menu.status === MenuStatus.DRAFT && (
             <Alert variant="warning">
               <AlertDescription className="flex flex-row items-center gap-3">
-                No olvides publicar tu menú para que sea accesible a través del
-                código QR.
+                Don&apos;t forget to publish your menu to make it accessible via
+                the QR code.
               </AlertDescription>
             </Alert>
           )}
@@ -246,7 +245,7 @@ export default function MenuPublish({
       <Popover>
         <div className="relative">
           <PopoverTrigger asChild>
-            <Button size="xs">Publicar</Button>
+            <Button size="xs">Publish</Button>
           </PopoverTrigger>
           {menu.publishedAt &&
             differenceInMinutes(menu.updatedAt, menu.publishedAt) >= 1 && (
@@ -269,9 +268,9 @@ export default function MenuPublish({
                 <span className="rounded-full bg-indigo-50 p-2 text-indigo-700 ring-1 ring-indigo-600/20 ring-inset dark:bg-indigo-900/70 dark:text-indigo-500">
                   <Globe className="size-6" />
                 </span>
-                <span className="text-sm font-medium">Publicar Menú</span>
+                <span className="text-sm font-medium">Publish Menu</span>
                 <span className="text-xs text-gray-600 dark:text-gray-400">
-                  Publica tu menú a una URL pública que puedes compartir.
+                  Publish your menu to a public URL that you can share.
                 </span>
                 <Button
                   size="xs"
@@ -281,7 +280,7 @@ export default function MenuPublish({
                   {status === "executing" ? (
                     <Loader className="size-4 animate-spin" />
                   ) : (
-                    "Publicar"
+                    "Publish"
                   )}
                 </Button>
               </motion.div>
@@ -293,7 +292,7 @@ export default function MenuPublish({
                 exit={{ opacity: 0, y: 10 }}
                 className="flex flex-col gap-2"
               >
-                <span className="text-sm font-medium">Liga Menú</span>
+                <span className="text-sm font-medium">Menu Link</span>
                 <div className="flex flex-row items-center gap-1">
                   <Link
                     href={`/${orgSlug}`}
@@ -340,8 +339,8 @@ export default function MenuPublish({
                           }}
                           className="my-3 text-xs text-gray-500 dark:text-gray-400"
                         >
-                          Existen cambios sin publicar. <br /> Publica los
-                          cambios para actualizar tu menú.
+                          There are unpublished changes. <br /> Publish changes
+                          to update your menu.
                         </motion.p>
                       )}
                   </AnimatePresence>
@@ -355,7 +354,7 @@ export default function MenuPublish({
                     {status === "executing" ? (
                       <Loader className="size-4 animate-spin" />
                     ) : (
-                      "Publicar cambios"
+                      "Publish changes"
                     )}
                   </Button>
                   <Button
@@ -364,24 +363,24 @@ export default function MenuPublish({
                     variant="outline"
                     onClick={() => handleUpdateStatus(MenuStatus.DRAFT)}
                   >
-                    Cambiar a borrador
+                    Change to draft
                   </Button>
 
                   <TooltipHelper
                     content={
                       menu.publishedAt
                         ? formatDate(menu.publishedAt, "PPpp", {
-                            locale: es
+                            locale: enUS
                           })
                         : ""
                     }
                   >
                     <p className="pt-2 text-center text-xs text-gray-500 dark:text-gray-400">
-                      Publicado{" "}
+                      Published{" "}
                       {menu.publishedAt
                         ? formatDistanceToNow(menu.publishedAt, {
                             addSuffix: true,
-                            locale: es
+                            locale: enUS
                           })
                         : ""}
                     </p>
@@ -392,7 +391,7 @@ export default function MenuPublish({
           </AnimatePresence>
         </PopoverContent>
       </Popover>
-      <TooltipHelper content="Ayuda">
+      <TooltipHelper content="Help">
         <Button
           size="xs"
           variant="ghost"
@@ -492,7 +491,7 @@ function QrCodeEditor({
           <form className="grid w-full items-start gap-6">
             <fieldset className="grid gap-6 rounded-lg border border-gray-200 p-4 dark:border-gray-800">
               <legend className="-ml-1 px-1 text-sm font-medium">
-                Ajustes
+                Settings
               </legend>
               <div className="grid gap-3">
                 <Label htmlFor="color">Color</Label>
@@ -529,7 +528,7 @@ function QrCodeEditor({
                 </Popover>
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="logo">Mostrar Logo</Label>
+                <Label htmlFor="logo">Show Logo</Label>
                 {isLoading ? (
                   <Loader className="size-4 animate-spin" />
                 ) : (
@@ -554,7 +553,7 @@ function QrCodeEditor({
           }
         >
           <Download className="size-4" />
-          <span>Descargar imágen QR</span>
+          <span>Download QR image</span>
         </Button>
       </div>
     </div>

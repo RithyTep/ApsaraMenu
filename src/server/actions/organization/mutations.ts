@@ -27,7 +27,7 @@ export const bootstrapOrg = authActionClient
         if (user?.id === undefined) {
           return {
             failure: {
-              reason: "No se pudo obtener el usuario actual"
+              reason: "Could not get current user"
             }
           }
         }
@@ -41,7 +41,7 @@ export const bootstrapOrg = authActionClient
         if (!existingOrg.status) {
           return {
             failure: {
-              reason: "El subdominio ya está en uso"
+              reason: "The subdomain is already in use"
             }
           }
         }
@@ -64,7 +64,7 @@ export const bootstrapOrg = authActionClient
         if (!org) {
           return {
             failure: {
-              reason: "No se pudo crear la organización"
+              reason: "Could not create organization"
             }
           }
         }
@@ -78,7 +78,7 @@ export const bootstrapOrg = authActionClient
         if (!data) {
           return {
             failure: {
-              reason: "No se pudo establecer la organización activa"
+              reason: "Could not set active organization"
             }
           }
         }
@@ -105,7 +105,7 @@ export const bootstrapOrg = authActionClient
         } else if (error instanceof Error) {
           message = error.message
           if (message.includes("slug")) {
-            message = "El subdominio ya está en uso"
+            message = "The subdomain is already in use"
           }
         }
         console.error("Error bootstrapping organization:", error)
@@ -134,14 +134,14 @@ export const createOrg = authActionClient
         if (user?.id === undefined) {
           return {
             failure: {
-              reason: "No se pudo obtener el usuario actual"
+              reason: "Could not get current user"
             }
           }
         }
         if (!slug) {
           return {
             failure: {
-              reason: "Subdominio es requerido"
+              reason: "Subdomain is required"
             }
           }
         }
@@ -155,7 +155,7 @@ export const createOrg = authActionClient
         if (!existingOrg.status) {
           return {
             failure: {
-              reason: "El subdominio ya está en uso"
+              reason: "The subdomain is already in use"
             }
           }
         }
@@ -178,7 +178,7 @@ export const createOrg = authActionClient
         if (!org) {
           return {
             failure: {
-              reason: "No se pudo crear la organización"
+              reason: "Could not create organization"
             }
           }
         }
@@ -224,7 +224,7 @@ export const updateOrg = authActionClient
       if (!id) {
         return {
           failure: {
-            reason: "ID de organización es requerido"
+            reason: "Organization ID is required"
           }
         }
       }
@@ -249,7 +249,7 @@ export const updateOrg = authActionClient
           const maybeOrg = await getOrganizationBySlug(slug)
 
           if (maybeOrg && maybeOrg.id !== id) {
-            throw new Error("El subdominio ya está en uso")
+            throw new Error("The subdomain is already in use")
           }
         }
       }
@@ -270,7 +270,7 @@ export const updateOrg = authActionClient
       if (!org) {
         return {
           failure: {
-            reason: "No se pudo actualizar la organización"
+            reason: "Could not update organization"
           }
         }
       }
@@ -324,7 +324,7 @@ export const joinWaitlist = actionClient
       })
 
       if (waitlist) {
-        throw new Error("Ya estás en la lista de espera")
+        throw new Error("You are already on the waitlist")
       }
 
       await prisma.waitlist.create({
@@ -371,8 +371,7 @@ export const deleteOrganization = authActionClient
       ) {
         return {
           failure: {
-            reason:
-              "No se puede eliminar una organización con una suscripción activa"
+            reason: "Cannot delete an organization with an active subscription"
           }
         }
       } else {
@@ -385,7 +384,7 @@ export const deleteOrganization = authActionClient
         if (!deleted) {
           return {
             failure: {
-              reason: "No se pudo eliminar la organización"
+              reason: "Could not delete organization"
             }
           }
         }

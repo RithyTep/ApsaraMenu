@@ -14,8 +14,8 @@ import {
 import { SubscriptionStatus } from "@/lib/types"
 
 export const metadata: Metadata = {
-  title: "Mi Organización",
-  description: "Información general del negocio"
+  title: "My Organization",
+  description: "General business information"
 }
 
 function StatusBadge({ status }: { status: SubscriptionStatus }) {
@@ -23,27 +23,27 @@ function StatusBadge({ status }: { status: SubscriptionStatus }) {
     SubscriptionStatus,
     { label: string; variant: "green" | "yellow" | "destructive" | "violet" }
   > = {
-    [SubscriptionStatus.ACTIVE]: { label: "Activo", variant: "green" },
+    [SubscriptionStatus.ACTIVE]: { label: "Active", variant: "green" },
     [SubscriptionStatus.TRIALING]: {
-      label: "Periodo de prueba",
+      label: "Trial",
       variant: "violet"
     },
     [SubscriptionStatus.CANCELED]: {
-      label: "Cancelado",
+      label: "Canceled",
       variant: "destructive"
     },
-    [SubscriptionStatus.INCOMPLETE]: { label: "Incompleto", variant: "yellow" },
+    [SubscriptionStatus.INCOMPLETE]: { label: "Incomplete", variant: "yellow" },
     [SubscriptionStatus.INCOMPLETE_EXPIRED]: {
-      label: "Expirado",
+      label: "Expired",
       variant: "destructive"
     },
     [SubscriptionStatus.PAST_DUE]: {
-      label: "Pago pendiente",
+      label: "Past due",
       variant: "yellow"
     },
-    [SubscriptionStatus.UNPAID]: { label: "No pagado", variant: "destructive" },
-    [SubscriptionStatus.PAUSED]: { label: "Pausado", variant: "yellow" },
-    [SubscriptionStatus.SPONSORED]: { label: "Patrocinado", variant: "green" }
+    [SubscriptionStatus.UNPAID]: { label: "Unpaid", variant: "destructive" },
+    [SubscriptionStatus.PAUSED]: { label: "Paused", variant: "yellow" },
+    [SubscriptionStatus.SPONSORED]: { label: "Sponsored", variant: "green" }
   }
 
   const { label, variant } = variants[status]
@@ -67,8 +67,8 @@ export default async function SettingsPage() {
     <div className="mx-auto max-w-2xl grow px-4 sm:px-0">
       <div className="flex items-center justify-between">
         <PageSubtitle
-          title="Mi Organización"
-          description="Información general del negocio"
+          title="My Organization"
+          description="General business information"
           Icon={Store}
         />
         <StatusBadge status={currentOrg.status as SubscriptionStatus} />

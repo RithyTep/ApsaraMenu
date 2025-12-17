@@ -11,7 +11,7 @@ import { getCurrentOrganization } from "@/server/actions/user/queries"
 import type { MenuItemQueryFilter } from "@/lib/types"
 
 export const metadata: Metadata = {
-  title: "Productos"
+  title: "Products"
 }
 
 export default async function ItemsPage(props: {
@@ -42,8 +42,8 @@ export default async function ItemsPage(props: {
   return (
     <div className="mx-auto grow px-4 sm:px-6">
       <PageSubtitle
-        title="Productos"
-        description="Administra los productos de tu menú"
+        title="Products"
+        description="Manage your menu products"
         Icon={ShoppingBag}
       >
         <div className="flex gap-2">

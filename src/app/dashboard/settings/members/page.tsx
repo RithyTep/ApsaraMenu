@@ -14,7 +14,7 @@ import MemberInvite from "@/app/dashboard/settings/members/member-invite"
 import MemberTable from "@/app/dashboard/settings/members/member-table"
 
 export const metadata: Metadata = {
-  title: "Miembros"
+  title: "Members"
 }
 
 export default async function MembersPage() {
@@ -59,8 +59,8 @@ export default async function MembersPage() {
   return (
     <div className="mx-auto grow px-4 sm:px-6">
       <PageSubtitle
-        title="Miembros"
-        description="Administra a los miembros de tu equipo"
+        title="Members"
+        description="Manage your team members"
         Icon={Users}
       >
         {canInviteMember?.success && <MemberInvite isPro={isPro} />}

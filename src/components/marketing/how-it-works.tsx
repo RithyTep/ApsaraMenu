@@ -85,7 +85,7 @@ export default function Component() {
           <Link href="https://biztro.co/la-bella-italia" className="z-10">
             <Image
               src={QRimage}
-              alt="Código QR de ejemplo"
+              alt="Sample QR code"
               className="rounded-lg shadow-xl"
               width={300}
               height={300}

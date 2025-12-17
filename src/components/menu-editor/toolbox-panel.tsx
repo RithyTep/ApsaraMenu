@@ -5,7 +5,7 @@ import toast from "react-hot-toast"
 import { ROOT_NODE, useEditor } from "@craftjs/core"
 import { useQuery } from "@tanstack/react-query"
 import { hexToRgba } from "@uiw/react-color"
-import { useAtomValue, useSetAtom } from "jotai"
+import { useAtom, useAtomValue } from "jotai"
 import { GripVertical, Lock, PlusSquare, type LucideIcon } from "lucide-react"
 import Link from "next/link"
 
@@ -42,9 +42,7 @@ export default function ToolboxPanel({
   featuredItems,
   isPro // Add this prop
 }: {
-  organization: NonNullable<
-    Awaited<ReturnType<typeof getCurrentOrganization>>
-  >
+  organization: NonNullable<Awaited<ReturnType<typeof getCurrentOrganization>>>
   location: Awaited<ReturnType<typeof getDefaultLocation>> | null
   categories: Awaited<ReturnType<typeof getCategoriesWithItems>>
   soloItems: Awaited<ReturnType<typeof getMenuItemsWithoutCategory>>
@@ -61,40 +59,51 @@ export default function ToolboxPanel({
   })
 
   // Save the colorThemes and userColorThemes in the atom state
-  const setColorList = useSetAtom(colorListAtom)
-  const [selectedColorTheme, setSelectedColorTheme] =
-    useState<(typeof colorThemes)[0]>()
-  const [selectedFontTheme, setSelectedFontTheme] =
-    useState<(typeof fontThemes)[0]>()
+  const [colorThemeList, setColorList] = useAtom(colorListAtom)
+  // Initialize with defaults to avoid hydration/timing issues
+  const [selectedColorTheme, setSelectedColorTheme] = useState<
+    (typeof colorThemes)[0] | undefined
+  >(
+    () => colorThemes.find(theme => theme.id === colorThemeId) ?? colorThemes[0]
+  )
+  const [selectedFontTheme, setSelectedFontTheme] = useState<
+    (typeof fontThemes)[0] | undefined
+  >(() => fontThemes.find(theme => theme.name === fontThemeId) ?? fontThemes[0])
 
   useEffect(() => {
+    // Create a new array with default themes + user themes (avoid mutating the imported constant)
+    const mergedThemes = [...colorThemes]
     if (userColorThemes) {
       for (const theme of userColorThemes) {
-        const parsedTheme = JSON.parse(theme.themeJSON)
-        // If custom theme doesnt already exists, add it
-        const customThemeIndex = colorThemes.findIndex(
-          t => t.id === parsedTheme.id
-        )
-        if (customThemeIndex === -1) {
-          // console.log("add theme", theme)
-          colorThemes.push(parsedTheme)
+        const parsedTheme = JSON.parse(
+          theme.themeJSON
+        ) as (typeof colorThemes)[0]
+        // If custom theme doesn't already exist, add it
+        const exists = mergedThemes.some(t => t.id === parsedTheme.id)
+        if (!exists) {
+          mergedThemes.push(parsedTheme)
         }
       }
     }
-    setColorList(colorThemes)
+    setColorList(mergedThemes)
   }, [userColorThemes, setColorList])
 
   useEffect(() => {
-    setSelectedColorTheme(colorThemes.find(theme => theme.id === colorThemeId))
+    // Use merged themes from atom (includes custom themes)
+    const themesToSearch =
+      colorThemeList.length > 0 ? colorThemeList : colorThemes
+    setSelectedColorTheme(
+      themesToSearch.find(theme => theme.id === colorThemeId)
+    )
     setSelectedFontTheme(fontThemes.find(theme => theme.name === fontThemeId))
-  }, [colorThemeId, fontThemeId])
+  }, [colorThemeId, fontThemeId, colorThemeList])
 
   if (!selectedFontTheme || !selectedColorTheme) {
     return (
       <Alert variant="destructive" className="m-2 w-auto text-sm">
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>
-          No se pudo encontrar el tema de fuente o color seleccionado.
+          Could not find the selected font or color theme.
         </AlertDescription>
       </Alert>
     )
@@ -146,7 +155,10 @@ export default function ToolboxPanel({
 
   return (
     <>
-      <SideSection title="Categorías y Productos" className="editor-categories">
+      <SideSection
+        title="Categories and Products"
+        className="editor-categories"
+      >
         {categories.map(category => {
           const categoryBlock = (
             <CategoryBlock
@@ -182,7 +194,7 @@ export default function ToolboxPanel({
                         .parseReactElement(categoryBlock)
                         .toNodeTree()
                       actions.addNodeTree(newNode, ROOT_NODE)
-                      toast.success("Categoría agregada")
+                      toast.success("Category added")
                     }}
                   />
                 }
@@ -224,7 +236,7 @@ export default function ToolboxPanel({
                         .parseReactElement(itemBlock)
                         .toNodeTree()
                       actions.addNodeTree(newNode, ROOT_NODE)
-                      toast.success("Producto agregado")
+                      toast.success("Product added")
                     }}
                   />
                 }
@@ -238,9 +250,9 @@ export default function ToolboxPanel({
             variant="information"
             className="mx-0.5 my-2 w-auto border-dashed text-sm"
           >
-            <AlertTitle>Sin productos.</AlertTitle>
+            <AlertTitle>No products.</AlertTitle>
             <AlertDescription className="text-xs">
-              Agrega productos y categorizalos para incluirlos en tu menú.
+              Add products and categorize them to include in your menu.
             </AlertDescription>
             <Link href="/dashboard/menu-items">
               <Button
@@ -248,13 +260,13 @@ export default function ToolboxPanel({
                 size="xs"
                 className="dark:hover:bg-opacity-10 mt-2 w-full border-blue-500 bg-transparent text-blue-500 hover:bg-blue-50 hover:text-blue-900 dark:border-blue-400 dark:bg-transparent dark:text-blue-400 dark:hover:bg-blue-900"
               >
-                Ver productos
+                View products
               </Button>
             </Link>
           </Alert>
         ) : null}
       </SideSection>
-      <SideSection title="Elementos" className="editor-elements">
+      <SideSection title="Elements" className="editor-elements">
         <div
           ref={ref => {
             if (ref) {
@@ -263,7 +275,7 @@ export default function ToolboxPanel({
           }}
         >
           <ToolboxElement
-            title="Cabecera"
+            title="Header"
             Icon={menuBlockIconMeta.header.icon}
             addButton={
               <AddButton
@@ -272,7 +284,7 @@ export default function ToolboxPanel({
                     .parseReactElement(headerBlock)
                     .toNodeTree()
                   actions.addNodeTree(newNode, ROOT_NODE)
-                  toast.success("Cabecera agregada")
+                  toast.success("Header added")
                 }}
               />
             }
@@ -286,14 +298,14 @@ export default function ToolboxPanel({
           }}
         >
           <ToolboxElement
-            title="Navegación"
+            title="Navigation"
             Icon={menuBlockIconMeta.navigator.icon}
             addButton={
               <AddButton
                 onClick={() => {
                   const newNode = query.parseReactElement(navBlock).toNodeTree()
                   actions.addNodeTree(newNode, ROOT_NODE)
-                  toast.success("Navegación agregada")
+                  toast.success("Navigation added")
                 }}
               />
             }
@@ -308,7 +320,7 @@ export default function ToolboxPanel({
             }}
           >
             <ToolboxElement
-              title="Recomendados"
+              title="Featured"
               Icon={menuBlockIconMeta.featured.icon}
               addButton={
                 isPro && (
@@ -318,7 +330,7 @@ export default function ToolboxPanel({
                         .parseReactElement(featuredBlock)
                         .toNodeTree()
                       actions.addNodeTree(newNode, ROOT_NODE)
-                      toast.success("Recomendados agregados")
+                      toast.success("Featured added")
                     }}
                   />
                 )
@@ -335,7 +347,7 @@ export default function ToolboxPanel({
             }}
           >
             <ToolboxElement
-              title="Encabezado"
+              title="Heading"
               Icon={menuBlockIconMeta.heading.icon}
               addButton={
                 isPro && (
@@ -345,7 +357,7 @@ export default function ToolboxPanel({
                         .parseReactElement(headingBlock)
                         .toNodeTree()
                       actions.addNodeTree(newNode, ROOT_NODE)
-                      toast.success("Encabezado agregado")
+                      toast.success("Heading added")
                     }}
                   />
                 )
@@ -362,7 +374,7 @@ export default function ToolboxPanel({
             }}
           >
             <ToolboxElement
-              title="Texto"
+              title="Text"
               Icon={menuBlockIconMeta.text.icon}
               addButton={
                 isPro && (
@@ -372,7 +384,7 @@ export default function ToolboxPanel({
                         .parseReactElement(textBlock)
                         .toNodeTree()
                       actions.addNodeTree(newNode, ROOT_NODE)
-                      toast.success("Texto agregado")
+                      toast.success("Text added")
                     }}
                   />
                 )
@@ -395,7 +407,7 @@ function ProOnlyWrapper({
   if (enabled) return <>{children}</>
 
   return (
-    <TooltipHelper content="Disponible en la versión Pro">
+    <TooltipHelper content="Available in Pro version">
       <div className="relative cursor-not-allowed opacity-50">
         {children}
         <Badge

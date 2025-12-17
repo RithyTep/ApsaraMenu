@@ -94,12 +94,12 @@ export function ColorThemeEditor({
       }
       if (data?.success) {
         setTheme(JSON.parse(data.success.themeJSON))
-        toast.success("Tema guardado")
+        toast.success("Theme saved")
       }
       reset()
     },
     onError: () => {
-      toast.error("Algo salió mal al guardar el tema")
+      toast.error("Something went wrong saving the theme")
       reset()
     }
   })
@@ -117,12 +117,12 @@ export function ColorThemeEditor({
 
       if (data?.success) {
         setTheme(JSON.parse(data.success.themeJSON))
-        toast.success("Tema guardado")
+        toast.success("Theme saved")
       }
       resetStatus()
     },
     onError: () => {
-      toast.error("Algo salió mal al guardar el tema")
+      toast.error("Something went wrong saving the theme")
       resetStatus()
     }
   })
@@ -138,11 +138,11 @@ export function ColorThemeEditor({
         return
       }
       removeTheme(themeState.id)
-      toast.success("Tema eliminado")
+      toast.success("Theme deleted")
       resetDeleteStatus()
     },
     onError: () => {
-      toast.error("Algo salió mal al eliminar el tema")
+      toast.error("Something went wrong deleting the theme")
       resetDeleteStatus()
     }
   })
@@ -182,7 +182,7 @@ export function ColorThemeEditor({
 
   const extractColorsFromImage = async () => {
     if (!menu?.organization.logo) {
-      toast.error("No hay logo para extraer colores")
+      toast.error("No logo to extract colors from")
       return
     }
     try {
@@ -195,7 +195,7 @@ export function ColorThemeEditor({
         })
       } catch {
         setIsExtracting(false)
-        toast.error("Error al extraer colores")
+        toast.error("Error extracting colors")
         return
       }
 
@@ -216,21 +216,21 @@ export function ColorThemeEditor({
       setColorPresets([
         {
           color: colors[0]?.hex || themeState.surfaceColor,
-          title: "Fondo"
+          title: "Background"
         },
         {
           color: colors[1]?.hex || themeState.brandColor,
-          title: "Marca"
+          title: "Brand"
         },
         {
           color: colors[2]?.hex || themeState.accentColor,
-          title: "Acento"
+          title: "Accent"
         },
-        { color: colors[3]?.hex || themeState.textColor, title: "Texto" },
-        { color: colors[4]?.hex || themeState.mutedColor, title: "Tenue" }
+        { color: colors[3]?.hex || themeState.textColor, title: "Text" },
+        { color: colors[4]?.hex || themeState.mutedColor, title: "Muted" }
       ])
     } catch {
-      toast.error("Error al extraer colores")
+      toast.error("Error extracting colors")
     } finally {
       setIsExtracting(false)
     }
@@ -248,11 +248,11 @@ export function ColorThemeEditor({
   }
 
   const [colorPresets, setColorPresets] = useState<SwatchPresetColor[]>([
-    { color: themeState.brandColor, title: "Marca" },
-    { color: themeState.accentColor, title: "Acento" },
-    { color: themeState.surfaceColor, title: "Fondo" },
-    { color: themeState.textColor, title: "Texto" },
-    { color: themeState.mutedColor, title: "Tenue" }
+    { color: themeState.brandColor, title: "Brand" },
+    { color: themeState.accentColor, title: "Accent" },
+    { color: themeState.surfaceColor, title: "Background" },
+    { color: themeState.textColor, title: "Text" },
+    { color: themeState.mutedColor, title: "Muted" }
   ])
 
   return (
@@ -271,13 +271,13 @@ export function ColorThemeEditor({
           <DrawerContent>
             <DrawerHeader className="text-left">
               <DrawerTitle>
-                {drawerColorKey === "surfaceColor" && "Color de Fondo"}
-                {drawerColorKey === "brandColor" && "Color de Marca"}
-                {drawerColorKey === "accentColor" && "Color de Acento"}
-                {drawerColorKey === "textColor" && "Color de Texto"}
-                {drawerColorKey === "mutedColor" && "Color Tenue"}
+                {drawerColorKey === "surfaceColor" && "Background Color"}
+                {drawerColorKey === "brandColor" && "Brand Color"}
+                {drawerColorKey === "accentColor" && "Accent Color"}
+                {drawerColorKey === "textColor" && "Text Color"}
+                {drawerColorKey === "mutedColor" && "Muted Color"}
               </DrawerTitle>
-              <DrawerDescription>Selecciona un color.</DrawerDescription>
+              <DrawerDescription>Select a color.</DrawerDescription>
             </DrawerHeader>
             <div className="px-4 pb-4">
               <div
@@ -306,7 +306,7 @@ export function ColorThemeEditor({
                   className="w-full"
                   onClick={() => setDrawerColorKey(null)}
                 >
-                  Listo
+                  Done
                 </Button>
               </div>
             </div>
@@ -321,10 +321,10 @@ export function ColorThemeEditor({
           theme={themeState}
         />
         <fieldset className="rounded-lg border border-gray-200 p-4 dark:border-gray-700">
-          <legend className="-ml-1 px-1 text-sm font-medium">Colores</legend>
+          <legend className="-ml-1 px-1 text-sm font-medium">Colors</legend>
           <div className="grid grid-cols-4 items-center gap-2">
             <dt>
-              <Label size="xs">Fondo</Label>
+              <Label size="xs">Background</Label>
             </dt>
             <dd className="flex items-center">
               {isMobile ? (
@@ -332,7 +332,7 @@ export function ColorThemeEditor({
                   type="button"
                   className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                   style={{ backgroundColor: themeState.surfaceColor }}
-                  aria-label="Seleccionar color de fondo"
+                  aria-label="Select background color"
                   onClick={() => setDrawerColorKey("surfaceColor")}
                 />
               ) : (
@@ -342,7 +342,7 @@ export function ColorThemeEditor({
                       type="button"
                       className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                       style={{ backgroundColor: themeState.surfaceColor }}
-                      aria-label="Seleccionar color de fondo"
+                      aria-label="Select background color"
                     />
                   </PopoverTrigger>
                   <PopoverContent className="w-[218px] border-0 p-0 shadow-none">
@@ -362,7 +362,7 @@ export function ColorThemeEditor({
               )}
             </dd>
             <dt>
-              <Label size="xs">Marca</Label>
+              <Label size="xs">Brand</Label>
             </dt>
             <dd className="flex items-center">
               {isMobile ? (
@@ -370,7 +370,7 @@ export function ColorThemeEditor({
                   type="button"
                   className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                   style={{ backgroundColor: themeState.brandColor }}
-                  aria-label="Seleccionar color de marca"
+                  aria-label="Select brand color"
                   onClick={() => setDrawerColorKey("brandColor")}
                 />
               ) : (
@@ -380,7 +380,7 @@ export function ColorThemeEditor({
                       type="button"
                       className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                       style={{ backgroundColor: themeState.brandColor }}
-                      aria-label="Seleccionar color de marca"
+                      aria-label="Select brand color"
                     />
                   </PopoverTrigger>
                   <PopoverContent className="w-[218px] border-0 p-0 shadow-none">
@@ -400,7 +400,7 @@ export function ColorThemeEditor({
               )}
             </dd>
             <dt>
-              <Label size="xs">Acento</Label>
+              <Label size="xs">Accent</Label>
             </dt>
             <dd className="flex items-center">
               {isMobile ? (
@@ -408,7 +408,7 @@ export function ColorThemeEditor({
                   type="button"
                   className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                   style={{ backgroundColor: themeState.accentColor }}
-                  aria-label="Seleccionar color de acento"
+                  aria-label="Select accent color"
                   onClick={() => setDrawerColorKey("accentColor")}
                 />
               ) : (
@@ -418,7 +418,7 @@ export function ColorThemeEditor({
                       type="button"
                       className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                       style={{ backgroundColor: themeState.accentColor }}
-                      aria-label="Seleccionar color de acento"
+                      aria-label="Select accent color"
                     />
                   </PopoverTrigger>
                   <PopoverContent className="w-[218px] border-0 p-0 shadow-none">
@@ -438,7 +438,7 @@ export function ColorThemeEditor({
               )}
             </dd>
             <dt>
-              <Label size="xs">Texto</Label>
+              <Label size="xs">Text</Label>
             </dt>
             <dd className="flex items-center">
               {isMobile ? (
@@ -446,7 +446,7 @@ export function ColorThemeEditor({
                   type="button"
                   className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                   style={{ backgroundColor: themeState.textColor }}
-                  aria-label="Seleccionar color de texto"
+                  aria-label="Select text color"
                   onClick={() => setDrawerColorKey("textColor")}
                 />
               ) : (
@@ -456,7 +456,7 @@ export function ColorThemeEditor({
                       type="button"
                       className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                       style={{ backgroundColor: themeState.textColor }}
-                      aria-label="Seleccionar color de texto"
+                      aria-label="Select text color"
                     />
                   </PopoverTrigger>
                   <PopoverContent className="w-[218px] border-0 p-0 shadow-none">
@@ -476,7 +476,7 @@ export function ColorThemeEditor({
               )}
             </dd>
             <dt>
-              <Label size="xs">Tenue</Label>
+              <Label size="xs">Muted</Label>
             </dt>
             <dd className="flex items-center">
               {isMobile ? (
@@ -484,7 +484,7 @@ export function ColorThemeEditor({
                   type="button"
                   className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                   style={{ backgroundColor: themeState.mutedColor }}
-                  aria-label="Seleccionar color tenue"
+                  aria-label="Select muted color"
                   onClick={() => setDrawerColorKey("mutedColor")}
                 />
               ) : (
@@ -494,7 +494,7 @@ export function ColorThemeEditor({
                       type="button"
                       className="h-5 w-12 rounded-sm border border-black/20 dark:border-white/20"
                       style={{ backgroundColor: themeState.mutedColor }}
-                      aria-label="Seleccionar color tenue"
+                      aria-label="Select muted color"
                     />
                   </PopoverTrigger>
                   <PopoverContent className="w-[218px] border-0 p-0 shadow-none">
@@ -527,7 +527,7 @@ export function ColorThemeEditor({
             ) : (
               <WandSparkles className="mr-2 size-4" />
             )}
-            Extraer colores
+            Extract colors
           </Button>
           <Button
             variant="outline"
@@ -535,7 +535,7 @@ export function ColorThemeEditor({
             onClick={invertColors}
           >
             <Contrast className="mr-2 size-4" />
-            Invertir colores
+            Invert colors
           </Button>
 
           <ButtonGroup className="w-full">
@@ -551,7 +551,7 @@ export function ColorThemeEditor({
               onClick={() => setIsDialogOpen(true)}
             >
               <FilePlus className="mr-2 size-4" />
-              Crear
+              Create
             </Button>
             <Button
               variant="outline"
@@ -570,7 +570,7 @@ export function ColorThemeEditor({
               ) : (
                 <Save className="mr-2 size-4" />
               )}
-              Guardar
+              Save
             </Button>
             <Button
               variant="outline"
@@ -591,7 +591,7 @@ export function ColorThemeEditor({
               ) : (
                 <Trash2 className="mr-2 size-4" />
               )}
-              Eliminar
+              Delete
             </Button>
           </ButtonGroup>
         </div>
@@ -630,7 +630,7 @@ function ThemePreview({
         )} */}
         <FontWrapper fontFamily={fontDisplay}>
           <h1 className="text-xl font-semibold">
-            {menu?.organization?.name || "Negocio"}
+            {menu?.organization?.name || "Business"}
           </h1>
         </FontWrapper>
       </div>
@@ -642,7 +642,7 @@ function ThemePreview({
               color: theme.accentColor
             }}
           >
-            Categoría
+            Category
           </h3>
         </FontWrapper>
         <div className="flex flex-row justify-between gap-2">
@@ -653,7 +653,7 @@ function ThemePreview({
                   color: theme.textColor
                 }}
               >
-                Producto
+                Product
               </span>
             </FontWrapper>
             <FontWrapper fontFamily={fontText}>
@@ -663,7 +663,7 @@ function ThemePreview({
                   color: theme.mutedColor
                 }}
               >
-                Descripción del producto...
+                Product description...
               </span>
             </FontWrapper>
           </div>
@@ -685,11 +685,11 @@ function ThemePreview({
 const schema = z.object({
   name: z
     .string()
-    .min(1, "Nombre es requerido")
+    .min(1, "Name is required")
     .max(50)
     .regex(
       /^[a-zA-Z0-9 ]*$/,
-      "Nombre solo puede contener letras, números y espacios"
+      "Name can only contain letters, numbers and spaces"
     )
 })
 
@@ -719,9 +719,9 @@ export function ThemeNameDialog({
       <Drawer open={isOpen} onOpenChange={onClose}>
         <DrawerContent>
           <DrawerHeader className="text-left">
-            <DrawerTitle>Nombre del Tema</DrawerTitle>
+            <DrawerTitle>Theme Name</DrawerTitle>
             <DrawerDescription>
-              Por favor, ingresa un nombre para el tema.
+              Please enter a name for the theme.
             </DrawerDescription>
           </DrawerHeader>
           <div className="px-4 pb-4">
@@ -731,8 +731,8 @@ export function ThemeNameDialog({
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field>
-                    <FieldLabel>Nombre Tema</FieldLabel>
-                    <Input {...field} placeholder="Nombre Tema" />
+                    <FieldLabel>Theme Name</FieldLabel>
+                    <Input {...field} placeholder="Theme Name" />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
                     )}
@@ -741,7 +741,7 @@ export function ThemeNameDialog({
               />
               <div className="mt-6 flex">
                 <Button type="submit" className="w-full">
-                  Guardar
+                  Save
                 </Button>
               </div>
             </form>
@@ -755,9 +755,9 @@ export function ThemeNameDialog({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Nombre del Tema</DialogTitle>
+          <DialogTitle>Theme Name</DialogTitle>
           <DialogDescription>
-            Por favor, ingresa un nombre para el tema.
+            Please enter a name for the theme.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={form.handleSubmit(handleFormSubmit)}>
@@ -766,8 +766,8 @@ export function ThemeNameDialog({
             control={form.control}
             render={({ field, fieldState }) => (
               <Field>
-                <FieldLabel>Nombre Tema</FieldLabel>
-                <Input {...field} placeholder="Nombre Tema" />
+                <FieldLabel>Theme Name</FieldLabel>
+                <Input {...field} placeholder="Theme Name" />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
@@ -777,10 +777,10 @@ export function ThemeNameDialog({
           <div className="mt-6 flex justify-end gap-2">
             <DialogClose asChild>
               <Button variant="secondary" type="button">
-                Cancelar
+                Cancel
               </Button>
             </DialogClose>
-            <Button type="submit">Guardar</Button>
+            <Button type="submit">Save</Button>
           </div>
         </form>
       </DialogContent>

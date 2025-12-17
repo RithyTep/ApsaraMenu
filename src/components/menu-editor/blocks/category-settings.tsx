@@ -46,7 +46,7 @@ export default function CategorySettings() {
       <SideSection title="General">
         <div className="grid grid-cols-3 items-center gap-2">
           <dt>
-            <Label size="xs">Fondo</Label>
+            <Label size="xs">Background</Label>
           </dt>
           <dd className="col-span-2 flex items-center">
             <Select
@@ -62,18 +62,18 @@ export default function CategorySettings() {
                 <SelectValue placeholder="Selecciona" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">Ninguno</SelectItem>
-                <SelectItem value="light">Claro</SelectItem>
-                <SelectItem value="dark">Oscuro</SelectItem>
+                <SelectItem value="none">None</SelectItem>
+                <SelectItem value="light">Light</SelectItem>
+                <SelectItem value="dark">Dark</SelectItem>
               </SelectContent>
             </Select>
           </dd>
         </div>
       </SideSection>
-      <SideSection title="Categoría">
+      <SideSection title="Category">
         <div className="grid grid-cols-3 items-center gap-2">
           <dt>
-            <Label size="xs">Tamaño</Label>
+            <Label size="xs">Size</Label>
           </dt>
           <dd className="col-span-2 flex items-center">
             <Select
@@ -98,7 +98,7 @@ export default function CategorySettings() {
             </Select>
           </dd>
           <dt>
-            <Label size="xs">Estilo</Label>
+            <Label size="xs">Style</Label>
           </dt>
           <dd className="col-span-2 flex items-center">
             <Select
@@ -122,7 +122,7 @@ export default function CategorySettings() {
             </Select>
           </dd>
           <dt>
-            <Label size="xs">Alineación</Label>
+            <Label size="xs">Alignment</Label>
           </dt>
           <dd className="col-span-2">
             <Tabs
@@ -149,10 +149,10 @@ export default function CategorySettings() {
           </dd>
         </div>
       </SideSection>
-      <SideSection title="Producto">
+      <SideSection title="Product">
         <div className="grid grid-cols-3 items-center gap-2">
           <dt>
-            <Label size="xs">Tamaño</Label>
+            <Label size="xs">Size</Label>
           </dt>
           <dd className="col-span-2 flex items-center">
             <Select
@@ -177,7 +177,7 @@ export default function CategorySettings() {
             </Select>
           </dd>
           <dt>
-            <Label size="xs">Estilo</Label>
+            <Label size="xs">Style</Label>
           </dt>
           <dd className="col-span-2 flex items-center">
             <Select
@@ -201,10 +201,10 @@ export default function CategorySettings() {
           </dd>
         </div>
       </SideSection>
-      <SideSection title="Precio">
+      <SideSection title="Price">
         <div className="grid grid-cols-3 items-center gap-2">
           <dt>
-            <Label size="xs">Tamaño</Label>
+            <Label size="xs">Size</Label>
           </dt>
           <dd className="col-span-2 flex items-center">
             <Select
@@ -229,7 +229,7 @@ export default function CategorySettings() {
             </Select>
           </dd>
           <dt>
-            <Label size="xs">Estilo</Label>
+            <Label size="xs">Style</Label>
           </dt>
           <dd className="col-span-2 flex items-center">
             <Select
@@ -253,10 +253,10 @@ export default function CategorySettings() {
           </dd>
         </div>
       </SideSection>
-      <SideSection title="Imágen Producto">
+      <SideSection title="Product Image">
         <div className="grid grid-cols-3 items-center gap-y-2">
           <dt>
-            <Label size="xs">Mostrar</Label>
+            <Label size="xs">Show</Label>
           </dt>
           <dd className="col-span-2 flex items-center">
             <Switch

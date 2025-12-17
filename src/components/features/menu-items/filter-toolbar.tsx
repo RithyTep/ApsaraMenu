@@ -9,15 +9,15 @@ import { MenuItemStatus } from "@/lib/types"
 const status = [
   {
     value: MenuItemStatus.ACTIVE,
-    label: "Activo"
+    label: "Active"
   },
   {
     value: MenuItemStatus.DRAFT,
-    label: "Borrador"
+    label: "Draft"
   },
   {
     value: MenuItemStatus.ARCHIVED,
-    label: "Archivado"
+    label: "Archived"
   }
 ]
 
@@ -55,7 +55,7 @@ export default function FilterToolbar({
         onChange={setStatusValue}
       />
       <DataTableFilter
-        title="Categoría"
+        title="Category"
         options={categories?.map(d => ({ value: d.id, label: d.name })) ?? []}
         value={categoryValue}
         onChange={setCategoryValue}

@@ -18,7 +18,7 @@ import { joinWaitlist } from "@/server/actions/organization/mutations"
 
 const emailSchema = z.object({
   email: z.email({
-    error: "Por favor, ingresa un correo electrónico válido"
+    error: "Please enter a valid email"
   })
 })
 
@@ -89,10 +89,10 @@ export default function Waitlist() {
             animate={{ opacity: 1, y: 0 }}
           >
             <Alert className="max-w-xl space-y-2">
-              <AlertTitle>¡Gracias por tu interés!</AlertTitle>
+              <AlertTitle>Thanks for your interest!</AlertTitle>
               <AlertDescription className="text-gray-600 dark:text-gray-400">
-                Te enviaremos un correo electrónico cuando estemos listos para
-                que puedas probar la aplicación.
+                We&apos;ll send you an email when we&apos;re ready for you to
+                try the app.
               </AlertDescription>
             </Alert>
           </motion.div>

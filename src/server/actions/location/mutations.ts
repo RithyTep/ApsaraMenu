@@ -48,7 +48,7 @@ export const createLocation = authMemberActionClient
         if (!organizationId) {
           return {
             failure: {
-              reason: "No se pudo obtener la organización actual"
+              reason: "Could not get current organization"
             }
           }
         }
@@ -226,7 +226,7 @@ export const updateHours = authMemberActionClient
       return {
         failure: {
           reason:
-            "No has creado una sucursal. Por favor, cree una sucursal antes de agregar horarios."
+            "You have not created a location. Please create one before adding hours."
         }
       }
     }
@@ -236,7 +236,7 @@ export const updateHours = authMemberActionClient
     if (!organizationId) {
       return {
         failure: {
-          reason: "No se pudo obtener la organización actual"
+          reason: "Could not get current organization"
         }
       }
     }

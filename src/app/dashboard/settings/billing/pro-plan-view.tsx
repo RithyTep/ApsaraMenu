@@ -74,7 +74,7 @@ export async function ProPlanView() {
                 - Ends on{" "}
                 {subscription?.trialEnd
                   ? new Date(subscription.trialEnd).toLocaleDateString(
-                      "es-MX",
+                      "en-US",
                       {
                         day: "numeric",
                         month: "short",
@@ -101,10 +101,10 @@ export async function ProPlanView() {
                   if (!tier) return "N/A"
                   const isMonthly = tier.priceMonthlyId === subscription.priceId
                   const price = isMonthly ? tier.priceMonthly : tier.priceYearly
-                  return `${new Intl.NumberFormat("es-MX", {
+                  return `${new Intl.NumberFormat("en-US", {
                     style: "currency",
                     currency: "MXN"
-                  }).format(price)} MXN/${isMonthly ? "mes" : "año"}`
+                  }).format(price)} MXN/${isMonthly ? "month" : "year"}`
                 })()}
               </div>
             </div>
@@ -113,7 +113,7 @@ export async function ProPlanView() {
               <div className="text-base font-medium">
                 {subscription?.periodStart
                   ? new Date(subscription.periodStart).toLocaleDateString(
-                      "es-MX",
+                      "en-US",
                       {
                         day: "numeric",
                         month: "short",
@@ -129,7 +129,7 @@ export async function ProPlanView() {
                 <div className="text-base font-medium">
                   {subscription?.periodEnd
                     ? new Date(subscription.periodEnd).toLocaleDateString(
-                        "es-MX",
+                        "en-US",
                         {
                           day: "numeric",
                           month: "short",
@@ -145,7 +145,7 @@ export async function ProPlanView() {
                 <div className="text-base font-medium">
                   {subscription?.periodEnd
                     ? new Date(subscription.periodEnd).toLocaleDateString(
-                        "es-MX",
+                        "en-US",
                         {
                           day: "numeric",
                           month: "short",
@@ -165,7 +165,7 @@ export async function ProPlanView() {
                 Your subscription is set to end on{" "}
                 {subscription?.periodEnd
                   ? new Date(subscription.periodEnd).toLocaleDateString(
-                      "es-MX",
+                      "en-US",
                       {
                         day: "numeric",
                         month: "short",

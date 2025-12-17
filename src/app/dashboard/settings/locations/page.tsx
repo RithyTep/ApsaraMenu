@@ -10,7 +10,7 @@ import HoursForm from "@/app/dashboard/settings/locations/hours-form"
 import LocationForm from "@/app/dashboard/settings/locations/location-form"
 
 export const metadata: Metadata = {
-  title: "Sucursal"
+  title: "Location"
 }
 
 export default async function LocationPage() {
@@ -25,15 +25,15 @@ export default async function LocationPage() {
   return (
     <div className="mx-auto max-w-2xl grow px-4 sm:px-0">
       <PageSubtitle
-        title="Sucursal"
-        description="Información de contacto"
+        title="Location"
+        description="Contact information"
         Icon={MapPin}
       />
       <LocationForm data={data} enabled />
       <Separator className="my-8" />
       <PageSubtitle
-        title="Horarios de atención"
-        description="Horarios de atención al público"
+        title="Business hours"
+        description="Public service hours"
         Icon={Clock}
       />
       <HoursForm data={data} />

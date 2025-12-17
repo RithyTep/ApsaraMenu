@@ -32,7 +32,7 @@ export const createMenu = authActionClient
     if (!currentOrg) {
       return {
         failure: {
-          reason: "No se pudo obtener la organización actual"
+          reason: "Could not get current organization"
         }
       }
     }
@@ -44,7 +44,7 @@ export const createMenu = authActionClient
     if (!proMember && menuCount >= menuLimit) {
       return {
         failure: {
-          reason: `Límite de ${menuLimit} menús alcanzado. Actualiza a Pro para crear más.`,
+          reason: `${menuLimit} menu limit reached. Upgrade to Pro to create more.`,
           code: BasicPlanLimits.MENU_LIMIT_REACHED
         }
       }
@@ -115,7 +115,7 @@ export const updateMenuName = authActionClient
         message = error
       } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2002" || error.code === "SQLITE_CONSTRAINT") {
-          message = "Ya existe un menú con ese nombre"
+          message = "A menu with that name already exists"
         } else {
           message = error.message
         }
@@ -300,7 +300,7 @@ export const duplicateMenu = authActionClient
     if (!proMember && menuCount >= menuLimit) {
       return {
         failure: {
-          reason: `Límite de ${menuLimit} menús alcanzado. Actualiza a Pro para crear más.`,
+          reason: `${menuLimit} menu limit reached. Upgrade to Pro to create more.`,
           code: BasicPlanLimits.MENU_LIMIT_REACHED
         }
       }
@@ -314,14 +314,14 @@ export const duplicateMenu = authActionClient
       if (!sourceMenu) {
         return {
           failure: {
-            reason: "Menú no encontrado"
+            reason: "Menu not found"
           }
         }
       }
 
       const duplicatedMenu = await prisma.menu.create({
         data: {
-          name: `${sourceMenu.name} (copia)`,
+          name: `${sourceMenu.name} (copy)`,
           description: sourceMenu.description,
           status: "DRAFT",
           organizationId: sourceMenu.organizationId,
@@ -397,7 +397,7 @@ export const createColorTheme = authActionClient
           message = error
         } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
           if (error.code === "P2002" || error.code === "SQLITE_CONSTRAINT") {
-            message = "Ya existe un tema personalizado"
+            message = "A custom theme already exists"
           }
         } else if (error instanceof Error) {
           message = error.message
@@ -443,7 +443,7 @@ export const updateColorTheme = authActionClient
         message = error
       } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2002" || error.code === "SQLITE_CONSTRAINT") {
-          message = "Ya existe un tema personalizado"
+          message = "A custom theme already exists"
         }
       } else if (error instanceof Error) {
         message = error.message
@@ -469,9 +469,8 @@ export const deleteColorTheme = authActionClient
     })
   )
   .action(async ({ parsedInput: { id } }) => {
-    const { getCurrentMembership } = await import(
-      "@/server/actions/user/queries"
-    )
+    const { getCurrentMembership } =
+      await import("@/server/actions/user/queries")
     const membership = await getCurrentMembership()
     const currentOrg = membership?.organizationId
     try {

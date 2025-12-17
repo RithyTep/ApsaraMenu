@@ -58,8 +58,7 @@ export default function LoginForm({ callbackUrl }: { callbackUrl?: string }) {
         <div className="mt-8">
           <Alert variant="destructive">
             <AlertDescription>
-              Ocurrió un error al iniciar sesión. Por favor, intenta de nuevo
-              más tarde.
+              An error occurred signing in. Please try again later.
             </AlertDescription>
           </Alert>
         </div>

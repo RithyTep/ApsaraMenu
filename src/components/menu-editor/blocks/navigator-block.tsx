@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import { useEditor, useNode } from "@craftjs/core"
 import type { RgbaColor } from "@uiw/react-color"
 import { ChevronsRight } from "lucide-react"
@@ -11,47 +11,91 @@ export type NavigatorBlockProps = {
   color?: RgbaColor
 }
 
+interface NavItem {
+  id: string
+  displayName: string
+}
+
 export default function NavigatorBlock({ color }: NavigatorBlockProps) {
   const {
     connectors: { connect }
   } = useNode()
 
-  const { nodes } = useEditor(state => ({
-    nodes: state.nodes
-  }))
+  // Get query without subscribing to any state changes
+  const { query } = useEditor()
 
-  const [ids, setIds] = useState<string[]>([])
-  const [displayNames, setDisplayNames] = useState<string[]>([])
+  // Store nav items in local state, updated via polling/effect
+  const [navItems, setNavItems] = useState<NavItem[]>([])
+
+  // Function to compute nav items on-demand using query (not reactive)
+  const computeNavItems = useCallback((): NavItem[] => {
+    try {
+      const rootNode = query.node("ROOT").get()
+      const rootNodeIds = rootNode?.data?.nodes || []
+
+      const items: NavItem[] = []
+      for (const id of rootNodeIds) {
+        try {
+          const node = query.node(id).get()
+          if (!node) continue
+
+          if (node.data.name === "CategoryBlock") {
+            items.push({
+              id: node.id,
+              displayName: node.data.props?.data?.name ?? "Category"
+            })
+          } else if (node.data.name === "HeadingElement") {
+            items.push({
+              id: node.id,
+              displayName: node.data.props?.text ?? "Heading"
+            })
+          }
+        } catch {
+          // Skip nodes that don't exist
+        }
+      }
+      return items
+    } catch {
+      return []
+    }
+  }, [query])
+
+  // Update nav items on mount and periodically (not on every state change)
+  useEffect(() => {
+    // Initial computation
+    setNavItems(computeNavItems())
+
+    // Poll for changes every 500ms instead of subscribing to state.nodes
+    const interval = setInterval(() => {
+      const newItems = computeNavItems()
+      setNavItems(prev => {
+        // Only update if actually changed
+        const prevJson = JSON.stringify(prev)
+        const newJson = JSON.stringify(newItems)
+        return prevJson === newJson ? prev : newItems
+      })
+    }, 500)
+
+    return () => clearInterval(interval)
+  }, [computeNavItems])
+
+  const parsedNavItems = navItems
+
+  const ids = React.useMemo(
+    () => parsedNavItems.map(item => item.id),
+    [parsedNavItems]
+  )
+  const displayNames = React.useMemo(
+    () => parsedNavItems.map(item => item.displayName),
+    [parsedNavItems]
+  )
+
   const [visibleId, setVisibleId] = useState<string | null>(null)
   const [isSticky, setIsSticky] = useState(false)
   const [isOverflowing, setIsOverflowing] = useState(false)
   const observer = useRef<IntersectionObserver | null>(null)
   const navRef = useRef<HTMLElement | null>(null)
   const ulRef = useRef<HTMLUListElement | null>(null)
-
-  useEffect(() => {
-    const rootNode = nodes.ROOT
-    const rootNodeArray = rootNode?.data?.nodes || []
-
-    const filteredAndSortedNodes = rootNodeArray
-      .map(id => nodes[id])
-      .filter(
-        (node): node is NonNullable<typeof node> =>
-          node?.data.name === "CategoryBlock" ||
-          node?.data.name === "HeadingElement"
-      )
-
-    setIds(filteredAndSortedNodes.map(node => node.id))
-    setDisplayNames(
-      filteredAndSortedNodes.map(node => {
-        if (node.data.name === "CategoryBlock") {
-          return node.data.props.data.name
-        } else {
-          return node.data.props.text
-        }
-      })
-    )
-  }, [nodes])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -190,7 +234,7 @@ export default function NavigatorBlock({ color }: NavigatorBlockProps) {
 }
 
 NavigatorBlock.craft = {
-  displayName: "Navegación",
+  displayName: "Navigation",
   props: {
     color: { r: 255, g: 255, b: 255, a: 1 }
   },

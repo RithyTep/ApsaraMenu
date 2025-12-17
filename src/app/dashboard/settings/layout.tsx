@@ -6,15 +6,15 @@ const SecondaryNavItems = [
     href: "dashboard/settings"
   },
   {
-    title: "Sucursal",
+    title: "Location",
     href: "dashboard/settings/locations"
   },
   {
-    title: "Miembros",
+    title: "Members",
     href: "dashboard/settings/members"
   },
   {
-    title: "Suscripción",
+    title: "Subscription",
     href: "dashboard/settings/billing"
   }
 ]

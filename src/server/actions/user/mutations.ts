@@ -28,7 +28,7 @@ export const switchOrganization = authActionClient
         if (!data) {
           return {
             failure: {
-              reason: "No se pudo cambiar de organización"
+              reason: "Could not switch organization"
             }
           }
         }
@@ -59,7 +59,7 @@ export const switchOrganization = authActionClient
         console.error("Error switching organization:", error)
         return {
           failure: {
-            reason: "Error cambiando de organización"
+            reason: "Error switching organization"
           }
         }
       }
@@ -106,7 +106,7 @@ export const inviteMember = authActionClient
       console.error("Error inviting member:", error)
       return {
         failure: {
-          reason: "Error invitando al miembro"
+          reason: "Error inviting member"
         }
       }
     }
@@ -131,7 +131,7 @@ export const acceptInvite = authActionClient
       if (!data) {
         return {
           failure: {
-            reason: "No se pudo aceptar la invitación"
+            reason: "Could not accept invitation"
           }
         }
       }
@@ -160,7 +160,7 @@ export const acceptInvite = authActionClient
       console.error("Error accepting invite:", error)
       return {
         failure: {
-          reason: "Error aceptando la invitación"
+          reason: "Error accepting invitation"
         }
       }
     }
@@ -185,7 +185,7 @@ export const removeMember = authActionClient
       if (!data) {
         return {
           failure: {
-            reason: "No se pudo eliminar al miembro"
+            reason: "Could not delete member"
           }
         }
       }
@@ -208,7 +208,7 @@ export const removeMember = authActionClient
       console.error("Error removing member:", error)
       return {
         failure: {
-          reason: "Error eliminando al miembro"
+          reason: "Error deleting member"
         }
       }
     }

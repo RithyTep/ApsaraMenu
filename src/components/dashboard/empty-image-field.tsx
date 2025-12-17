@@ -40,12 +40,12 @@ export function EmptyImageField({
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button type="button" variant="secondary" size="sm">
-            Subir imágen
+            Upload image
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-xl">
           <DialogHeader>
-            <DialogTitle>Subir imágen</DialogTitle>
+            <DialogTitle>Upload image</DialogTitle>
           </DialogHeader>
           <FileUploader
             organizationId={organizationId}

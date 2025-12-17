@@ -48,7 +48,8 @@ const multiSelectVariants = cva(
  * Props for MultiSelect component
  */
 interface MultiSelectProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof multiSelectVariants> {
   /**
    * An array of option objects to be displayed in the multi-select component.
@@ -225,7 +226,7 @@ export const MultiSelect = ({
                     )}
                     style={{ animationDuration: `${animation}s` }}
                   >
-                    {`+ ${selectedValues.length - maxCount} más`}
+                    {`+ ${selectedValues.length - maxCount} more`}
                     <XCircle
                       className="ml-2 size-4 cursor-pointer opacity-50"
                       onClick={event => {
@@ -267,11 +268,11 @@ export const MultiSelect = ({
       >
         <Command className="relative">
           <CommandInput
-            placeholder="Buscar..."
+            placeholder="Search..."
             onKeyDown={handleInputKeyDown}
           />
           <CommandList>
-            <CommandEmpty>No se encontraron resultados.</CommandEmpty>
+            <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
               <CommandItem
                 key="all"
@@ -288,7 +289,7 @@ export const MultiSelect = ({
                 >
                   <CheckIcon className="h-4 w-4 text-white dark:text-gray-500" />
                 </div>
-                <span>(Todos)</span>
+                <span>(All)</span>
               </CommandItem>
               {options.map(option => {
                 const isSelected = selectedValues.includes(option.value)
@@ -337,7 +338,7 @@ export const MultiSelect = ({
                   onSelect={() => setIsPopoverOpen(false)}
                   className="max-w-full flex-1 cursor-pointer justify-center"
                 >
-                  Cerrar
+                  Close
                 </CommandItem>
               </div>
             </CommandGroup> */}

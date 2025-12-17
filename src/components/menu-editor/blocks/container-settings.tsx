@@ -87,7 +87,7 @@ function BackgroundSelector({ onClose }: { onClose: () => void }) {
         </div>
       </div>
       <div>
-        <h4 className="mb-2 text-sm font-medium">Imágenes</h4>
+        <h4 className="mb-2 text-sm font-medium">Images</h4>
         <div className="grid grid-cols-3 gap-2">
           {BgImages.map(image => (
             <BackgroundPreview
@@ -118,18 +118,18 @@ export default function ContainerSettings() {
       size="sm"
     >
       {backgroundImage === "none"
-        ? "Sólido"
+        ? "Solid"
         : patterns.find(p => p.image === backgroundImage)?.name ||
           BgImages.find(img => img.image === backgroundImage)?.name ||
-          "Seleccionar fondo"}
+          "Select background"}
     </Button>
   )
 
   return (
-    <SideSection title="Sitio">
+    <SideSection title="Site">
       <div className="grid grid-cols-3 items-center gap-2">
         <dt>
-          <Label size="xs">Fondo</Label>
+          <Label size="xs">Background</Label>
         </dt>
         <dd className="col-span-2">
           {isMobile ? (
@@ -137,7 +137,7 @@ export default function ContainerSettings() {
               <DrawerTrigger asChild>{triggerButton}</DrawerTrigger>
               <DrawerContent className="max-h-[90vh]">
                 <DrawerHeader className="px-6 py-4">
-                  <DrawerTitle>Seleccionar fondo</DrawerTitle>
+                  <DrawerTitle>Select background</DrawerTitle>
                 </DrawerHeader>
                 <div className="custom-scrollbar overflow-y-auto px-6 pb-6">
                   <BackgroundSelector onClose={() => setOpen(false)} />
@@ -149,7 +149,7 @@ export default function ContainerSettings() {
               <DialogTrigger asChild>{triggerButton}</DialogTrigger>
               <DialogContent className="max-h-[90vh] sm:max-w-[625px]">
                 <DialogHeader className="px-6 py-4">
-                  <DialogTitle>Seleccionar fondo</DialogTitle>
+                  <DialogTitle>Select background</DialogTitle>
                 </DialogHeader>
                 <div className="custom-scrollbar max-h-[calc(90vh-8rem)] overflow-y-auto px-6 pb-6">
                   <BackgroundSelector onClose={() => setOpen(false)} />
@@ -164,10 +164,10 @@ export default function ContainerSettings() {
 }
 
 const patterns = [
-  { name: "Sólido", image: "none" },
-  { name: "Textura", image: "noise.svg" },
-  { name: "Terreno", image: "topography.svg" },
+  { name: "Solid", image: "none" },
+  { name: "Texture", image: "noise.svg" },
+  { name: "Terrain", image: "topography.svg" },
   { name: "Snacks", image: "food.svg" },
-  { name: "Nubes", image: "clouds.svg" },
-  { name: "Hojas", image: "leaf.svg" }
+  { name: "Clouds", image: "clouds.svg" },
+  { name: "Leaves", image: "leaf.svg" }
 ]

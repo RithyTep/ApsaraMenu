@@ -2,11 +2,11 @@ import SecondaryNav from "@/components/dashboard/secondary-nav"
 
 const SecondaryNavItems = [
   {
-    title: "Productos",
+    title: "Products",
     href: "dashboard/menu-items"
   },
   {
-    title: "Categorías",
+    title: "Categories",
     href: "dashboard/menu-items/categories"
   }
 ]

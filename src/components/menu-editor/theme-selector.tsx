@@ -113,9 +113,9 @@ export default function ThemeSelector({
 }: {
   menu: Awaited<ReturnType<typeof getMenuById>>
 }) {
-  const { nodes, actions, query } = useEditor(state => ({
-    nodes: state.nodes
-  }))
+  // Don't return nodes from useEditor - it creates a new reference on every state change
+  // causing infinite re-renders. Access nodes via query.getNodes() when needed.
+  const { actions, query } = useEditor()
 
   const queryClient = useQueryClient()
 
@@ -143,6 +143,7 @@ export default function ThemeSelector({
     setSelectedFontTheme(selectedTheme)
 
     // traverse each node and update the theme
+    const nodes = query.getNodes()
     if (!nodes) return
 
     for (const [key, value] of Object.entries(nodes)) {
@@ -201,7 +202,7 @@ export default function ThemeSelector({
         }
       }
     }
-  }, [fontThemeId]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [fontThemeId, query, actions])  
 
   const updateColorTheme = (colorThemeId: string) => {
     const selectedTheme = colorThemes.find(theme => theme.id === colorThemeId)
@@ -213,6 +214,7 @@ export default function ThemeSelector({
     setSelectedColorTheme(selectedTheme)
 
     // traverse each node and update the theme
+    const nodes = query.getNodes()
     if (!nodes) return
 
     for (const [key, value] of Object.entries(nodes)) {
@@ -302,7 +304,7 @@ export default function ThemeSelector({
   } = useAction(updateMenuSerialData, {
     onSuccess: ({ data }) => {
       if (data?.success) {
-        toast.success("Menú actualizado")
+        toast.success("Menu updated")
         queryClient.invalidateQueries({
           queryKey: ["menu", menu?.id]
         })
@@ -314,7 +316,7 @@ export default function ThemeSelector({
       resetSerialData()
     },
     onError: () => {
-      toast.error("Ocurrió un error")
+      toast.error("An error occurred")
       resetSerialData()
     }
   })
@@ -330,9 +332,9 @@ export default function ThemeSelector({
       ) {
         setUnsavedChanges({
           message:
-            "Tienes cambios sin guardar ¿Estás seguro de salir del Editor?",
-          dismissButtonLabel: "Cancelar",
-          proceedLinkLabel: "Descartar cambios",
+            "You have unsaved changes. Are you sure you want to leave the Editor?",
+          dismissButtonLabel: "Cancel",
+          proceedLinkLabel: "Discard changes",
           proceedAction: () => {
             setFontThemeId(menu.fontTheme)
             setColorThemeId(menu.colorTheme)
@@ -368,10 +370,10 @@ export default function ThemeSelector({
 
   return (
     <div className="editor-theme flex flex-col">
-      <SideSection title="Tipografía">
+      <SideSection title="Typography">
         <ThemedSelector
           isMobile={isMobile}
-          title="Tipografías"
+          title="Fonts"
           items={fontThemes}
           currentValue={fontThemeId}
           onValueChange={setFontThemeId}
@@ -410,10 +412,10 @@ export default function ThemeSelector({
           )}
         />
       </SideSection>
-      <SideSection title="Colores">
+      <SideSection title="Colors">
         <ThemedSelector
           isMobile={isMobile}
-          title="Colores"
+          title="Colors"
           items={colorThemes}
           currentValue={colorThemeId}
           onValueChange={setColorThemeId}
@@ -460,7 +462,7 @@ export default function ThemeSelector({
             >
               <SheetTrigger asChild>
                 <Button variant="secondary" size="xs" className="w-full">
-                  Personalizar colores
+                  Customize colors
                 </Button>
               </SheetTrigger>
               <SheetContent
@@ -468,9 +470,9 @@ export default function ThemeSelector({
                 side={isMobile ? "bottom" : "right"}
               >
                 <SheetHeader>
-                  <SheetTitle>Personalizar colores</SheetTitle>
+                  <SheetTitle>Customize colors</SheetTitle>
                   <SheetDescription>
-                    Personaliza los colores de tu menú
+                    Customize your menu colors
                   </SheetDescription>
                 </SheetHeader>
                 <ColorThemeEditor

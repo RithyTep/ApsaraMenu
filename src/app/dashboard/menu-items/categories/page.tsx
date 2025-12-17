@@ -11,7 +11,7 @@ import CategoryTable from "@/app/dashboard/menu-items/categories/category-table"
 import { ActionType } from "@/lib/types"
 
 export const metadata: Metadata = {
-  title: "Categorías"
+  title: "Categories"
 }
 
 export default async function CategoriesPage() {
@@ -26,12 +26,12 @@ export default async function CategoriesPage() {
   return (
     <div className="mx-auto grow px-4 sm:px-6">
       <PageSubtitle
-        title="Categorías"
-        description="Administra las categorías de tu menú"
+        title="Categories"
+        description="Manage your menu categories"
         Icon={Layers}
       >
         <CategoryEdit action={ActionType.CREATE}>
-          <Button>Agregar categoría</Button>
+          <Button>Add category</Button>
         </CategoryEdit>
       </PageSubtitle>
       <div className="mt-6">

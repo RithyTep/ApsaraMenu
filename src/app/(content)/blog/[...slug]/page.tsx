@@ -23,7 +23,7 @@ export default async function Page(props: {
     return notFound()
   }
 
-  const formattedDate = new Intl.DateTimeFormat("es-MX", {
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric"
@@ -47,10 +47,10 @@ export default async function Page(props: {
         <Separator className="my-10 w-20 bg-gray-300" />
         <div className="flex flex-col items-center gap-4 text-center">
           <h3 className="text-xl font-medium sm:text-2xl">
-            ¿Quieres participar en nuestro programa beta?
+            Want to join our beta program?
           </h3>
           <span className="text-gray-500">
-            Únete a nuestra lista de espera para recibir una invitación
+            Join our waitlist to receive an invitation
           </span>
           <div className="my-5">
             <Waitlist />
@@ -78,7 +78,7 @@ function Header({
   avatar: string
 }) {
   return (
-    <div className="mb-10 mt-20">
+    <div className="mt-20 mb-10">
       <div className="space-y-6">
         <div className="flex flex-row items-center gap-2 text-xs font-medium text-gray-400 md:text-sm">
           <time>{formattedDate}</time>
@@ -93,7 +93,7 @@ function Header({
         <div className="flex items-center gap-3">
           <Image
             src={`/${avatar}`}
-            alt={`Imagen de perfil de ${author}`}
+            alt={`Profile picture of ${author}`}
             width={44}
             height={44}
             className="rounded-full shadow-md"

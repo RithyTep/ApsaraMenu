@@ -60,9 +60,9 @@ export const UnsavedChangesModal: React.FC<UnsavedChangesContext> = ({
   >
     <AlertDialogContent>
       <AlertDialogHeader>
-        <AlertDialogTitle>Cambios sin guardar</AlertDialogTitle>
+        <AlertDialogTitle>Unsaved changes</AlertDialogTitle>
         <AlertDialogDescription>
-          {modalContent?.message ?? "Tienes cambios sin guardar"}
+          {modalContent?.message ?? "You have unsaved changes"}
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
@@ -71,7 +71,7 @@ export const UnsavedChangesModal: React.FC<UnsavedChangesContext> = ({
             setShowModal(false)
           }}
         >
-          {modalContent?.dismissButtonLabel ?? "Regresar"}
+          {modalContent?.dismissButtonLabel ?? "Go back"}
         </AlertDialogCancel>
         <AlertDialogAction>
           <Link
@@ -82,7 +82,7 @@ export const UnsavedChangesModal: React.FC<UnsavedChangesContext> = ({
               setModalContent(undefined)
             }}
           >
-            {modalContent?.proceedLinkLabel ?? "Descartar cambios"}
+            {modalContent?.proceedLinkLabel ?? "Discard changes"}
           </Link>
         </AlertDialogAction>
       </AlertDialogFooter>
@@ -178,7 +178,7 @@ export function useUnsavedChanges() {
       if (modalContent !== undefined) {
         e.preventDefault()
         return (e.returnValue =
-          modalContent.message ?? "Tienes cambios sin guardar")
+          modalContent.message ?? "You have unsaved changes")
       }
     }
 

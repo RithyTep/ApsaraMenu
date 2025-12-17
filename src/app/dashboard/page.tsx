@@ -14,7 +14,7 @@ import {
 } from "@/server/actions/user/queries"
 
 export const metadata: Metadata = {
-  title: "Inicio"
+  title: "Home"
 }
 
 export default async function DashboardPage() {
@@ -38,11 +38,11 @@ export default async function DashboardPage() {
           </Suspense>
         </div>
         <div className="col-span-full">
-          <PageSubtitle title="Menús" description="Todos los menús.">
+          <PageSubtitle title="Menus" description="All menus.">
             <InfoHelper>
-              Aquí puedes ver todos los menús de tu organización. El menú activo
-              es público para tus clientes. Solo puede haber un menú activo a la
-              vez.
+              Here you can see all menus from your organization. The active menu
+              is public for your customers. Only one menu can be active at a
+              time.
             </InfoHelper>
           </PageSubtitle>
         </div>

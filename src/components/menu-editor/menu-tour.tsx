@@ -13,49 +13,47 @@ import { tourModeAtom } from "@/lib/atoms"
 const steps: Step[] = [
   {
     target: ".editor-categories",
-    title: "Categorías y Productos",
+    title: "Categories and Products",
     content:
-      "Aquí puedes ver las categorías y productos de tu menú. Puedes arrastrar y soltar elementos para reorganizarlos.",
+      "Here you can see the categories and products of your menu. You can drag and drop elements to reorganize them.",
     placement: "right"
   },
   {
     target: ".editor-elements",
-    title: "Elementos",
-    content:
-      "Puedes agregar a tu menú elementos como encabezados y texto libre.",
+    title: "Elements",
+    content: "You can add elements like headings and free text to your menu.",
     placement: "right"
   },
   {
     target: ".editor-layers",
-    title: "Capas",
+    title: "Layers",
     content:
-      "Las capas te permiten organizar los elementos de tu menú. Puedes cambiar el orden de las capas arrastrándolas arriba o abajo. Puedes renombrar las capas haciendo doble clic en el nombre.",
+      "Layers allow you to organize the elements of your menu. You can change the order of layers by dragging them up or down. You can rename layers by double-clicking on the name.",
     placement: "right"
   },
   {
     target: ".editor-size",
-    title: "Vista previa",
+    title: "Preview",
     content:
-      "Aquí puedes ver cómo se verá tu menú en un dispositivo móvil o escritorio. Puedes hacer clic en los elementos para editarlos.",
+      "Here you can see how your menu will look on a mobile device or desktop. You can click on elements to edit them.",
     placement: "left",
     placementBeacon: "top"
   },
   {
     target: ".editor-toolbar",
-    title: "Herramientas",
+    title: "Tools",
     content:
-      "Aquí encontrarás herramientas para editar tu menú, como deshacer y rehacer cambios, copiar y pegar estilos, y más.",
+      "Here you will find tools to edit your menu, such as undo and redo changes, copy and paste styles, and more.",
     placement: "top-end",
     placementBeacon: "top"
   },
   {
     target: ".editor-theme",
-    title: "Tema",
+    title: "Theme",
     content: (
       <span>
-        Elige un tema de color y fuente para tu menú. Puedes elegir{" "}
-        <strong>Personalizar tema</strong> para escoger tu propia paleta de
-        colores.
+        Choose a color and font theme for your menu. You can choose{" "}
+        <strong>Customize theme</strong> to select your own color palette.
       </span>
     ),
     placement: "left",
@@ -63,17 +61,17 @@ const steps: Step[] = [
   },
   {
     target: ".editor-settings",
-    title: "Ajustes",
+    title: "Settings",
     content:
-      "En esta sección puedes cambiar la configuración de tu menú, como el tamaño del texto y la alineación de los elementos.",
+      "In this section you can change the configuration of your menu, such as text size and element alignment.",
     placement: "left",
     placementBeacon: "left-start"
   },
   {
     target: ".editor-published",
-    title: "Publicar y generar tu código QR",
+    title: "Publish and generate your QR code",
     content:
-      "Una vez que hayas terminado de diseñar tu menú, puedes publicarlo y generar un código QR para que tus clientes puedan acceder a él.",
+      "Once you have finished designing your menu, you can publish it and generate a QR code so your customers can access it.",
     placement: "bottom-end"
   }
 ]
@@ -108,12 +106,12 @@ export default function MenuTour() {
         hideArrow: true
       }}
       locale={{
-        back: "Anterior",
-        close: "Cerrar",
-        last: "Último",
-        next: "Siguiente",
-        skip: "Saltar",
-        open: "Abre el cuadro de diálogo de ayuda"
+        back: "Back",
+        close: "Close",
+        last: "Last",
+        next: "Next",
+        skip: "Skip",
+        open: "Open help dialog"
       }}
     />
   )
@@ -138,21 +136,21 @@ function Tooltip({
       <p className="text-sm text-gray-600 dark:text-gray-400">{step.content}</p>
       <div className="mt-8 flex items-center justify-between">
         <div className="text-xs text-gray-500">
-          {index + 1} de {size}
+          {index + 1} of {size}
         </div>
         <div className="flex justify-end gap-x-2">
           {!isLastStep && (
             <Button {...skipProps} variant="link" size="xs">
-              Saltar
+              Skip
             </Button>
           )}
           {index > 0 && (
             <Button {...backProps} variant="secondary" size="xs">
-              Anterior
+              Back
             </Button>
           )}
           <Button {...primaryProps} size="xs">
-            {isLastStep ? "Terminar" : "Siguiente"}
+            {isLastStep ? "Finish" : "Next"}
           </Button>
         </div>
       </div>
